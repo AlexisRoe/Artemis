@@ -1,5 +1,6 @@
 {
   "env": {
+    "browser": true,
     "commonjs": true,
     "es6": true,
     "node": true
@@ -17,5 +18,16 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "rules": {}
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
+  },
+  "rules": {
+    "no-unused-vars": [
+      "warn",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": true }
+    ],
+    "import/no-anonymous-default-export": "off"
+  }
 }

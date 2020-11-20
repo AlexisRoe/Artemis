@@ -5,7 +5,8 @@
   "description": "Dashboard & digital Function Sheet replacement",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run lint && cd client && npm test",
+    "lint": "eslint --fix --ext .js,.jsx .",
     "prettify": "prettier --write .",
     "server": "nodemon server.js",
     "client": "cd client && npm start",
@@ -33,6 +34,8 @@
   },
   "homepage": "https://github.com/AlexisRoe/Artemis#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
     "babel-eslint": "^10.1.0",
     "concurrently": "^5.3.0",
     "eslint": "^6.6.0",
@@ -46,7 +49,8 @@
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
     "nodemon": "^2.0.6",
-    "prettier": "2.2.0"
+    "prettier": "2.2.0",
+    "typescript": "^4.0.2"
   },
   "husky": {
     "hooks": {
@@ -58,6 +62,7 @@
     "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1"
   }
 }
