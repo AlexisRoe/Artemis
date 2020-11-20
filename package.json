@@ -1,0 +1,29 @@
+{
+  "name": "artemis",
+  "version": "0.0.1",
+  "description": "Dashboard & digital Function Sheet replacement",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexisRoe/Artemis.git"
+  },
+  "keywords": [
+    "dashboard",
+    "function",
+    "sheet",
+    "react",
+    "mongodb"
+  ],
+  "author": "Alexis Roehrling",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexisRoe/Artemis/issues"
+  },
+  "homepage": "https://github.com/AlexisRoe/Artemis#readme",
+  "devDependencies": {
+    "prettier": "2.2.0"
+  }
+}
