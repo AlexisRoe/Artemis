@@ -1,55 +1,67 @@
 {
-    "_id": "ObjectID",
-    "name": "Name der Veranstaltung",
-    "CustomerID": 34566633535353,
-    "shedule": [
+  "_id": "ObjectID",
+  "name": "Name der Veranstaltung",
+  "CustomerID": 34566633535353,
+  "shedule": [
+    {
+      "date": "1.1.2020",
+      "start": "10:00",
+      "end": "16:00",
+      "titel": "Auszeichnungstitel der Veranstaltung",
+      "pax": 20,
+      "rooms": [
         {
-            "date": "1.1.2020",
-            "start": "10:00",
-            "end": "16:00",
-            "titel": "Auszeichnungstitel der Veranstaltung",
-            "pax": 20,
-            "rooms": [
-                {
-                    "location": "Raum 120",
-                    "start": "10:00",
-                    "end": "16:00",
-                    "default": true,
-                    "role": "Hauptraum",
-                    "pax": 20,
-                    "setup": {
-                        "tables": "U-Form",
-                        "referent": true,
-                        "stage": false,
-                        "Bufet": true,
-                        "notes": "dies und das"
-                    },
-                    "equibment": {
-                        "Beamer": true,
-                        "Flipchart": 3,
-                        "Pinnwand": 1,
-                        "notes": "extra Stifte reinlegen"
-                    }
-                }
-            ],
-            "fb": [
-                {
-                    "location": "Lounge",
-                    "titel": "Kaffeepause 1",
-                    "start": "11:00",
-                    "end": "11:30",
-                    "food": [
-                        "belegte Brezeln",
-                        "Obst",
-                        "Joghurt in Bechern"
-                    ],
-                    "beverages": [
-                        "Kaffee/ Tee",
-                        "Orangensaft",
-                        "Wasser"
-                    ]
-                }
-            ]
+          "location": "Raum 120",
+          "start": "10:00",
+          "end": "16:00",
+          "default": true,
+          "role": "Hauptraum",
+          "pax": 20,
+          "setup": {
+            "tables": "U-Form",
+            "referent": true,
+            "stage": false,
+            "Bufet": true,
+            "notes": "dies und das"
+          },
+          "equibment": {
+            "Beamer": true,
+            "Flipchart": 3,
+            "Pinnwand": 1,
+            "Moderatorenkoffer": 1,
+            "notes": "extra Stifte reinlegen"
+          }
         }
-    ]
+      ],
+      "fb": [
+        {
+          "location": "Lounge",
+          "titel": "Kaffeepause 1",
+          "pax": 20,
+          "start": "11:00",
+          "end": "11:30",
+          "food": ["belegte Brezeln", "Obst", "Joghurt in Bechern"],
+          "beverages": ["Kaffee/ Tee", "Orangensaft", "Wasser"]
+        },
+        {
+          "location": "Restaurant",
+          "titel": "Lunch",
+          "pax": 20,
+          "start": "13:00",
+          "end": "14:00",
+          "food": ["Tagungsmenüs nach Wahl"],
+          "beverages": ["1 Glas Bier oder Wein pro Person", "Wasser"]
+        },
+        {
+          "location": "Lounge",
+          "titel": "Kaffeepause 2",
+          "pax": 20,
+          "start": "15:00",
+          "end": "16:00",
+          "food": ["gemischte Kuchen"],
+          "beverages": ["Kaffee/ Tee", "Wasser"]
+        }
+      ]
+    }
+  ]
 }
