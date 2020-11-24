@@ -40,8 +40,8 @@
           "pax": "number",
           "start": "time",
           "end": "time",
-          "food": ["string","string","string"],
-          "beverages": ["string","string","string"]
+          "food": ["string", "string", "string"],
+          "beverages": ["string", "string", "string"]
         },
         {
           "location": "string",
@@ -49,8 +49,8 @@
           "pax": "number",
           "start": "time",
           "end": "time",
-          "food": ["string","string","string"],
-          "beverages": ["string","string","string"]
+          "food": ["string", "string", "string"],
+          "beverages": ["string", "string", "string"]
         },
         {
           "location": "string",
@@ -58,8 +58,8 @@
           "pax": "number",
           "start": "time",
           "end": "time",
-          "food": ["string","string","string"],
-          "beverages": ["string","string","string"]
+          "food": ["string", "string", "string"],
+          "beverages": ["string", "string", "string"]
         }
       ]
     }
