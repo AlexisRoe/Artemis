@@ -1,13 +1,13 @@
 import React from "react";
-import Globalstyle from "../src/Globalstyle";
+import GlobalStyle from "../src/GlobalStyle";
 
 export const decorators = [
-  (Story) => {
+  (Story) => (
     <>
-      <Globalstyle />
+      <GlobalStyle />
       <Story />
-    </>;
-  },
+    </>
+  ),
 ];
 
 export const parameters = {

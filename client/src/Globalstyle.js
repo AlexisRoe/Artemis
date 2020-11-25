@@ -1,12 +1,8 @@
-import { createGlobalStyle, css } from "styled-components";
-
-const fonts = css`
-  ${import("./assets/fonts/fonts.css")}
-`;
+import { createGlobalStyle } from "styled-components";
+import { fonts } from "./assets/fonts/fonts";
 
 const GlobalStyle = createGlobalStyle`
 
-/* import all fonts */
 ${fonts}
 
 *, 
@@ -37,6 +33,35 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-size: 16px;
+    background-color: var(---color-bg-white);
+    font-family: var(--font-body-copy);
+}
+
+h1, h2 {
+    font-family: var(---font-family-header);
+    text-transform: uppercase;
+}
+
+h1 {
+    font-weight:600;
+    font-size: 24px;
+    letter-spacing: 1rem;
+}
+
+h2 {
+    font-weight:600;
+    font-size:20px;
+}
+
+h3 {
+    font-weight:700;
+    font-size:20px;
+}
+
+h4 {
+    font-weight:700;
+    font-size:16px;
 }
 
 `;
