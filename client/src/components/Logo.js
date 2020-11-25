@@ -1,7 +1,8 @@
+import React from "react";
 import styled from "styled-components/macro";
 import logoSrc from "../assets/logo/logo-artemis.jpg";
 
-export const Logo = styled.img.attrs({
+const LogoPic = styled.img.attrs({
   src: `${logoSrc}`,
   alt: "logo",
 })`
@@ -10,7 +11,7 @@ export const Logo = styled.img.attrs({
   height: auto;
 `;
 
-export const LogoContainer = styled.section`
+const LogoContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +20,17 @@ export const LogoContainer = styled.section`
   width: 100%;
 `;
 
-export const LogoTitle = styled.h1`
+const LogoTitle = styled.h1`
   color: var(--color-golden-dark);
 `;
+
+export const Logo = () => {
+  return (
+    <>
+      <LogoContainer>
+        <LogoPic />
+        <LogoTitle>ARTEMIS</LogoTitle>
+      </LogoContainer>
+    </>
+  );
+};

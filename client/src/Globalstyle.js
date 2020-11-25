@@ -64,6 +64,10 @@ h4 {
     font-size:16px;
 }
 
+button, button:hover, button:focus {
+    outline:none;
+}
+
 `;
 
 export default GlobalStyle;

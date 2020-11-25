@@ -1,16 +1,9 @@
-import { LogoContainer, Logo, LogoTitle } from "./Logo";
+import { Logo } from "./Logo";
 import React from "react";
 
 export default {
-  title: "Intro",
+  title: "Login",
   component: Logo,
 };
 
-export const LogoIntro = () => {
-  return (
-    <LogoContainer>
-      <Logo />
-      <LogoTitle>ARTEMIS</LogoTitle>
-    </LogoContainer>
-  );
-};
+export const LogoIntro = () => <Logo />;
