@@ -2,7 +2,7 @@ import { LoginInput } from "./LoginInput";
 import React from "react";
 
 export default {
-  title: "Login",
+  title: "Components/Login",
   component: LoginInput,
 };
 

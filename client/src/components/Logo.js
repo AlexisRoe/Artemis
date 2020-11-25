@@ -9,6 +9,7 @@ const LogoPic = styled.img.attrs({
   max-width: 375px;
   width: 70%;
   height: auto;
+  margin-bottom: 1rem;
 `;
 
 const LogoContainer = styled.section`

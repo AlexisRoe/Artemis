@@ -1,9 +1,42 @@
 import { createGlobalStyle } from "styled-components";
-import { fonts } from "./assets/fonts/fonts";
+import Poppins500 from "./assets/fonts/Poppins/poppins-v15-latin-500.woff2";
+import Poppins600 from "./assets/fonts/Poppins/poppins-v15-latin-600.woff2";
+import Poppins700 from "./assets/fonts/Poppins/poppins-v15-latin-700.woff2";
+import OpenSans600 from "./assets/fonts/Open_Sans/open-sans-v18-latin-600.woff2";
+import OpenSans700 from "./assets/fonts/Open_Sans/open-sans-v18-latin-700.woff2";
 
 const GlobalStyle = createGlobalStyle`
 
-${fonts}
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    src: url(${Poppins500});
+  }
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 600;
+    src: url(${Poppins600});
+  }
+@font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    src: url(${Poppins700});
+  }
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    src: url(${OpenSans600});
+  }
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    src: url(${OpenSans700});
+  }
 
 *, 
 *::before, 
@@ -34,12 +67,13 @@ body {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    background-color: var(---color-bg-white);
-    font-family: var(--font-body-copy);
+    background-color: var(--color-bg-white);
+    font-family: var(--font-family-body);
+    font-weight: 500;
 }
 
 h1, h2 {
-    font-family: var(---font-family-header);
+    font-family: var(--font-family-header);
     text-transform: uppercase;
 }
 

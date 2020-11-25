@@ -2,7 +2,7 @@ import { LoginButton } from "./LoginButton";
 import React from "react";
 
 export default {
-  title: "Login",
+  title: "Components/Login",
   component: LoginButton,
 };
 
