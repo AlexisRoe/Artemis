@@ -64,8 +64,8 @@ html {
 
 body {
     height: 100%;
-    margin: 0;
-    padding: 0;
+    /* margin: 0;
+    padding: 0; */
     font-size: 16px;
     background-color: var(--color-bg-white);
     font-family: var(--font-family-body);
