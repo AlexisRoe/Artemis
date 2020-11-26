@@ -67,7 +67,11 @@ body {
     margin: 0;
     padding: 0;
     font-size: 16px;
-    background-color: var(--color-bg-white);
+    /* 
+    for storybook there is another color needed
+    background-color: var(--color-bg-white); 
+    */
+    background-color: lightgray;
     font-family: var(--font-family-body);
     font-weight: 500;
 }

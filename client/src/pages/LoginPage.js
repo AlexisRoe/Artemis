@@ -7,6 +7,7 @@ import styled from "styled-components/macro";
 const PageContainer = styled.div`
   width: 375px;
   height: 812px;
+  background-color: #fff;
 `;
 
 const LoginForm = styled.form`

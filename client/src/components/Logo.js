@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components/macro";
 import logoSrc from "../assets/logo/logo-artemis.jpg";
 
@@ -7,7 +6,7 @@ const LogoPic = styled.img.attrs({
   alt: "logo",
 })`
   max-width: 375px;
-  width: 70%;
+  width: 50%;
   height: auto;
   margin-bottom: 1rem;
 `;

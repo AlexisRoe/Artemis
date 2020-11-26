@@ -1,5 +1,4 @@
 import { LoginButton } from "./LoginButton";
-import React from "react";
 
 export default {
   title: "Components/Login",
