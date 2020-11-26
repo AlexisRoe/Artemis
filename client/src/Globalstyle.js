@@ -9,31 +9,31 @@ const GlobalStyle = createGlobalStyle`
 
 @font-face {
     font-family: "Poppins";
-    font-style: normal;
+    font-style: swap;
     font-weight: 500;
     src: url(${Poppins500});
   }
 @font-face {
     font-family: "Poppins";
-    font-style: normal;
+    font-style: swap;
     font-weight: 600;
     src: url(${Poppins600});
   }
 @font-face {
     font-family: "Poppins";
-    font-style: normal;
+    font-style: swap;
     font-weight: 700;
     src: url(${Poppins700});
   }
 @font-face {
     font-family: "Open Sans";
-    font-style: normal;
+    font-style: swap;
     font-weight: 600;
     src: url(${OpenSans600});
   }
 @font-face {
     font-family: "Open Sans";
-    font-style: normal;
+    font-style: swap;
     font-weight: 700;
     src: url(${OpenSans700});
   }
@@ -64,8 +64,8 @@ html {
 
 body {
     height: 100%;
-    /* margin: 0;
-    padding: 0; */
+    margin: 0;
+    padding: 0;
     font-size: 16px;
     background-color: var(--color-bg-white);
     font-family: var(--font-family-body);

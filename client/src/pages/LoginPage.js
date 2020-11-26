@@ -7,7 +7,6 @@ import styled from "styled-components/macro";
 const PageContainer = styled.div`
   width: 375px;
   height: 812px;
-  border: 1px solid black;
 `;
 
 const LoginForm = styled.form`
