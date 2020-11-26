@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
-import logoSrc from "../assets/logo/logo-artemis.png";
+import logoSrc from "../../assets/logo/logo-artemis.png";
 
 const Header = styled.header`
   z-index: 100;
@@ -31,6 +31,7 @@ const PictureContainer = styled.div`
 const MenuLogoPicture = styled.img`
   width: 100%;
   height: auto;
+  cursor: pointer;
 `;
 
 const LogoMenu = ({ src }) => {
@@ -46,7 +47,6 @@ const InformationContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.3rem;
 `;
 
 const Informations = styled.h2`

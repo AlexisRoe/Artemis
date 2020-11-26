@@ -45,13 +45,17 @@ const NotificationContainer = styled.div`
   margin-top: 0.5rem;
   cursor: pointer;
 
-  :hover {
+  :active {
     background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  & > span {
+    color: rgba(255, 255, 255, 0.7);
   }
 `;
 
 const NotificationTitel = styled.h4`
-  margin: 0 0 0.1rem 0;
+  margin-bottom: 0.2rem;
 `;
 
 export const ModalNotification = ({ informations }) => {

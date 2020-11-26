@@ -42,6 +42,8 @@ const GlobalStyle = createGlobalStyle`
 *::before, 
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
@@ -50,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
     --color-bg-sub: #b69e4f;
     --color-font-white: #fff;
     --color-font-sub: #8b8585;
-    --color-font-disabled: #fcfbf9;
+    --color-font-disabled: #737373;
     --font-body-copy: #54534a;
     --color-golden: #b69e4f;
     --color-golden-dark: #9f8641;
@@ -64,8 +66,6 @@ html {
 
 body {
     height: 100%;
-    margin: 0;
-    padding: 0;
     font-size: 16px;
     /* 
     for storybook there is another color needed
@@ -91,6 +91,7 @@ h2 {
     font-weight:600;
     font-size:20px;
 }
+
 
 h3 {
     font-weight:700;

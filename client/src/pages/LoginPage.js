@@ -1,14 +1,9 @@
 import React from "react";
-import { LoginButton } from "../components/LoginButton";
-import { LoginInput } from "../components/LoginInput";
-import { Logo } from "../components/Logo";
+import { LoginButton } from "../components/Login/LoginButton";
+import { LoginInput } from "../components/Login/LoginInput";
+import { Logo } from "../components/Login/Logo";
 import styled from "styled-components/macro";
-
-const PageContainer = styled.div`
-  width: 375px;
-  height: 812px;
-  background-color: #fff;
-`;
+import { PageContainer } from "../components/helper/PageContainer";
 
 const LoginForm = styled.form`
   width: 100%;

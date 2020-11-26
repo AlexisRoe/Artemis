@@ -5,4 +5,4 @@ export default {
   component: MenuBar,
 };
 
-export const Menu = () => <MenuBar title="Daily Overview" date="01.01.2020" />;
+export const Bar = () => <MenuBar title="Daily Overview" date="01.01.2020" />;
