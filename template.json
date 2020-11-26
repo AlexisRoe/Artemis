@@ -1,64 +1,37 @@
 {
-  "_id": "ObjectID",
   "name": "string",
-  "CustomerID": "number",
+  "CustomerID": 1,
   "shedule": [
     {
-      "date": "date",
-      "start": "time",
-      "end": "time",
-      "titel": "string",
-      "pax": "number",
+      "start": "2020-10-01T10:00:00",
+      "end": "2020-10-01T10:00:00",
+      "title": "string",
+      "pax": 0,
       "rooms": [
         {
           "location": "string",
-          "start": "time",
-          "end": "time",
-          "default": "boolean",
+          "start": "2020-10-01T10:00:00",
+          "end": "2020-10-01T10:00:00",
+          "default": true,
           "role": "string",
-          "pax": "number",
+          "pax": 1,
           "setup": {
-            "tables": "string",
-            "referent": "boolean",
-            "stage": "boolean",
-            "Bufet": "boolean",
-            "notes": "string"
+            "form": "string"
           },
-          "equibment": {
-            "Beamer": "boolean",
-            "Flipchart": "number",
-            "Pinnwand": "number",
-            "Moderatorenkoffer": "number",
-            "notes": "string"
+          "equipment": {
+            "Flipchart": 0,
+            "Pinnwand": 0
           }
         }
       ],
       "fb": [
         {
           "location": "string",
-          "titel": "string",
-          "pax": "number",
-          "start": "time",
-          "end": "time",
-          "food": ["string", "string", "string"],
-          "beverages": ["string", "string", "string"]
-        },
-        {
-          "location": "string",
-          "titel": "string",
-          "pax": "number",
-          "start": "time",
-          "end": "time",
-          "food": ["string", "string", "string"],
-          "beverages": ["string", "string", "string"]
-        },
-        {
-          "location": "string",
-          "titel": "string",
-          "pax": "number",
-          "start": "time",
-          "end": "time",
-          "food": ["string", "string", "string"],
+          "title": "string",
+          "pax": 0,
+          "start": "2020-10-01T10:00:00",
+          "end": "2020-10-01T10:00:00",
+          "foods": ["string", "string", "string"],
           "beverages": ["string", "string", "string"]
         }
       ]
