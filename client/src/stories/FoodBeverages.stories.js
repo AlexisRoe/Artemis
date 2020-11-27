@@ -1,7 +1,5 @@
-import { DataHeader } from "../components/datasheets/DataHeader";
 import { DataListContainer } from "../components/datasheets/DataList";
 import { DataSheetItem } from "../components/datasheets/DataSheetItem";
-import { SectionContainer } from "../components/datasheets/SectionContainer";
 
 const fbSamples = [
   {
