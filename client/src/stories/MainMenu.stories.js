@@ -1,4 +1,4 @@
-import { MainMenu } from "./MainMenu";
+import { MainMenu } from "../components/Menu/MainMenu";
 
 export default {
   title: "Components/Menu",

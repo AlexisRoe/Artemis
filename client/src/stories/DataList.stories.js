@@ -1,7 +1,7 @@
-import { SectionContainer } from "./SectionContainer";
-import { DataListItem } from "./DataListItem";
-import { DataListContainer } from "./DataList";
-import { DataHeader } from "./DataHeader";
+import { SectionContainer } from "../components/datasheets/SectionContainer";
+import { DataListItem } from "../components/datasheets/DataListItem";
+import { DataListContainer } from "../components/datasheets/DataList";
+import { DataHeader } from "../components/datasheets/DataHeader";
 
 const samples = [
   {

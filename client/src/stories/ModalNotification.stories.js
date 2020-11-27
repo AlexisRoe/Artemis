@@ -1,4 +1,4 @@
-import { ModalNotification } from "./ModalNotification";
+import { ModalNotification } from "../components/Menu/ModalNotification";
 
 export default {
   title: "Components/Menu",

@@ -1,4 +1,4 @@
-import { NotificationArea } from "./NotificationArea";
+import { NotificationArea } from "../components/Menu/NotificationArea";
 
 export default {
   title: "Components/DataLists",

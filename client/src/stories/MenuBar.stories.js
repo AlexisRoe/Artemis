@@ -1,4 +1,4 @@
-import { MenuBar } from "./MenuBar";
+import { MenuBar } from "../components/Menu/MenuBar";
 
 export default {
   title: "Components/Menu",

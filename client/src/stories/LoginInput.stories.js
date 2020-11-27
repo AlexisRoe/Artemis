@@ -1,4 +1,4 @@
-import { LoginInput } from "./LoginInput";
+import { LoginInput } from "../components/Login/LoginInput";
 
 export default {
   title: "Components/Login",
