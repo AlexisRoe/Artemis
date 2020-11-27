@@ -5,7 +5,7 @@ const ListItem = styled.li`
   width: 100%;
   padding: 0.6rem 1rem 0.6rem 2rem;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1.5fr 2fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
     "time   title"

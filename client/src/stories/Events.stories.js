@@ -1,6 +1,4 @@
-import { SectionContainer } from "../components/datasheets/SectionContainer";
 import { DataListContainer } from "../components/datasheets/DataList";
-import { DataHeader } from "../components/datasheets/DataHeader";
 import { EventListItem } from "../components/datasheets/EventListItem";
 
 const samples = [
@@ -24,20 +22,17 @@ const samples = [
   },
 ];
 
-export const Event = () => {
+export const EventItem = () => {
   return (
-    <SectionContainer>
-      <DataHeader>Events today</DataHeader>
-      <DataListContainer>
-        {samples.map((sample) => {
-          return <EventListItem key={sample.title} {...sample} />;
-        })}
-      </DataListContainer>
-    </SectionContainer>
+    <DataListContainer>
+      {samples.map((sample) => {
+        return <EventListItem key={sample.title} {...sample} />;
+      })}
+    </DataListContainer>
   );
 };
 
 export default {
   title: "Components/DataLists",
-  component: Event,
+  component: EventItem,
 };

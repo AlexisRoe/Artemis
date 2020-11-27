@@ -19,6 +19,7 @@ const Container = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+  margin-top: 100px;
 `;
 
 const Filter = styled.div`

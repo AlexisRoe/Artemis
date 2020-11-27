@@ -13,7 +13,9 @@ const Header = styled.header`
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 2rem;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 const PictureContainer = styled.div`

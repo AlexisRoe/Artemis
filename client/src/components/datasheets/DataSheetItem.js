@@ -35,22 +35,23 @@ const Room = styled.span`
   margin-bottom: 1rem;
 `;
 
-const Note = styled.li`
+const NotesContainer = styled.ul`
   grid-area: notes;
   list-style: none;
 `;
 
-export const DataSheetItem = ({ time, title, room, notes = [""] }) => {
+export const DataSheetItem = ({ time, title, room, notes }) => {
   return (
     <ItemContainer>
       <Time>{time}</Time>
       <Title>{title}</Title>
-      <Room>{room}</Room>
-      <ul>
-        {notes.map((note) => {
-          return <Note key={note}>{note}</Note>;
-        })}
-      </ul>
+      {room && <Room>{room}</Room>}
+      <NotesContainer>
+        {notes &&
+          notes.map((note) => {
+            return <li key={note}>{note}</li>;
+          })}
+      </NotesContainer>
     </ItemContainer>
   );
 };

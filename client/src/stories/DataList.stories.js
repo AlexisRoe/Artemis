@@ -1,7 +1,5 @@
-import { SectionContainer } from "../components/datasheets/SectionContainer";
 import { DataListItem } from "../components/datasheets/DataListItem";
 import { DataListContainer } from "../components/datasheets/DataList";
-import { DataHeader } from "../components/datasheets/DataHeader";
 
 const samples = [
   {
@@ -16,28 +14,19 @@ const samples = [
     description: "Telekom Team 2",
     room: "Raum 123",
   },
-  {
-    time: "10:30",
-    title: "Kaffeepause",
-    description: "Telekom Team 3",
-    room: "Lounge",
-  },
 ];
 
-export const DataList = () => {
+export const NextUp = () => {
   return (
-    <SectionContainer>
-      <DataHeader>Next Up</DataHeader>
-      <DataListContainer>
-        {samples.map((sample) => {
-          return <DataListItem key={sample.title} {...sample} />;
-        })}
-      </DataListContainer>
-    </SectionContainer>
+    <DataListContainer>
+      {samples.map((sample) => {
+        return <DataListItem key={sample.title} {...sample} />;
+      })}
+    </DataListContainer>
   );
 };
 
 export default {
   title: "Components/DataLists",
-  component: DataList,
+  component: NextUp,
 };

@@ -1,7 +1,5 @@
 import { DataSheetItem } from "../components/datasheets/DataSheetItem";
-import { SectionContainer } from "../components/datasheets/SectionContainer";
 import { DataListContainer } from "../components/datasheets/DataList";
-import { DataHeader } from "../components/datasheets/DataHeader";
 
 const samples = [
   {
@@ -12,20 +10,17 @@ const samples = [
   },
 ];
 
-export const DataSheet = () => {
+export const DataSheetSimple = () => {
   return (
-    <SectionContainer>
-      <DataHeader>Haustechnik</DataHeader>
-      <DataListContainer>
-        {samples.map((sample) => {
-          return <DataSheetItem key={sample.title} {...sample} />;
-        })}
-      </DataListContainer>
-    </SectionContainer>
+    <DataListContainer>
+      {samples.map((sample) => {
+        return <DataSheetItem key={sample.title} {...sample} />;
+      })}
+    </DataListContainer>
   );
 };
 
 export default {
   title: "Components/DataLists",
-  component: DataSheet,
+  component: DataSheetSimple,
 };

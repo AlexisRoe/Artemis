@@ -13,7 +13,7 @@ const MenuPage = styled.article`
 `;
 
 const NavigationList = styled.ul`
-  margin-top: 3rem;
+  margin-top: 160px;
   margin-left: 3rem;
   list-style-type: none;
 `;

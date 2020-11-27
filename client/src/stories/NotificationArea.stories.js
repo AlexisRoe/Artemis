@@ -1,7 +1,7 @@
 import { NotificationArea } from "../components/Menu/NotificationArea";
 
 export default {
-  title: "Components/DataLists",
+  title: "Components/Menu",
   component: NotificationArea,
 };
 
