@@ -1,25 +1,10 @@
-import React from "react";
 import { LoginButton } from "../components/Login/LoginButton";
 import { LoginInput } from "../components/Login/LoginInput";
 import { Logo } from "../components/Login/Logo";
-import styled from "styled-components/macro";
+import { LoginForm } from "../components/Login/LoginForm";
+import { LoginContainer } from "../components/Login/LoginContainer";
 
-const LoginContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 1rem;
-`;
-
-const LoginForm = styled.form`
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-`;
-
-export const LoginPage = () => {
+export const Login = () => {
   return (
     <LoginContainer>
       <Logo />
@@ -30,4 +15,9 @@ export const LoginPage = () => {
       </LoginForm>
     </LoginContainer>
   );
+};
+
+export default {
+  title: "Pages/Login",
+  component: Login,
 };
