@@ -9,31 +9,31 @@ const GlobalStyle = createGlobalStyle`
 
 @font-face {
     font-family: "Poppins";
-    font-style: normal;
+    font-style: swap;
     font-weight: 500;
     src: url(${Poppins500});
   }
 @font-face {
     font-family: "Poppins";
-    font-style: normal;
+    font-style: swap;
     font-weight: 600;
     src: url(${Poppins600});
   }
 @font-face {
     font-family: "Poppins";
-    font-style: normal;
+    font-style: swap;
     font-weight: 700;
     src: url(${Poppins700});
   }
 @font-face {
     font-family: "Open Sans";
-    font-style: normal;
+    font-style: swap;
     font-weight: 600;
     src: url(${OpenSans600});
   }
 @font-face {
     font-family: "Open Sans";
-    font-style: normal;
+    font-style: swap;
     font-weight: 700;
     src: url(${OpenSans700});
   }
@@ -42,15 +42,17 @@ const GlobalStyle = createGlobalStyle`
 *::before, 
 *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 :root {
     --color-bg-white: #fff;
     --color-bg-dark: #2d2c2a;
-    --color-bg-sub: #b69e4f;
+    --color-bg-sub: rgba(182, 158, 79, .24);
     --color-font-white: #fff;
     --color-font-sub: #8b8585;
-    --color-font-disabled: #fcfbf9;
+    --color-font-disabled: #737373;
     --font-body-copy: #54534a;
     --color-golden: #b69e4f;
     --color-golden-dark: #9f8641;
@@ -64,10 +66,7 @@ html {
 
 body {
     height: 100%;
-    /* margin: 0;
-    padding: 0; */
     font-size: 16px;
-    background-color: var(--color-bg-white);
     font-family: var(--font-family-body);
     font-weight: 500;
 }
@@ -87,6 +86,7 @@ h2 {
     font-weight:600;
     font-size:20px;
 }
+
 
 h3 {
     font-weight:700;
