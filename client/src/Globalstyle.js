@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
 :root {
     --color-bg-white: #fff;
     --color-bg-dark: #2d2c2a;
-    --color-bg-sub: #b69e4f;
+    --color-bg-sub: rgba(182, 158, 79, .24);
     --color-font-white: #fff;
     --color-font-sub: #8b8585;
     --color-font-disabled: #737373;
