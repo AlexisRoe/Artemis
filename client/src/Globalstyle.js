@@ -67,11 +67,6 @@ html {
 body {
     height: 100%;
     font-size: 16px;
-    /* 
-    for storybook there is another color needed
-    background-color: var(--color-bg-white); 
-    */
-    background-color: lightgray;
     font-family: var(--font-family-body);
     font-weight: 500;
 }

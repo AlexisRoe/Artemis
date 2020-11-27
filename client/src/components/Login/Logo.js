@@ -8,16 +8,17 @@ const LogoContainer = styled.section`
   justify-content: center;
   background-color: var(--color-bg-dark);
   width: 100%;
-  min-height: 300px;
+  min-height: 200px;
+  padding: 1rem;
 `;
 const LogoPic = styled.img.attrs({
   src: `${logoSrc}`,
   alt: "logo",
 })`
-  max-width: 375px;
+  max-width: 200px;
   width: 50%;
   height: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const LogoTitle = styled.h1`

@@ -3,8 +3,8 @@ import { MenuBar } from "./MenuBar";
 import PropTypes from "prop-types";
 
 const MenuPage = styled.article`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   background-color: var(--color-bg-dark);
   color: var(--color-font-white);

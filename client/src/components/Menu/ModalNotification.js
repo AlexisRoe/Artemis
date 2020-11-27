@@ -30,8 +30,8 @@ const Modal = styled.aside`
     position: absolute;
     content: "";
     bottom: 0.5rem;
-    width: 80%;
-    left: 10%;
+    width: 80vw;
+    left: 10vw;
     border-style: double solid;
     border-color: var(--color-golden-dark);
     border-bottom-width: 1px;

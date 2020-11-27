@@ -17,13 +17,10 @@ LoginInput.propTypes = {
 const InputLabel = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
+  gap: 0.3rem;
 `;
 
 const Inputfield = styled.input`
-  width: 100%;
   min-height: 50px;
   border: 1px solid var(--color-golden);
-  background: none;
 `;

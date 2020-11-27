@@ -10,5 +10,5 @@ export const LoginButton = styled.button`
   color: var(--color-font-white);
   background-color: var(--color-golden);
   border: none;
-  margin-top: 3rem;
+  margin-top: 2rem;
 `;
