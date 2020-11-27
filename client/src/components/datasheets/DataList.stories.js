@@ -30,15 +30,7 @@ export const DataList = () => {
       <DataHeader>Next Up</DataHeader>
       <DataListContainer>
         {samples.map((sample) => {
-          return (
-            <DataListItem
-              key={sample.title}
-              time={sample.time}
-              title={sample.title}
-              description={sample.description}
-              room={sample.room}
-            />
-          );
+          return <DataListItem key={sample.title} {...sample} />;
         })}
       </DataListContainer>
     </SectionContainer>
