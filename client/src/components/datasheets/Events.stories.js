@@ -3,16 +3,6 @@ import { DataListContainer } from "./DataList";
 import { DataHeader } from "./DataHeader";
 import { EventListItem } from "./EventListItem";
 
-/* EventListItem.propTypes = {
-  time: PropTypes.string,
-  title: PropTypes.string,
-  room: PropTypes.string,
-  setup: PropTypes.number,
-  pax: PropTypes.number,
-  pinboard: PropTypes.number,
-  flipchart: PropTypes.number,
-}; */
-
 const samples = [
   {
     time: "10:00 - 16:00",
@@ -48,6 +38,6 @@ export const Event = () => {
 };
 
 export default {
-  title: "Components/DataList",
+  title: "Components/DataLists",
   component: Event,
 };

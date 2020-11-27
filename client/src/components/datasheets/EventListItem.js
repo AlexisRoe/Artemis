@@ -24,7 +24,7 @@ const ListItem = styled.li`
     "room room room room"
     "setup pax pinboard flipchart";
 
-  &:nth-child(2n) {
+  &:nth-child(2n + 1) {
     background-color: var(--color-bg-sub);
   }
 `;

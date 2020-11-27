@@ -8,11 +8,11 @@ const ListItem = styled.li`
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
-    "time   titel"
+    "time   title"
     "time   description"
     "time   room";
 
-  &:nth-child(2n) {
+  &:nth-child(2n + 1) {
     background-color: var(--color-bg-sub);
   }
 `;
@@ -26,7 +26,7 @@ const Time = styled.h4`
 `;
 
 const Titel = styled.h4`
-  grid-area: "titel";
+  grid-area: title;
   margin: 0;
 `;
 

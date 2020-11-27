@@ -38,6 +38,6 @@ export const DataList = () => {
 };
 
 export default {
-  title: "Components/DataList",
+  title: "Components/DataLists",
   component: DataList,
 };
