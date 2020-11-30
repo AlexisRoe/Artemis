@@ -16,7 +16,7 @@ Its usally a big mess to spread the newest information to the colleagues. Why no
 
 Because the prototyp would be used as part of an enterprise software, why not branding it for the company buying it. In my example IHG, one of the biggest hotel companies on the planet. Okay its not Marriott. But they are still huge.
 
-Here the XD-Prototyp: -- Link -- (hurry Adobe cut off the sharing option in 2021)
+Here the [https://xd.adobe.com/view/a7884a1f-4aa5-4b74-b2b1-1d4a6eed2c98-f2db/](XD Artemis Prototyp) (hurry Adobe cut off the sharing option in 2021)
 
 #### Sidenotes
 
