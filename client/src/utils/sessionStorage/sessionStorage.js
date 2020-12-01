@@ -1,5 +1,5 @@
-export async function getUser(USER) {
-  const storedUser = (await JSON.parse(sessionStorage.getItem(USER))) || {};
+export function getUser(USER) {
+  const storedUser = JSON.parse(sessionStorage.getItem(USER)) || {};
 
   const initialState = {
     userDetails: "" || storedUser.user,
@@ -14,4 +14,8 @@ export async function getUser(USER) {
 export function setUser(USER, payload) {
   const newContent = JSON.stringify(payload);
   sessionStorage.setItem(USER, newContent);
+}
+
+export function removeUser(USER) {
+  sessionStorage.removeItem(USER);
 }

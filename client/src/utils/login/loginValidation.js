@@ -1,4 +1,9 @@
-import { USER } from "../config/constants";
+import {
+  LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  REQUEST_LOGIN,
+  USER,
+} from "../config/constants";
 import { setUser } from "../sessionStorage/sessionStorage";
 
 // Mockup for testing
@@ -9,31 +14,18 @@ const data = {
   errors: ["Something goes wrong"],
 };
 
-// export async function loginUser(dispatch, loginPayload) {
-//   const requestOptions = {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(loginPayload),
-//   };
+export async function loginUser(dispatch, payload) {
+  console.log(payload);
 
-export async function loginUser(dispatch) {
   try {
-    dispatch({ type: "REQUEST_LOGIN" });
-
+    dispatch({ type: REQUEST_LOGIN });
     if (data.user) {
-      dispatch({ type: "LOGIN_SUCCESS", payload: data });
+      dispatch({ type: LOGIN_SUCCESS, payload: data });
       setUser(USER, data);
       return data;
     }
-
-    dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
-    return;
+    dispatch({ type: LOGIN_ERROR, error: data.errors[0] });
   } catch (error) {
-    dispatch({ type: "LOGIN_ERROR", error: error });
+    dispatch({ type: LOGIN_ERROR, error: error });
   }
-}
-
-export async function logout(dispatch) {
-  dispatch({ type: "LOGOUT" });
-  localStorage.removeItem(USER);
 }

@@ -1,3 +1,7 @@
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { hash } from "../../utils/crypto/crypto";
+import { loginUser } from "../../utils/login/loginValidation";
 import {
   LoginButton,
   LoginInput,
@@ -6,22 +10,14 @@ import {
   LoginContainer,
   ProgressNotification,
 } from "../../components/Login";
-import {
-  AuthDispatchContext,
-  AuthStateContext,
-} from "../../utils/contextApi/contextAPI";
-import { hash } from "../../utils/crypto/crypto";
-
-import React, { useState } from "react";
-import { loginUser } from "../../utils/login/loginValidation";
+import { AuthStateContext } from "../../utils/contextApi/contextAPI";
 
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("none");
-
-  const dispatch = React.useContext(AuthDispatchContext);
-  const user = React.useContext(AuthStateContext);
+  const [user, dispatch] = React.useContext(AuthStateContext);
+  let history = useHistory();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -35,12 +31,12 @@ function Login() {
     } catch (error) {
       console.log(error);
       setMessage(user.errorMessage);
+    } finally {
+      if (!user.loading) {
+        setMessage("none");
+      }
+      history.push("/day");
     }
-    if (!user.loading) {
-      setMessage("none");
-    }
-    setPassword("");
-    setId("");
   };
 
   return (

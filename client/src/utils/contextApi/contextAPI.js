@@ -5,21 +5,18 @@ import { getUser } from "../sessionStorage/sessionStorage";
 import PropTypes from "prop-types";
 
 export const AuthStateContext = React.createContext();
-export const AuthDispatchContext = React.createContext();
 
-export const AuthProvider = async ({ children }) => {
-  const initialState = await getUser(USER);
+export const AuthProvider = ({ children }) => {
+  const initialState = getUser(USER);
   const [user, dispatch] = useReducer(AuthReducer, initialState);
 
   return (
-    <AuthStateContext.Provider value={user}>
-      <AuthDispatchContext.Provider value={dispatch}>
-        {children}
-      </AuthDispatchContext.Provider>
+    <AuthStateContext.Provider value={[user, dispatch]}>
+      {children}
     </AuthStateContext.Provider>
   );
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
 };
