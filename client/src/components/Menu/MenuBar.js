@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 import logoSrc from "../../assets/logo/logo-artemis.png";
+import { isDate } from "../../utils/Date";
 
 const Header = styled.header`
   z-index: 100;
@@ -56,7 +57,9 @@ const Informations = styled.h2`
   text-transform: none;
 `;
 
-export const MenuBar = ({ date, title }) => {
+export const MenuBar = ({ title }) => {
+  const date = isDate();
+
   return (
     <Header>
       <LogoMenu src={logoSrc} />
@@ -69,8 +72,7 @@ export const MenuBar = ({ date, title }) => {
 };
 
 MenuBar.propTypes = {
-  title: PropTypes.string,
-  date: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 LogoMenu.propTypes = {

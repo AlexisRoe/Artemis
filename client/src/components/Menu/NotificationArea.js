@@ -71,7 +71,7 @@ export const NotificationArea = ({ arrowleft, arrowright, filter }) => {
 };
 
 NotificationArea.propTypes = {
-  arrowleft: PropTypes.bool,
-  arrowright: PropTypes.bool,
-  filter: PropTypes.bool,
+  arrowleft: PropTypes.bool.isRequired,
+  arrowright: PropTypes.bool.isRequired,
+  filter: PropTypes.bool.isRequired,
 };
