@@ -50,8 +50,8 @@ export const DataListItem = ({ time, title, description, room }) => {
 };
 
 DataListItem.propTypes = {
-  time: PropTypes.string,
-  title: PropTypes.string,
+  time: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   description: PropTypes.string,
   room: PropTypes.string,
 };
