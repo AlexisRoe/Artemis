@@ -12,55 +12,62 @@ import {
 
 // Mockup for testing
 
-const nextSamples = [
+const samples = [
   {
-    time: "10:00",
-    title: "Kaffeepause",
-    description: "Telekom Team 1",
-    room: "Lounge",
+    title: "Next Up",
+    list: true,
+    content: [
+      {
+        time: "10:00",
+        title: "Kaffeepause",
+        description: "Telekom Team 1",
+        room: "Lounge",
+      },
+      {
+        time: "10:15",
+        title: "Snacks",
+        description: "Telekom Team 2",
+        room: "Raum 123",
+      },
+      {
+        time: "10:30",
+        title: "Kaffeepause",
+        description: "Telekom Team 3",
+        room: "Lounge",
+      },
+    ],
   },
   {
-    time: "10:15",
-    title: "Snacks",
-    description: "Telekom Team 2",
-    room: "Raum 123",
-  },
-  {
-    time: "10:30",
-    title: "Kaffeepause",
-    description: "Telekom Team 3",
-    room: "Lounge",
-  },
-];
-
-const eventSamples = [
-  {
-    time: "10:00 - 16:00",
-    title: "Telekom Team 1",
-    room: "120",
-    setup: 0,
-    pax: 120,
-    pinboard: 2,
-    flipchart: 1,
-    eventID: "126",
-  },
-  {
-    time: "10:00 - 16:00",
-    title: "Telekom Team 2",
-    room: "120",
-    setup: 3,
-    pax: 12,
-    pinboard: 1,
-    flipchart: 2,
-    eventID: "123",
+    title: "Events today",
+    list: false,
+    content: [
+      {
+        time: "10:00 - 16:00",
+        title: "Telekom Team 1",
+        room: "120",
+        setup: 0,
+        pax: 120,
+        pinboard: 2,
+        flipchart: 1,
+        eventID: "126",
+      },
+      {
+        time: "10:00 - 16:00",
+        title: "Telekom Team 2",
+        room: "120",
+        setup: 3,
+        pax: 12,
+        pinboard: 1,
+        flipchart: 2,
+        eventID: "123",
+      },
+    ],
   },
 ];
 
 function Today() {
   const [user] = React.useContext(AuthStateContext);
   const history = useHistory();
-
-  console.log(user);
 
   if (!user.auth_token || user.auth_token === "") {
     history.push("/");
@@ -70,22 +77,22 @@ function Today() {
   return (
     <>
       <MenuBar title="Daily Overview" />
-      <SectionContainer>
-        <DataHeader>Next Up</DataHeader>
-        <DataListContainer>
-          {nextSamples.map((sample) => {
-            return <DataListItem key={sample.title} {...sample} />;
-          })}
-        </DataListContainer>
-      </SectionContainer>
-      <SectionContainer>
-        <DataHeader>Events today</DataHeader>
-        <DataListContainer>
-          {eventSamples.map((sample) => {
-            return <EventListItem key={sample.title} {...sample} />;
-          })}
-        </DataListContainer>
-      </SectionContainer>
+      {samples.map((sample) => {
+        return (
+          <SectionContainer key={sample.title}>
+            <DataHeader>{sample.title}</DataHeader>
+            <DataListContainer>
+              {sample.list
+                ? sample.content.map((content) => {
+                    return <DataListItem key={content.title} {...content} />;
+                  })
+                : sample.content.map((content) => {
+                    return <EventListItem key={content.title} {...content} />;
+                  })}
+            </DataListContainer>
+          </SectionContainer>
+        );
+      })}
     </>
   );
 }
