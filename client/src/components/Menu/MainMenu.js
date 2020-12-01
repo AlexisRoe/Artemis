@@ -1,6 +1,5 @@
 import styled from "styled-components/macro";
 import { MenuBar } from "./MenuBar";
-import PropTypes from "prop-types";
 import { isDate } from "../../utils/Date";
 
 const MenuPage = styled.article`
