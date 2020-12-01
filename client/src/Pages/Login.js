@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { hash } from "../../utils/crypto/crypto";
-import { loginUser } from "../../utils/login/loginValidation";
+import { hash } from "../utils/crypto/crypto";
+import { loginUser } from "../utils/login/loginValidation";
 import {
   LoginButton,
   LoginInput,
@@ -9,15 +9,15 @@ import {
   LoginForm,
   LoginContainer,
   ProgressNotification,
-} from "../../components/Login";
-import { AuthStateContext } from "../../utils/contextApi/contextAPI";
+} from "../components/Login";
+import { AuthStateContext } from "../utils/contextApi/contextAPI";
 
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("none");
   const [user, dispatch] = React.useContext(AuthStateContext);
-  let history = useHistory();
+  const history = useHistory();
 
   const onSubmit = async (event) => {
     event.preventDefault();
