@@ -49,6 +49,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
+    "inquirer": "^7.3.3",
     "lint-staged": "^10.5.1",
     "nodemon": "^2.0.6",
     "prettier": "2.1.2",
@@ -65,6 +66,7 @@
     "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
   }
