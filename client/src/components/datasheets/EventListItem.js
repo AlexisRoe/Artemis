@@ -140,9 +140,9 @@ export const EventListItem = ({
 };
 
 EventListItem.propTypes = {
-  time: PropTypes.string,
-  title: PropTypes.string,
-  room: PropTypes.string,
+  time: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  room: PropTypes.string.isRequired,
   setup: PropTypes.number,
   pax: PropTypes.number,
   pinboard: PropTypes.number,

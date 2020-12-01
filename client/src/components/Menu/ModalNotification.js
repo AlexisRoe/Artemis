@@ -1,19 +1,6 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 
-/* 
-Input in Modal
-
-const information = [
-    {
-        titel: "string",
-        content: "string",
-        link: "ObjectID",
-        section: "string"
-    }
-]
-*/
-
 const Modal = styled.aside`
   width: 100%;
   min-width: 375px;

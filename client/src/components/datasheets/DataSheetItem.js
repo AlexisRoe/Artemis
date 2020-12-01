@@ -57,8 +57,8 @@ export const DataSheetItem = ({ time, title, room, notes }) => {
 };
 
 DataSheetItem.propTypes = {
-  time: PropTypes.string,
-  title: PropTypes.string,
+  time: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   room: PropTypes.string,
   notes: PropTypes.arrayOf(PropTypes.string),
 };

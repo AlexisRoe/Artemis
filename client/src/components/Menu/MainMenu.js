@@ -1,6 +1,7 @@
 import styled from "styled-components/macro";
 import { MenuBar } from "./MenuBar";
 import PropTypes from "prop-types";
+import { isDate } from "../../utils/Date";
 
 const MenuPage = styled.article`
   width: 100vw;
@@ -28,7 +29,9 @@ const NavigationItem = styled.li`
   }
 `;
 
-export const MainMenu = ({ date }) => {
+export const MainMenu = () => {
+  const date = isDate();
+
   return (
     <MenuPage>
       <MenuBar title="Main Menu" date={date} />
@@ -44,8 +47,4 @@ export const MainMenu = ({ date }) => {
       </NavigationList>
     </MenuPage>
   );
-};
-
-MainMenu.propTypes = {
-  date: PropTypes.string,
 };

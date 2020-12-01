@@ -11,7 +11,7 @@ export const LoginInput = ({ title }) => {
 };
 
 LoginInput.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
 const InputLabel = styled.label`

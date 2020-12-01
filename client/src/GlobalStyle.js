@@ -53,8 +53,9 @@ const GlobalStyle = createGlobalStyle`
     --color-font-white: #fff;
     --color-font-sub: #8b8585;
     --color-font-disabled: #737373;
-    --font-body-copy: #54534a;
     --color-golden: #b69e4f;
+    --color-alarm: #c32020;
+    --font-body-copy: #54534a;
     --color-golden-dark: #9f8641;
     --font-family-header: "Poppins", sans-serif;
     --font-family-body: "Open Sans", sans-serif;

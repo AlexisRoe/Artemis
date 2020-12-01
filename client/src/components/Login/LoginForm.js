@@ -5,4 +5,5 @@ export const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  position: relative;
 `;

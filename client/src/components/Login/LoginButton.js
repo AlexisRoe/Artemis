@@ -6,7 +6,7 @@ export const LoginButton = styled.button`
   font-family: var(---font-family-header);
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 1.5rem;
   color: var(--color-font-white);
   background-color: var(--color-golden);
   border: none;
