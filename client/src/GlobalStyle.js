@@ -104,11 +104,6 @@ button, button:hover, button:focus {
     outline:none;
 }
 
-a, a:hover, a:focus {
-    text-decoration: none;
-    color: var(--font-body-copy);
-}
-
 `;
 
 export default GlobalStyle;

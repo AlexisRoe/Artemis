@@ -1,8 +1,7 @@
 import styled from "styled-components/macro";
 import { MenuBar } from "./MenuBar";
-import { isDate } from "../../utils/Date";
 
-const MenuPage = styled.article`
+export const MenuPage = styled.article`
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -12,13 +11,20 @@ const MenuPage = styled.article`
   grid-template-rows: auto 1fr;
 `;
 
-const NavigationList = styled.ul`
+export const NavigationList = styled.ul`
   margin-top: 160px;
   margin-left: 3rem;
   list-style-type: none;
+  a,
+  a:hover,
+  a:focus,
+  a:visited {
+    text-decoration: none;
+    color: var(--color-font-white);
+  }
 `;
 
-const NavigationItem = styled.li`
+export const NavigationItem = styled.li`
   cursor: pointer;
   margin-bottom: 1rem;
 
@@ -29,11 +35,9 @@ const NavigationItem = styled.li`
 `;
 
 export const MainMenu = () => {
-  const date = isDate();
-
   return (
     <MenuPage>
-      <MenuBar title="Main Menu" date={date} />
+      <MenuBar title="Main Menu" />
       <NavigationList>
         <NavigationItem>Daily Overview</NavigationItem>
         <NavigationItem className="deactivate">Profile</NavigationItem>
