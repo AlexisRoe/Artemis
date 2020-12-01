@@ -4,4 +4,5 @@ export const DataHeader = styled.h3`
   color: var(--color-golden);
   padding: 0px 2rem;
   margin-bottom: 1.5rem;
+  margin-top: 1rem;
 `;

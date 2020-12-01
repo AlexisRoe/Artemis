@@ -70,6 +70,7 @@ body {
     font-size: 16px;
     font-family: var(--font-family-body);
     font-weight: 500;
+    color: var(--font-body-copy);
 }
 
 h1, h2 {
@@ -101,6 +102,11 @@ h4 {
 
 button, button:hover, button:focus {
     outline:none;
+}
+
+a, a:hover, a:focus {
+    text-decoration: none;
+    color: var(--font-body-copy);
 }
 
 `;

@@ -1,6 +1,60 @@
 import React from "react";
 import { AuthStateContext } from "../utils/contextApi/contextAPI";
 import { useHistory } from "react-router-dom";
+import { MenuBar } from "../components/Menu/MenuBar";
+import {
+  SectionContainer,
+  DataHeader,
+  DataListContainer,
+  DataListItem,
+  EventListItem,
+} from "../components/datasheets/";
+
+// Mockup for testing
+
+const nextSamples = [
+  {
+    time: "10:00",
+    title: "Kaffeepause",
+    description: "Telekom Team 1",
+    room: "Lounge",
+  },
+  {
+    time: "10:15",
+    title: "Snacks",
+    description: "Telekom Team 2",
+    room: "Raum 123",
+  },
+  {
+    time: "10:30",
+    title: "Kaffeepause",
+    description: "Telekom Team 3",
+    room: "Lounge",
+  },
+];
+
+const eventSamples = [
+  {
+    time: "10:00 - 16:00",
+    title: "Telekom Team 1",
+    room: "120",
+    setup: 0,
+    pax: 120,
+    pinboard: 2,
+    flipchart: 1,
+    eventID: "126",
+  },
+  {
+    time: "10:00 - 16:00",
+    title: "Telekom Team 2",
+    room: "120",
+    setup: 3,
+    pax: 12,
+    pinboard: 1,
+    flipchart: 2,
+    eventID: "123",
+  },
+];
 
 function Today() {
   const [user] = React.useContext(AuthStateContext);
@@ -13,7 +67,27 @@ function Today() {
     return null;
   }
 
-  return "Nothing to see yet";
+  return (
+    <>
+      <MenuBar title="Daily Overview" />
+      <SectionContainer>
+        <DataHeader>Next Up</DataHeader>
+        <DataListContainer>
+          {nextSamples.map((sample) => {
+            return <DataListItem key={sample.title} {...sample} />;
+          })}
+        </DataListContainer>
+      </SectionContainer>
+      <SectionContainer>
+        <DataHeader>Events today</DataHeader>
+        <DataListContainer>
+          {eventSamples.map((sample) => {
+            return <EventListItem key={sample.title} {...sample} />;
+          })}
+        </DataListContainer>
+      </SectionContainer>
+    </>
+  );
 }
 
 export default Today;

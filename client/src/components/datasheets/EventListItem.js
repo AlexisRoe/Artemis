@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import iconPax from "../../assets/icons/icon-general-pax.svg";
 import iconBanquet from "../../assets/icons/icon-setup-Bankett.svg";
@@ -86,6 +87,7 @@ export const EventListItem = ({
   pax = 0,
   pinboard = 0,
   flipchart = 0,
+  eventID,
 }) => {
   let iconSrc = null;
   let iconAlt = null;
@@ -120,7 +122,9 @@ export const EventListItem = ({
   return (
     <ListItem>
       <Time>{time}</Time>
-      <Title>{title}</Title>
+      <Link to={`/day/${eventID}`}>
+        <Title>{title}</Title>
+      </Link>
       <Room>{room}</Room>
       <IconSetup src={iconSrc} alt={iconAlt} />
       <Pax>
@@ -147,4 +151,5 @@ EventListItem.propTypes = {
   pax: PropTypes.number,
   pinboard: PropTypes.number,
   flipchart: PropTypes.number,
+  eventID: PropTypes.string,
 };
