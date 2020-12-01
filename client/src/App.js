@@ -11,11 +11,7 @@ function App() {
         <GlobalStyle />
         <Switch>
           {routes.map((route) => (
-            <Route
-              key={route.path}
-              path={route.path}
-              component={route.component}
-            />
+            <Route key={route.path} {...route} />
           ))}
         </Switch>
       </Router>

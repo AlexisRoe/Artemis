@@ -7,12 +7,11 @@ const routes = [
     component: Today,
   },
   {
-    path: "/",
+    path: "/*",
     component: Login,
   },
-
   {
-    path: "/*",
+    path: "/",
     component: Login,
   },
 ];

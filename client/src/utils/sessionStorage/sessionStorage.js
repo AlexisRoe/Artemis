@@ -2,8 +2,8 @@ export function getUser(USER) {
   const storedUser = JSON.parse(sessionStorage.getItem(USER)) || {};
 
   const initialState = {
-    userDetails: "" || storedUser.user,
-    token: "" || storedUser.auth_token,
+    user: "" || storedUser.user,
+    auth_token: "" || storedUser.auth_token,
     loading: false,
     errorMessage: null,
   };

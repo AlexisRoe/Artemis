@@ -16,14 +16,14 @@ export const AuthReducer = (initialState, action) => {
       return {
         ...initialState,
         user: action.payload.user,
-        token: action.payload.auth_token,
+        auth_token: action.payload.auth_token,
         loading: false,
       };
     case LOGOUT:
       return {
         ...initialState,
         user: "",
-        token: "",
+        auth_token: "",
       };
     case LOGIN_ERROR:
       return {
