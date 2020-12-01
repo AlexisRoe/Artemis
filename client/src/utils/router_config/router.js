@@ -1,5 +1,5 @@
-import Login from "../Pages/Login";
-import Today from "../Pages/Today";
+import Login from "../../Pages/Login";
+import Today from "../../Pages/Today";
 
 const routes = [
   {

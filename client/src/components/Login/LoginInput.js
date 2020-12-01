@@ -1,19 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components/macro";
 
-export const LoginInput = ({ title }) => {
-  return (
-    <InputLabel>
-      {title}
-      <Inputfield type="text" name={`${title}`} id={`${title}`} />
-    </InputLabel>
-  );
-};
-
-LoginInput.propTypes = {
-  title: PropTypes.string.isRequired,
-};
-
 const InputLabel = styled.label`
   display: flex;
   flex-direction: column;
@@ -23,4 +10,27 @@ const InputLabel = styled.label`
 const Inputfield = styled.input`
   min-height: 50px;
   border: 1px solid var(--color-golden);
+  padding: 0 1rem;
 `;
+
+export const LoginInput = ({ title, value, type, onChange }) => {
+  return (
+    <InputLabel>
+      {title}
+      <Inputfield
+        value={value}
+        type={type}
+        name={`${title}`}
+        id={`${title}`}
+        onChange={onChange}
+      />
+    </InputLabel>
+  );
+};
+
+LoginInput.propTypes = {
+  title: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  type: PropTypes.string,
+  onChange: PropTypes.func,
+};

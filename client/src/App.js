@@ -1,23 +1,25 @@
-import { Router } from "express";
 import React from "react";
-import GlobalStyle from "./Globalstyle";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import GlobalStyle from "./GlobalStyle";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import routes from "./utils/router_config/router";
+import { AuthProvider } from "./utils/contextApi/contextAPI";
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalStyle />
-      <Switch>
-        {routes.map((route) => (
-          <Route
-            key={route.path}
-            path={route.path}
-            component={route.component}
-          />
-        ))}
-      </Switch>
-    </BrowserRouter>
+    <AuthProvider>
+      <Router>
+        <GlobalStyle />
+        <Switch>
+          {routes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              component={route.component}
+            />
+          ))}
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 
