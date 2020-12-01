@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 import logoSrc from "../../assets/logo/logo-artemis.png";
-import { isDate } from "../../utils/Date";
+import { isDate } from "../../utils/dates/Date";
 
 const Header = styled.header`
   z-index: 100;
