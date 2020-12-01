@@ -120,26 +120,26 @@ export const EventListItem = ({
   }
 
   return (
-    <ListItem>
-      <Time>{time}</Time>
-      <Link to={`/day/${eventID}`}>
+    <Link to={`/day/${eventID}`}>
+      <ListItem>
+        <Time>{time}</Time>
         <Title>{title}</Title>
-      </Link>
-      <Room>{room}</Room>
-      <IconSetup src={iconSrc} alt={iconAlt} />
-      <Pax>
-        <Icon src={iconPax} alt="Pax" />
-        {pax}
-      </Pax>
-      <PinBoard>
-        <Icon src={iconPinBoard} alt="Anzahl Pinnwände" />
-        {pinboard}
-      </PinBoard>
-      <FlipChart>
-        <Icon src={iconFlipChart} alt="Anzahl Flipcharts" />
-        {flipchart}
-      </FlipChart>
-    </ListItem>
+        <Room>{room}</Room>
+        <IconSetup src={iconSrc} alt={iconAlt} />
+        <Pax>
+          <Icon src={iconPax} alt="Pax" />
+          {pax}
+        </Pax>
+        <PinBoard>
+          <Icon src={iconPinBoard} alt="Anzahl Pinnwände" />
+          {pinboard}
+        </PinBoard>
+        <FlipChart>
+          <Icon src={iconFlipChart} alt="Anzahl Flipcharts" />
+          {flipchart}
+        </FlipChart>
+      </ListItem>
+    </Link>
   );
 };
 
