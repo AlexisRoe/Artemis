@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { AuthStateContext } from "../utils/contextApi/contextAPI";
 import { MenuBar } from "../components/Menu/MenuBar";
@@ -116,7 +116,7 @@ const samples = [
 ];
 
 function Event() {
-  const [user] = React.useContext(AuthStateContext);
+  const [user] = useContext(AuthStateContext);
   const history = useHistory();
   const { eventID } = useParams();
 

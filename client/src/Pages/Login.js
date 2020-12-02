@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { hash } from "../utils/crypto/crypto";
 import { loginUser } from "../utils/login/loginValidation";
@@ -16,7 +16,7 @@ function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("none");
-  const [user, dispatch] = React.useContext(AuthStateContext);
+  const [user, dispatch] = useContext(AuthStateContext);
   const history = useHistory();
 
   const onSubmit = async (event) => {

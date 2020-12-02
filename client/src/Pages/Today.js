@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AuthStateContext } from "../utils/contextApi/contextAPI";
 import { useHistory } from "react-router-dom";
 import { MenuBar } from "../components/Menu/MenuBar";
@@ -66,7 +66,7 @@ const samples = [
 ];
 
 function Today() {
-  const [user] = React.useContext(AuthStateContext);
+  const [user] = useContext(AuthStateContext);
   const history = useHistory();
 
   if (!user.auth_token || user.auth_token === "") {

@@ -7,7 +7,7 @@ const InputLabel = styled.label`
   gap: 0.3rem;
 `;
 
-const Inputfield = styled.input`
+const InputField = styled.input`
   min-height: 50px;
   border: 1px solid var(--color-golden);
   padding: 0 1rem;
@@ -17,7 +17,7 @@ export const LoginInput = ({ title, value, type, onChange }) => {
   return (
     <InputLabel>
       {title}
-      <Inputfield
+      <InputField
         value={value}
         type={type}
         name={`${title}`}
