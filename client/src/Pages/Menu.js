@@ -1,16 +1,21 @@
-// import { Link } from "react-router-dom";
-//
-// <Link to={`/day/${eventID}`}> </Link>
-
+import { useContext } from "react";
 import { MenuBar } from "../components/Menu/MenuBar";
+import { AuthStateContext } from "../utils/contextApi/contextAPI";
 import {
   MenuPage,
   NavigationList,
   NavigationItem,
 } from "../components/Menu/MainMenu";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Menu() {
+  const [user] = useContext(AuthStateContext);
+  const history = useHistory();
+
+  if (!user.auth_token) {
+    history.push("/");
+    return null;
+  }
   return (
     <MenuPage>
       <MenuBar title="Main Menu" />

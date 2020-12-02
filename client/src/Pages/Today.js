@@ -69,7 +69,7 @@ function Today() {
   const [user] = useContext(AuthStateContext);
   const history = useHistory();
 
-  if (!user.auth_token || user.auth_token === "") {
+  if (!user.auth_token) {
     history.push("/");
     return null;
   }
