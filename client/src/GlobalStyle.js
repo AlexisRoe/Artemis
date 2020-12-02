@@ -70,6 +70,7 @@ body {
     font-size: 16px;
     font-family: var(--font-family-body);
     font-weight: 500;
+    color: var(--font-body-copy);
 }
 
 h1, h2 {

@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import iconPax from "../../assets/icons/icon-general-pax.svg";
 import iconBanquet from "../../assets/icons/icon-setup-Bankett.svg";
@@ -86,6 +87,7 @@ export const EventListItem = ({
   pax = 0,
   pinboard = 0,
   flipchart = 0,
+  eventID,
 }) => {
   let iconSrc = null;
   let iconAlt = null;
@@ -118,24 +120,26 @@ export const EventListItem = ({
   }
 
   return (
-    <ListItem>
-      <Time>{time}</Time>
-      <Title>{title}</Title>
-      <Room>{room}</Room>
-      <IconSetup src={iconSrc} alt={iconAlt} />
-      <Pax>
-        <Icon src={iconPax} alt="Pax" />
-        {pax}
-      </Pax>
-      <PinBoard>
-        <Icon src={iconPinBoard} alt="Anzahl Pinnwände" />
-        {pinboard}
-      </PinBoard>
-      <FlipChart>
-        <Icon src={iconFlipChart} alt="Anzahl Flipcharts" />
-        {flipchart}
-      </FlipChart>
-    </ListItem>
+    <Link to={`/day/${eventID}`}>
+      <ListItem>
+        <Time>{time}</Time>
+        <Title>{title}</Title>
+        <Room>{room}</Room>
+        <IconSetup src={iconSrc} alt={iconAlt} />
+        <Pax>
+          <Icon src={iconPax} alt="Pax" />
+          {pax}
+        </Pax>
+        <PinBoard>
+          <Icon src={iconPinBoard} alt="Anzahl Pinnwände" />
+          {pinboard}
+        </PinBoard>
+        <FlipChart>
+          <Icon src={iconFlipChart} alt="Anzahl Flipcharts" />
+          {flipchart}
+        </FlipChart>
+      </ListItem>
+    </Link>
   );
 };
 
@@ -147,4 +151,5 @@ EventListItem.propTypes = {
   pax: PropTypes.number,
   pinboard: PropTypes.number,
   flipchart: PropTypes.number,
+  eventID: PropTypes.string,
 };

@@ -7,7 +7,7 @@ const ProgressArea = styled.aside`
   left: 0;
   z-index: 1;
   transform: translateY(-1rem);
-  display: grid;
+  display: ${(props) => (props.state === "none" ? "none" : "grid")};
   place-items: center;
   height: 2rem;
   width: 100%;

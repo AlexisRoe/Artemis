@@ -1,7 +1,8 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 import logoSrc from "../../assets/logo/logo-artemis.png";
-import { isDate } from "../../utils/Date";
+import { isDate } from "../../utils/dates/Date";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = styled.header`
   z-index: 100;
@@ -34,13 +35,13 @@ const PictureContainer = styled.div`
 const MenuLogoPicture = styled.img`
   width: 100%;
   height: auto;
-  cursor: pointer;
+  cursor: ${(props) => (props.isCursor ? "pointer" : "default")};
 `;
 
-const LogoMenu = ({ src }) => {
+const LogoMenu = ({ src, isCursor }) => {
   return (
     <PictureContainer>
-      <MenuLogoPicture src={src} alt="Main Menu" />
+      <MenuLogoPicture src={src} alt="Main Menu" isCursor={isCursor} />
     </PictureContainer>
   );
 };
@@ -59,10 +60,18 @@ const Informations = styled.h2`
 
 export const MenuBar = ({ title }) => {
   const date = isDate();
+  const { pathname } = useLocation();
 
   return (
     <Header>
-      <LogoMenu src={logoSrc} />
+      {pathname !== `/menu` ? (
+        <Link to={`/menu`}>
+          <LogoMenu src={logoSrc} isCursor={true} />
+        </Link>
+      ) : (
+        <LogoMenu src={logoSrc} isCursor={false} />
+      )}
+
       <InformationContainer>
         <Informations>{date}</Informations>
         <Informations>{title}</Informations>
@@ -76,5 +85,6 @@ MenuBar.propTypes = {
 };
 
 LogoMenu.propTypes = {
-  src: PropTypes.object,
+  src: PropTypes.string,
+  isCursor: PropTypes.bool,
 };

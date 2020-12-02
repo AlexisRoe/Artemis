@@ -11,4 +11,5 @@ export const LoginButton = styled.button`
   background-color: var(--color-golden);
   border: none;
   margin-top: 2rem;
+  cursor: pointer;
 `;
