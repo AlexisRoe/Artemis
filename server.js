@@ -12,30 +12,12 @@ const port = process.env.PORT || 6000;
 
 app.use(express.json());
 
-// template
-// app.get('/password/:userquery', async (request, response) => {
-//   const { userquery } = request.params;
-//   const regex = new RegExp(`.*${userquery}.*`, 'ig');
-//   const query = { $or: [{ category: { $in: [regex] } }, { name: { $in: [regex] } }] };
-
-//   try {
-//       const documents = await find(process.env.DB_COLLECTION, query);
-//       if (documents.length === 0) {
-//           response.status(404).send('Could not find passwords.');
-//           return;
-//       }
-//       response.json(documents);
-//   } catch (err) {
-//       console.log(err);
-//       response.status(500).send('An internal server error occured.');
-//   }
-// });
-
 app.get("/api/date/:date", async (request, response) => {
   const { date } = request.params;
   console.log(date);
 
-  // for mocking api paths returning ready object
+  // for mocking api paths returning sampleToday
+  // documents didnt exists yet
 
   try {
     response.json(sampleToday);
@@ -45,32 +27,36 @@ app.get("/api/date/:date", async (request, response) => {
   }
 });
 
-app.get("api/user", async (request, response) => {
+app.get("/api/user", async (request, response) => {
+  // /api/user?user= & pwd=
   const user = request.query.user;
-  const password = request.query.pwd;
 
   try {
     setDB(process.env.DB_NAME);
-    const document = await findOne(process.env.DB_COLLECTION_USER, {
+    const result = await findOne(process.env.DB_COLLECTION_USER, {
       $or: [{ personalnr: user }, { name: user }, { email: user }],
     });
-    if (document.length === 0) {
+
+    if (!result) {
       response.status(404).send("Couldn´t find user");
+      return;
     }
 
-    // testing if passwords are correct
-    if (document[0].password !== password) {
+    if (result.password !== request.query.pwd) {
       response.status(401).send("Password incorrect");
+      return;
     }
 
-    // response mockup
-    const { personalnr, email, name } = document[0];
     const auth_response = {
       auth_token:
         "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.5b0YUvXu9IFCI4kqzNAfrnuA2lSMp8XtezIZTfQYH4k",
-      user: { personalnr, email, name },
-      errors: [],
+      user: {
+        personalnr: result.personalnr,
+        email: result.email,
+        name: result.name,
+      },
     };
+
     response.json(auth_response);
   } catch (error) {
     console.log(error);
