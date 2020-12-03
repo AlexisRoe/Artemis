@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
+
+document.querySelector(".loader").classList.add("loader--hide");
 
 ReactDOM.render(
   <React.StrictMode>
