@@ -27,15 +27,14 @@ function Login() {
     try {
       const hashedPassword = hash(password);
       const response = await loginUser(dispatch, { id, hashedPassword });
-      console.log(response);
+      if (response) {
+        history.push("/day");
+      } else {
+        setMessage("error");
+      }
     } catch (error) {
       console.log(error);
       setMessage(user.errorMessage);
-    } finally {
-      if (!user.loading) {
-        setMessage("none");
-      }
-      history.push("/day");
     }
   };
 
