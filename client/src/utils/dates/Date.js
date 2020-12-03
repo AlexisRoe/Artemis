@@ -1,16 +1,17 @@
+// Unix Timestamps
+export const isUnixTime = () => Math.floor(Date.now() / 1000);
+
 // date-format: DD.MM.YYYY
-export const isDate = (today = Date.now()) =>
-  `${today.getDate().slice(-2)}.${(today.getMonth() + 1).slice(
+export const isDate = (today = new Date()) =>
+  `${("0" + today.getDate()).slice(-2)}.${("0" + (today.getMonth() + 1)).slice(
     -2
   )}.${today.getFullYear()}`;
 
 // time-format: MM:HH
-export const isTime = (time = Date.now()) =>
-  `${time.getMinutes().slice(-2)}.${time.getHours().slice(-2)}`;
+export const isTime = (time = new Date()) =>
+  `${("0" + time.getMinutes()).slice(-2)}.${("0" + time.getHours()).slice(-2)}`;
 
-// Unix Timestamps
-export const isUnixTime = () => Math.floor(Date.now() / 1000);
-
+// Unix Converter
 export const convertDatefromUnixTime = (unixTimestamp) =>
   isDate(new Date(unixTimestamp * 1000));
 
