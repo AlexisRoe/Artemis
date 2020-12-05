@@ -50,13 +50,22 @@ const GlobalStyle = createGlobalStyle`
     --color-bg-white: #fff;
     --color-bg-dark: #2d2c2a;
     --color-bg-sub: rgba(182, 158, 79, .24);
+    --color-golden: #b69e4f;
+    --color-alarm: #c32020;
+    --color-golden-dark: #9f8641;
+
+    --color-state-default: rgb(208, 179, 86);
+    --color-state-error: rgb(182, 99,79);
+
+    --color-watermark: rgba(159, 134, 95, 13);
+    --color-highlight-bg: rgba(182,158, 79, 13);
+
+    --animation-curve: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+
     --color-font-white: #fff;
     --color-font-sub: #8b8585;
     --color-font-disabled: #737373;
-    --color-golden: #b69e4f;
-    --color-alarm: #c32020;
     --font-body-copy: #54534a;
-    --color-golden-dark: #9f8641;
     --font-family-header: "Poppins", sans-serif;
     --font-family-body: "Open Sans", sans-serif;
 }
