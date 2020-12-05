@@ -48,8 +48,7 @@ app.get("/api/user", async (request, response) => {
     }
 
     const auth_response = {
-      auth_token:
-        "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.5b0YUvXu9IFCI4kqzNAfrnuA2lSMp8XtezIZTfQYH4k",
+      auth_token: process.env.AUTH_TOKEN,
       user: {
         personalnr: result.personalnr,
         email: result.email,

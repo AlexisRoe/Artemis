@@ -15,26 +15,26 @@ import { AuthStateContext } from "../utils/contextApi/contextAPI";
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("none");
+  const [notification, setNotification] = useState({ status: "none" });
   const [user, dispatch] = useContext(AuthStateContext);
   const history = useHistory();
 
   const onSubmit = async (event) => {
     event.preventDefault();
     if (user.loading) {
-      setMessage("loading");
+      setNotification({
+        ...notification,
+        status: "loading",
+        message: "loading ...",
+      });
     }
     try {
       const hashedPassword = hash(password);
-      const response = await loginUser(dispatch, { id, hashedPassword });
-      if (response) {
-        history.push("/day");
-      } else {
-        setMessage("error");
-      }
+      await loginUser(dispatch, { id, hashedPassword });
+      history.push("/day");
     } catch (error) {
+      alert(error);
       console.log(error);
-      setMessage(user.errorMessage);
     }
   };
 
@@ -42,7 +42,7 @@ function Login() {
     <LoginContainer>
       <Logo />
       <LoginForm onSubmit={onSubmit}>
-        <ProgressNotification state={message} />
+        <ProgressNotification state={notification} />
         <LoginInput
           type="text"
           value={id}
