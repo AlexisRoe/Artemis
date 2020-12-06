@@ -17,7 +17,7 @@ export const Img = styled.img`
   transform: translate(-10vw, -15vh);
 `;
 
-export default function LoginForm({ children }) {
+export function LoginForm({ children }) {
   return (
     <Form>
       {children}

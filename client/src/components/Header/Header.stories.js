@@ -1,7 +1,7 @@
 import NotificationHeader from "./Notification";
-import HeaderBar from "./Bar";
+import HeaderBar from "./Header";
 import MainMenu from "./MainMenu";
-import { HeaderContainer } from "./Header";
+import Header from "./Header";
 
 import styled from "styled-components/macro";
 
@@ -28,30 +28,22 @@ export const Menu = () => (
   </Container>
 );
 
-export const HeaderComplete = (args) => (
-  <HeaderContainer>
-    <HeaderBar {...args} />
-    <NotificationHeader {...args} />
-    <MainMenu />
-  </HeaderContainer>
-);
+// export const HeaderComplete = (args) => (
+
+// return (<HeaderContainer>
+//   <HeaderBar {...args} />
+//   <NotificationHeader {...args} />
+//   <MainMenu />
+// </HeaderContainer>)
+
+// );
+
+export const HeaderComplete = (args) => <Header {...args} />;
 
 HeaderComplete.args = {
   date: "01.04.2020",
   title: "Daily Overview",
   error: false,
+  visibility: true,
   message: "User/Passwort is wrong",
-};
-
-export const HeaderWithoutNotification = (args) => (
-  <HeaderContainer>
-    <HeaderBar {...args} />
-    <MainMenu {...args} />
-  </HeaderContainer>
-);
-
-HeaderWithoutNotification.args = {
-  date: "01.04.2020",
-  title: "Daily Overview",
-  show: true,
 };

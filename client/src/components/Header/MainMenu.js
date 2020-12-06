@@ -1,3 +1,6 @@
+// for testing reasons
+/* eslint-disable no-script-url */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 
@@ -8,6 +11,7 @@ const Nav = styled.nav`
   position: relative;
   z-index: 20;
   animation: 1s ${(props) => (props.state ? "fadeIn" : "fadeOut")} ease-in-out;
+  animation-fill-mode: forwards;
 
   @keyframes fadeIn {
     0% {
@@ -75,11 +79,11 @@ const Button = styled.button`
   font-size: 20px;
 `;
 
-export default function MainMenu({ show }) {
+export default function MainMenu({ show, onClick }) {
   return (
     <Nav state={show}>
       <Ul>
-        <a href="/">
+        <a href="javascript:;" onClick={() => onClick()}>
           <li>Daily Overview</li>
         </a>
         <li>Profile</li>
@@ -95,4 +99,5 @@ export default function MainMenu({ show }) {
 
 MainMenu.propTypes = {
   show: PropTypes.bool,
+  onClick: PropTypes.func,
 };

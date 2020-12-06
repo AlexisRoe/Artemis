@@ -80,6 +80,19 @@ body {
     font-family: var(--font-family-body);
     font-weight: 500;
     color: var(--font-body-copy);
+    display: grid;
+    grid-template-rows: 150px 1fr;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    grid-row: 1/2;
+}
+
+main {
+    grid-row: 2/3;
 }
 
 h1, h2 {
