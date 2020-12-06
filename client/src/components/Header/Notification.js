@@ -2,7 +2,6 @@ import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 
 const Aside = styled.aside`
-  width: 100%;
   padding: 0.8rem;
   z-index: 10;
   color: var(--color-font-white);

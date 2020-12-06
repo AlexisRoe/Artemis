@@ -1,6 +1,7 @@
 import NotificationHeader from "./Notification";
 import HeaderBar from "./Bar";
 import MainMenu from "./MainMenu";
+import { HeaderContainer } from "./Header";
 
 import styled from "styled-components/macro";
 
@@ -28,11 +29,11 @@ export const Menu = () => (
 );
 
 export const HeaderComplete = (args) => (
-  <>
+  <HeaderContainer>
     <HeaderBar {...args} />
     <NotificationHeader {...args} />
     <MainMenu />
-  </>
+  </HeaderContainer>
 );
 
 HeaderComplete.args = {
@@ -43,13 +44,14 @@ HeaderComplete.args = {
 };
 
 export const HeaderWithoutNotification = (args) => (
-  <>
+  <HeaderContainer>
     <HeaderBar {...args} />
-    <MainMenu />
-  </>
+    <MainMenu {...args} />
+  </HeaderContainer>
 );
 
 HeaderWithoutNotification.args = {
   date: "01.04.2020",
   title: "Daily Overview",
+  show: true,
 };

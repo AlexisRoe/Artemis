@@ -11,13 +11,14 @@ const InputLabel = styled.label`
 
 const InputField = styled.input`
   min-height: 50px;
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid
     ${(props) =>
       props.state ? "var(--color-state-error)" : "var(--color-golden)"};
   padding: 0 1rem;
 `;
 
-export const LoginInput = ({ title, value, type, onChange, error }) => {
+export const LoginInput = ({ title, value, type, onChange, error = false }) => {
   return (
     <InputLabel state={error}>
       {title}

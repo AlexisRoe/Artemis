@@ -1,5 +1,6 @@
 import { LoginButton } from "./LoginButton";
 import { LoginInput } from "./LoginInput";
+import LoginForm from "./LoginForm";
 
 export default {
   title: "Components/Login",
@@ -17,5 +18,19 @@ InputField.args = {
 
 Button.args = {
   title: "Mitarbeiter-ID",
+  error: true,
+};
+
+export const Login = (args) => (
+  <LoginForm>
+    <LoginInput title="Mitarbeiter-ID" {...args} />
+    <LoginInput title="Password" {...args} />
+    <LoginButton type="submit" {...args}>
+      Login
+    </LoginButton>
+  </LoginForm>
+);
+
+Login.args = {
   error: true,
 };

@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import logoSrc from "../../assets/logo/logo-artemis.png";
 import { isDate } from "../../utils/dates/Date";
 
-const Header = styled.header`
-  width: 100%;
+const Div = styled.div`
   z-index: 30;
   min-width: 375px;
   min-height: 100px;
@@ -53,9 +52,9 @@ const InformationContainer = styled.div`
   }
 `;
 
-export default function HeaderBar({ date = isDate(), title }) {
+export default function HeaderBar({ date = isDate(), title = "Artemis" }) {
   return (
-    <Header>
+    <Div>
       <InformationContainer>
         <h2>{date}</h2>
         <h2>{title}</h2>
@@ -63,7 +62,7 @@ export default function HeaderBar({ date = isDate(), title }) {
       <Button>
         <img src={logoSrc} alt="open/close main menu" />
       </Button>
-    </Header>
+    </Div>
   );
 }
 

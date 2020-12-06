@@ -1,12 +1,33 @@
 import styled from "styled-components/macro";
+import PropTypes from "prop-types";
 
 const Nav = styled.nav`
-  width: 100%;
   background-color: var(--color-bg-dark);
   padding: 50px 0px;
   padding-left: 20vw;
   position: relative;
   z-index: 20;
+  animation: 1s ${(props) => (props.state ? "fadeIn" : "fadeOut")} ease-in-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
 
   :before {
     content: "";
@@ -54,9 +75,9 @@ const Button = styled.button`
   font-size: 20px;
 `;
 
-export default function MainMenu() {
+export default function MainMenu({ show }) {
   return (
-    <Nav>
+    <Nav state={show}>
       <Ul>
         <a href="/">
           <li>Daily Overview</li>
@@ -71,3 +92,7 @@ export default function MainMenu() {
     </Nav>
   );
 }
+
+MainMenu.propTypes = {
+  show: PropTypes.bool,
+};
