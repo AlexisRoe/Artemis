@@ -1,8 +1,23 @@
-export default async function userAuthentication({ id, hashedPassword }) {
-  const response = await fetch(`/api/user?user=${id}&pwd=${hashedPassword}`);
-  if (!response.ok) {
-    const errorMessage = await response.text();
-    throw new Error(errorMessage);
+const CryptoJS = require("crypto-js");
+
+export async function login(id, password) {
+  const hashedPassword = CryptoJS.MD5(password).toString(CryptoJS.enc.Base64);
+  const credentialsBase64 = window.btoa(
+    JSON.stringify({ id, password: hashedPassword })
+  );
+  const options = {
+    method: "GET",
+    headers: {
+      authorization: `Basic ${credentialsBase64}`,
+    },
+  };
+  try {
+    const response = await fetch(`/api/login`, options);
+    if (!response.ok) {
+      throw new Error(response.json().message);
+    }
+    return response.json();
+  } catch (error) {
+    throw new Error(error.message);
   }
-  return await response.json();
 }

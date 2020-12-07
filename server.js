@@ -3,6 +3,7 @@ const { connect, setDB, findOne } = require("./lib/api/database");
 
 // for mocking up the interface
 const { sampleToday } = require("./lib/api/mockups");
+const { errorMessages } = require("./lib/api/errorCodes");
 
 const express = require("express");
 const path = require("path");
@@ -27,28 +28,43 @@ app.get("/api/date/:date", async (request, response) => {
   }
 });
 
-app.get("/api/user", async (request, response) => {
-  // /api/user?user= & pwd=
-  const user = request.query.user;
-
+app.get("/api/login", async (request, response) => {
   try {
-    setDB(process.env.DB_NAME);
-    const result = await findOne(process.env.DB_COLLECTION_USER, {
-      $or: [{ personalnr: user }, { name: user }, { email: user }],
-    });
+    const authorizationHeader = request.headers.authorization;
+    const buff = Buffer.from(authorizationHeader.split(" ")[1], "base64");
+    const { id, password } = JSON.parse(buff.toString("utf-8"));
 
-    if (!result) {
-      response.status(404).send("Couldn´t find user");
+    if (!id) {
+      response.status(400).json({ code: 400, message: "UserID is missing" });
       return;
     }
 
-    if (result.password !== request.query.pwd) {
-      response.status(401).send("Password incorrect");
+    if (!password) {
+      response.status(400).json({ code: 400, message: "password is missing" });
+      return;
+    }
+
+    setDB(process.env.DB_NAME);
+    const result = await findOne(process.env.DB_COLLECTION_USER, {
+      $or: [{ personalnr: id }, { name: id }, { email: id }],
+    });
+
+    if (!result) {
+      response.status(404).json({ code: 404, message: "User not found" });
+      return;
+    }
+
+    if (result.password !== password) {
+      response
+        .status(401)
+        .json({ code: 401, message: "password validation failed" });
       return;
     }
 
     const auth_response = {
-      auth_token: process.env.AUTH_TOKEN,
+      code: 200,
+      message: "validation successful",
+      api: process.env.API_TOKEN,
       user: {
         personalnr: result.personalnr,
         email: result.email,
@@ -58,8 +74,7 @@ app.get("/api/user", async (request, response) => {
 
     response.json(auth_response);
   } catch (error) {
-    console.log(error);
-    response.status(500).send("An internal server error accured");
+    response.status(500).json(errorMessages[500]);
   }
 });
 

@@ -1,4 +1,4 @@
-import userAuthentication from "../api/userAuthentication";
+import { userAuthentication } from "../api/userAuthentication";
 import {
   LOGIN_ERROR,
   LOGIN_SUCCESS,
