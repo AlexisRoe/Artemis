@@ -14,17 +14,16 @@ const port = process.env.PORT || 6000;
 app.use(express.json());
 
 app.get("/api/date/:date", async (request, response) => {
-  const { date } = request.params;
-  console.log(date);
-
-  // for mocking api paths returning sampleToday
-  // documents didnt exists yet
-
   try {
+    let { date } = request.params;
+
+    if (!date) {
+      // create new Date as Unix timestamp
+    }
+
     response.json(sampleToday);
   } catch (error) {
-    console.log(error);
-    response.status(500).send("An internal server error accured");
+    response.status(500).json(errorMessages[500]);
   }
 });
 
@@ -44,9 +43,8 @@ app.get("/api/login", async (request, response) => {
       return;
     }
 
-    setDB(process.env.DB_NAME);
     const result = await findOne(process.env.DB_COLLECTION_USER, {
-      $or: [{ personalnr: id }, { name: id }, { email: id }],
+      $or: [{ employeeID: id }, { name: id }, { email: id }],
     });
 
     if (!result) {
@@ -64,9 +62,9 @@ app.get("/api/login", async (request, response) => {
     const auth_response = {
       code: 200,
       message: "validation successful",
-      api: process.env.API_TOKEN,
+      token: process.env.AUTH_TOKEN,
       user: {
-        personalnr: result.personalnr,
+        employeeID: result.employeeID,
         email: result.email,
         name: result.name,
       },
@@ -74,6 +72,7 @@ app.get("/api/login", async (request, response) => {
 
     response.json(auth_response);
   } catch (error) {
+    console.error(error);
     response.status(500).json(errorMessages[500]);
   }
 });
