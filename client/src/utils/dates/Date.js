@@ -7,9 +7,9 @@ export const isDate = (today = new Date()) =>
     -2
   )}.${today.getFullYear()}`;
 
-// time-format: MM:HH
+// time-format: HH:MM
 export const isTime = (time = new Date()) =>
-  `${("0" + time.getMinutes()).slice(-2)}.${("0" + time.getHours()).slice(-2)}`;
+  `${("0" + time.getHours()).slice(-2)}.${("0" + time.getMinutes()).slice(-2)}`;
 
 // Unix Converter
 export const convertDatefromUnixTime = (unixTimestamp) =>

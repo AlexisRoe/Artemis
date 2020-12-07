@@ -1,26 +1,64 @@
 require("dotenv").config();
-const { connect, setDB, findOne } = require("./lib/api/database");
+const express = require("express");
+const path = require("path");
+const { connect, findOne, find } = require("./lib/api/database");
+const { errorMessages } = require("./lib/api/errorCodes");
+const {
+  createTimeQueryFromGivenDate,
+} = require("./lib/api/unixTimestampConverter");
+const { createNextUpShedule } = require("./lib/api/nextUpShedule");
 
 // for mocking up the interface
 const { sampleToday } = require("./lib/api/mockups");
-const { errorMessages } = require("./lib/api/errorCodes");
-
-const express = require("express");
-const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 6000;
-
 app.use(express.json());
+
+// TODO: construct middleware to protect routes
 
 app.get("/api/date/:date", async (request, response) => {
   try {
-    let { date } = request.params;
+    const { date } = request.params;
 
     if (!date) {
-      // create new Date as Unix timestamp
+      response
+        .status(400)
+        .json({ code: 400, message: "no date/ time values given" });
+      return;
     }
 
+    const query = createTimeQueryFromGivenDate(date);
+    const authorizationHeader = request.headers.authorization;
+    const buff = Buffer.from(authorizationHeader.split(" ")[1], "base64");
+    const auth_token = JSON.parse(buff.toString("utf-8"));
+
+    if (auth_token !== process.env.AUTH_TOKEN) {
+      response
+        .status(401)
+        .json({ code: 401, message: "invalid authorization token" });
+      return;
+    }
+
+    const result = await find(process.env.DB_COLLECTION_EVENTS, {
+      $match: {
+        $and: [{ start: { $lte: query.end } }, { end: { $gte: query.start } }],
+      },
+    });
+
+    if (result.length === 0) {
+      response
+        .status(404)
+        .json({ code: 404, message: "no events found today" });
+    }
+
+    // TODO: Delete console.log(todo)
+    const todo = createNextUpShedule(result, query);
+    console.log(todo);
+    // TODO: building object for each event today
+    const eventList = {};
+    // TODO: replace mockup response
+    // response.json([todo, eventList])
     response.json(sampleToday);
   } catch (error) {
     response.status(500).json(errorMessages[500]);
@@ -57,6 +95,8 @@ app.get("/api/login", async (request, response) => {
       return;
     }
 
+    // TODO: replace fix AUTH_TOKEN with JSON Web Token
+    // and store it on the server
     const auth_response = {
       code: 200,
       message: "validation successful",
@@ -85,7 +125,7 @@ app.get("*", (request, response) => {
   response.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
-// Connection to database
+// server
 async function run() {
   console.log("Connecting to database ...");
   await connect(process.env.DB_URL);
