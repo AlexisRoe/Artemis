@@ -34,12 +34,12 @@ app.get("/api/login", async (request, response) => {
     const { id, password } = JSON.parse(buff.toString("utf-8"));
 
     if (!id) {
-      response.status(400).json({ code: 400, message: "UserID is missing" });
+      response.status(400).json(errorMessages.login[400].id);
       return;
     }
 
     if (!password) {
-      response.status(400).json({ code: 400, message: "password is missing" });
+      response.status(400).json(errorMessages.login[400].pwd);
       return;
     }
 
@@ -48,14 +48,12 @@ app.get("/api/login", async (request, response) => {
     });
 
     if (!result) {
-      response.status(404).json({ code: 404, message: "User not found" });
+      response.status(404).json(errorMessages.login[404]);
       return;
     }
 
     if (result.password !== password) {
-      response
-        .status(401)
-        .json({ code: 401, message: "password validation failed" });
+      response.status(401).json(errorMessages.login[501]);
       return;
     }
 
@@ -73,7 +71,7 @@ app.get("/api/login", async (request, response) => {
     response.json(auth_response);
   } catch (error) {
     console.error(error);
-    response.status(500).json(errorMessages[500]);
+    response.status(500).json(errorMessages.server[500]);
   }
 });
 
