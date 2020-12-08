@@ -2,14 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { connect, findOne, find } = require("./lib/api/database");
-const { errorMessages } = require("./lib/api/errorCodes");
-const {
-  createTimeQueryFromGivenDate,
-} = require("./lib/api/unixTimestampConverter");
-const { createNextUpShedule } = require("./lib/api/nextUpShedule");
-
-// for mocking up the interface
-const { sampleToday } = require("./lib/api/mockups");
+const { errorMessages, serverMessage500 } = require("./lib/api/errorCodes");
+const { createTimeScale } = require("./lib/timeHandler/timestampConverter");
+const { buildDailyOverview } = require("./lib/dataConverter/dailyOverview");
 
 const app = express();
 const port = process.env.PORT || 6000;
@@ -56,51 +51,36 @@ app.get("/api/event/:eventID", async (request, response) => {
   }
 });
 
-app.get("/api/date/:date", async (request, response) => {
+app.get("/api/date/:timestamp", async (request, response) => {
   try {
-    const { date } = request.params;
-
-    if (!date) {
-      response
-        .status(400)
-        .json({ code: 400, message: "no date/ time values given" });
+    if (
+      request.headers.authorization.split(" ")[1] !== process.env.AUTH_TOKEN
+    ) {
+      response.status(401).json(errorMessages.authorization[401]);
       return;
     }
 
-    const query = createTimeQueryFromGivenDate(date);
-    const authorizationHeader = request.headers.authorization;
-    const buff = Buffer.from(authorizationHeader.split(" ")[1], "base64");
-    const auth_token = JSON.parse(buff.toString("utf-8"));
+    const date = Number(request.params.timestamp);
 
-    if (auth_token !== process.env.TOKEN_SECRET) {
-      response
-        .status(401)
-        .json({ code: 401, message: "invalid authorization token" });
+    if (!Number.isInteger(date)) {
+      response.status(400).json(errorMessages.timestamp[400]);
       return;
     }
 
+    const query = createTimeScale(date);
     const result = await find(process.env.DB_COLLECTION_EVENTS, {
-      $match: {
-        $and: [{ start: { $lte: query.end } }, { end: { $gte: query.start } }],
-      },
+      $and: [{ start: { $lte: query.end } }, { start: { $gte: query.start } }],
     });
 
     if (result.length === 0) {
-      response
-        .status(404)
-        .json({ code: 404, message: "no events found today" });
+      response.status(404).json(errorMessages.timestamp[404]);
     }
 
-    // TODO: Delete console.log(todo)
-    const todo = createNextUpShedule(result, query);
-    console.log(todo);
-    // TODO: building object for each event today
-    const eventList = {};
-    // TODO: replace mockup response
-    // response.json([todo, eventList])
-    response.json(sampleToday);
+    const dailyOverview = buildDailyOverview(result, query);
+
+    response.json(dailyOverview);
   } catch (error) {
-    response.status(500).json(errorMessages[500]);
+    response.status(500).json(serverMessage500(error.message));
   }
 });
 
@@ -139,7 +119,7 @@ app.get("/api/login", async (request, response) => {
     const auth_response = {
       code: 200,
       message: "validation successful",
-      token: process.env.TOKEN_SECRET,
+      auth_token: process.env.AUTH_TOKEN,
       user: {
         employeeID: result.employeeID,
         email: result.email,
@@ -150,7 +130,7 @@ app.get("/api/login", async (request, response) => {
     response.json(auth_response);
   } catch (error) {
     console.error(error);
-    response.status(500).json(errorMessages.server[500]);
+    response.status(500).json(serverMessage500(error.message));
   }
 });
 
