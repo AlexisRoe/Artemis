@@ -10,6 +10,7 @@
     "rooms": [
       {
         "location": "Boardroom",
+        "title": "Setup Boardroom",
         "start": 1601546400,
         "end": 1601568000,
         "default": true,
@@ -56,6 +57,7 @@
     "rooms": [
       {
         "location": "Luise",
+        "title": "Setup Luise",
         "start": 1601539200,
         "end": 1601573400,
         "default": true,
@@ -120,6 +122,7 @@
     "rooms": [
       {
         "location": "Goldsaal",
+        "title": "Setup Goldsaal",
         "start": 1601629200,
         "end": 1601656200,
         "default": true,
@@ -135,6 +138,7 @@
       },
       {
         "location": "Raum 10",
+        "title": "Setup Raum 10",
         "start": 1601647200,
         "end": 1601656200,
         "default": false,
@@ -150,6 +154,7 @@
       },
       {
         "location": "Raum 20",
+        "title": "Setup Raum 20",
         "start": 1601647200,
         "end": 1601656200,
         "default": false,
@@ -165,6 +170,7 @@
       },
       {
         "location": "Raum 30",
+        "title": "Setup Raum 30",
         "start": 1601647200,
         "end": 1601656200,
         "default": false,
@@ -229,6 +235,7 @@
     "rooms": [
       {
         "location": "Martin",
+        "title": "Setup Martin",
         "start": 1601713800,
         "end": 1601728200,
         "default": true,
@@ -275,6 +282,7 @@
     "rooms": [
       {
         "location": "Oliver",
+        "title": "Setup Oliver",
         "start": 1601731800,
         "end": 1601744400,
         "default": true,
