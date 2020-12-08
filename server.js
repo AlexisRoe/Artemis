@@ -17,6 +17,45 @@ app.use(express.json());
 
 // TODO: construct middleware to protect routes
 
+app.get("/api/event/:eventID", async (request, response) => {
+  try {
+    const { eventID } = request.params;
+
+    if (!eventID) {
+      response.status(400).json({ code: 400, message: "no eventID submitted" });
+      return;
+    }
+
+    const authorizationHeader = request.headers.authorization;
+    const buff = Buffer.from(authorizationHeader.split(" ")[1], "base64");
+    const auth_token = JSON.parse(buff.toString("utf-8"));
+
+    if (auth_token !== process.env.TOKEN_SECRET) {
+      response
+        .status(401)
+        .json({ code: 401, message: "invalid authorization token" });
+      return;
+    }
+
+    const result = await find(process.env.DB_COLLECTION_EVENTS, {
+      _id: eventID,
+    });
+
+    if (result.length === 0) {
+      response
+        .status(404)
+        .json({ code: 404, message: "no events found today" });
+    }
+
+    // TODO: build the map for UI
+    const event = {};
+
+    response.json(event);
+  } catch (error) {
+    response.status(500).json(errorMessages[500]);
+  }
+});
+
 app.get("/api/date/:date", async (request, response) => {
   try {
     const { date } = request.params;
@@ -33,7 +72,7 @@ app.get("/api/date/:date", async (request, response) => {
     const buff = Buffer.from(authorizationHeader.split(" ")[1], "base64");
     const auth_token = JSON.parse(buff.toString("utf-8"));
 
-    if (auth_token !== process.env.AUTH_TOKEN) {
+    if (auth_token !== process.env.TOKEN_SECRET) {
       response
         .status(401)
         .json({ code: 401, message: "invalid authorization token" });
@@ -95,12 +134,12 @@ app.get("/api/login", async (request, response) => {
       return;
     }
 
-    // TODO: replace fix AUTH_TOKEN with JSON Web Token
+    // TODO: replace fix TOKEN_SECRET with JSON Web Token
     // and store it on the server
     const auth_response = {
       code: 200,
       message: "validation successful",
-      token: process.env.AUTH_TOKEN,
+      token: process.env.TOKEN_SECRET,
       user: {
         employeeID: result.employeeID,
         email: result.email,

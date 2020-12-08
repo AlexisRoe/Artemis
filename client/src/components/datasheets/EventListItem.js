@@ -83,41 +83,27 @@ export const EventListItem = ({
   time,
   title,
   room,
-  setup = 0,
+  setup,
   pax = 0,
   pinboard = 0,
   flipchart = 0,
   eventID,
 }) => {
-  let iconSrc = null;
-  let iconAlt = null;
+  const icons = {
+    iconClassRoom,
+    iconUForm,
+    iconBoard,
+    iconBanquet,
+    iconChairCircle,
+  };
 
-  switch (setup) {
-    case 0:
-      iconSrc = iconClassRoom;
-      iconAlt = "Setup Klassenraum";
-      break;
-    case 1:
-      iconSrc = iconUForm;
-      iconAlt = "Setup U-Form";
-      break;
-    case 2:
-      iconSrc = iconBoard;
-      iconAlt = "Setup Tafel";
-      break;
-    case 3:
-      iconSrc = iconBanquet;
-      iconAlt = "Setup Bankett";
-      break;
-    case 4:
-      iconSrc = iconChairCircle;
-      iconAlt = "Setup Stuhlkreis";
-      break;
-    default:
-      iconSrc = iconClassRoom;
-      iconAlt = "Setup Klassenraum";
-      break;
-  }
+  const desc = {
+    iconClassRoom: "Setup Klassenraum",
+    iconUForm: "Setup U-Form",
+    iconBoard: "Setup Tafel",
+    iconBanquet: "Setup Bankett",
+    iconChairCircle: "Setup Stuhlkreis",
+  };
 
   return (
     <Link to={`/day/${eventID}`}>
@@ -125,7 +111,7 @@ export const EventListItem = ({
         <Time>{time}</Time>
         <Title>{title}</Title>
         <Room>{room}</Room>
-        <IconSetup src={iconSrc} alt={iconAlt} />
+        <IconSetup src={icons[setup]} alt={desc[setup]} />
         <Pax>
           <Icon src={iconPax} alt="Pax" />
           {pax}
@@ -147,7 +133,7 @@ EventListItem.propTypes = {
   time: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   room: PropTypes.string.isRequired,
-  setup: PropTypes.number,
+  setup: PropTypes.string,
   pax: PropTypes.number,
   pinboard: PropTypes.number,
   flipchart: PropTypes.number,
