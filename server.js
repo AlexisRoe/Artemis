@@ -2,10 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { connect, findOne, find } = require("./lib/api/database");
-const { errorMessages, serverMessage500 } = require("./lib/api/errorCodes");
-const { createTimeScale } = require("./lib/timeHandler/timestampConverter");
-const { buildDailyOverview } = require("./lib/dataConverter/dailyOverview");
-const { functionSheet } = require("./lib/dataConverter/functionSheet");
+const { errorMessages } = require("./lib/api/errorCodes");
+const { createTimeScale } = require("./lib/timeHandler/");
+const { functionSheet, buildDailyOverview } = require("./lib/dataConverter/");
 const { ObjectID } = require("mongodb");
 
 const app = express();
@@ -39,7 +38,9 @@ app.get("/api/event/:eventID", async (request, response) => {
 
     response.json(functionSheet(result[0]));
   } catch (error) {
-    response.status(500).json(serverMessage500(error.message));
+    response
+      .status(500)
+      .json({ ...errorMessages.server, decription: error.message });
   }
 });
 
@@ -71,7 +72,9 @@ app.get("/api/date/:timestamp", async (request, response) => {
     // TODO: Refactore with reducer
     response.json(buildDailyOverview(result, query));
   } catch (error) {
-    response.status(500).json(serverMessage500(error.message));
+    response
+      .status(500)
+      .json({ ...errorMessages.server, decription: error.message });
   }
 });
 
@@ -121,7 +124,9 @@ app.get("/api/login", async (request, response) => {
     response.json(auth_response);
   } catch (error) {
     console.error(error);
-    response.status(500).json(serverMessage500(error.message));
+    response
+      .status(500)
+      .json({ ...errorMessages.server, decription: error.message });
   }
 });
 
