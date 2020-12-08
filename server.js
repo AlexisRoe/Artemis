@@ -3,8 +3,11 @@ const express = require("express");
 const path = require("path");
 const { connect, findOne, find } = require("./lib/api/database");
 const { errorMessages } = require("./lib/api/errorCodes");
-const { createTimeScale } = require("./lib/timeHandler/");
-const { functionSheet, buildDailyOverview } = require("./lib/dataConverter/");
+const {
+  functionSheet,
+  buildDailyOverview,
+  createPeriodOfTime,
+} = require("./lib/utils");
 const { ObjectID } = require("mongodb");
 
 const app = express();
@@ -60,7 +63,8 @@ app.get("/api/date/:timestamp", async (request, response) => {
       return;
     }
 
-    const query = createTimeScale(date);
+    const query = createPeriodOfTime(date);
+
     const result = await find(process.env.DB_COLLECTION_EVENTS, {
       $and: [{ start: { $lte: query.end } }, { start: { $gte: query.start } }],
     });
