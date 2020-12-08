@@ -5,49 +5,41 @@ const { connect, findOne, find } = require("./lib/api/database");
 const { errorMessages, serverMessage500 } = require("./lib/api/errorCodes");
 const { createTimeScale } = require("./lib/timeHandler/timestampConverter");
 const { buildDailyOverview } = require("./lib/dataConverter/dailyOverview");
+const { functionSheet } = require("./lib/dataConverter/functionSheet");
+const { ObjectID } = require("mongodb");
 
 const app = express();
 const port = process.env.PORT || 6000;
 app.use(express.json());
 
 // TODO: construct middleware to protect routes
+// TODO: externalize routes in separate files
 
 app.get("/api/event/:eventID", async (request, response) => {
   try {
-    const { eventID } = request.params;
-
-    if (!eventID) {
-      response.status(400).json({ code: 400, message: "no eventID submitted" });
+    if (
+      request.headers.authorization.split(" ")[1] !== process.env.AUTH_TOKEN
+    ) {
+      response.status(401).json(errorMessages.authorization[401]);
       return;
     }
 
-    const authorizationHeader = request.headers.authorization;
-    const buff = Buffer.from(authorizationHeader.split(" ")[1], "base64");
-    const auth_token = JSON.parse(buff.toString("utf-8"));
-
-    if (auth_token !== process.env.TOKEN_SECRET) {
-      response
-        .status(401)
-        .json({ code: 401, message: "invalid authorization token" });
+    if (!ObjectID.isValid(request.params.eventID)) {
+      response.status(400).json(errorMessages.event[400]);
       return;
     }
 
     const result = await find(process.env.DB_COLLECTION_EVENTS, {
-      _id: eventID,
+      _id: new ObjectID.createFromHexString(request.params.eventID),
     });
 
     if (result.length === 0) {
-      response
-        .status(404)
-        .json({ code: 404, message: "no events found today" });
+      response.status(404).json(errorMessages.event[400]);
     }
 
-    // TODO: build the map for UI
-    const event = {};
-
-    response.json(event);
+    response.json(functionSheet(result[0]));
   } catch (error) {
-    response.status(500).json(errorMessages[500]);
+    response.status(500).json(serverMessage500(error.message));
   }
 });
 
@@ -76,9 +68,8 @@ app.get("/api/date/:timestamp", async (request, response) => {
       response.status(404).json(errorMessages.timestamp[404]);
     }
 
-    const dailyOverview = buildDailyOverview(result, query);
-
-    response.json(dailyOverview);
+    // TODO: Refactore with reducer
+    response.json(buildDailyOverview(result, query));
   } catch (error) {
     response.status(500).json(serverMessage500(error.message));
   }
