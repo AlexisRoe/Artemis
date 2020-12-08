@@ -8,11 +8,11 @@ Function Sheets 2.0 - Dashboard like tool to use for hotels/ event staff.
 
 Artemis is dashboard like approach for replacing a tool called "Function Sheets". A function sheet is mostly a sheet of paper, which describes an event at a hotel for one day. It holdes information about the amount of people expected, the booked rooms, the setup, the ordered food & beverages and more.Its usally a big mess to spread the newest information to the colleagues. Why not using a tool, everyone have now. Your Phone.
 
-***
+---
 
-In real its the **capstone project** of the Webdeveloper Bootcamp at Neue Fische Cologne in late 2020. Its for learning and recaping concepts and technologies. You can log in and se some live data. But of course all data are mocked. 
+In real its the **capstone project** of the Webdeveloper Bootcamp at Neue Fische Cologne in late 2020. Its for learning and recaping concepts and technologies. You can log in and se some live data. But of course all data are mocked.
 
-***
+---
 
 **My Personal Intention** was too learn more about authentication, protected routing, password encryption, building apis and working with data, send to the client.
 
@@ -44,7 +44,6 @@ Because the prototyp would be used as part of an enterprise software, why not br
 
 Here (2020/10/10) the [https://xd.adobe.com/view/a7884a1f-4aa5-4b74-b2b1-1d4a6eed2c98-f2db/](XD Artemis Prototyp)
 
-
 ## Installing / Getting started
 
 This project worked with a MongoDB instance. Without any changes on the code structure you will need an Account and the following databases with some data. Look at the database section
@@ -58,9 +57,10 @@ DB_URL=mongodb+srv://<user>:<password>@<your cluster>?retryWrites=true&w=majorit
 DB_NAME=<your database>
 DB_COLLECTION_USER=users
 DB_COLLECTION_EVENTS= events
-````
+```
 
 ## Developing
+
 ### Build with
 
 [React](https://reactjs.org/), [styled-components](https://styled-components.com/), [express.js](https://expressjs.com/), [eslint](https://eslint.org/), [storybook](https://storybook.js.org/), [React Router](https://reactrouter.com/), [crypto-js](https://www.npmjs.com/package/crypto-js), [MongoDB](https://www.mongodb.com/)
@@ -87,17 +87,19 @@ npm install
 I used the last verison of MongoDB. Actually its a atlas instance with two databases in one collection.
 
 1. users
-````json
-{   
-  "_id":{"$oid":"***********"},
-  "name":"John Doe",
-  "password":"*******************",
-  "email":"john@doe.de",
-  "personalnr":"1000"
- }
-````
+
+```json
+{
+  "_id": { "$oid": "***********" },
+  "name": "John Doe",
+  "password": "*******************",
+  "email": "john@doe.de",
+  "personalnr": "1000"
+}
+```
 
 2. events
-````json
+
+```json
 {}
-`````
+```
