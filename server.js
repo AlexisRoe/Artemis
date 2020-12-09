@@ -73,7 +73,6 @@ app.get("/api/date/:timestamp", async (request, response) => {
       response.status(404).json(errorMessages.timestamp[404]);
     }
 
-    // TODO: Refactore with reducer
     response.json(buildDailyOverview(result, query));
   } catch (error) {
     response
