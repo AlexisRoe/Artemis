@@ -12,9 +12,9 @@ app.use(express.json());
 
 // TODO: construct middleware to protect routes
 
-app.use("/api/event/:eventID", event);
-app.use("/api/date/:timestamp", overview);
-app.use("/api/login", login);
+app.use("/api/event", event);
+app.use("/api/date", overview);
+app.use("/api/user", login);
 
 // Heroku Deployment
 app.use(express.static(path.join(__dirname, "client/build")));
