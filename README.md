@@ -72,6 +72,20 @@ cd artemis/
 npm install
 ```
 
+4. standard commands
+
+for development
+
+```shell
+npm run dev
+```
+
+for styling components
+
+```shell
+npm run storybook
+```
+
 4. Create a token_secret for the JSON web token. You can use the cli tools in the ./lib/cli folder for creating the token and hashing passwords for the user database.
 
 - [cli tool for hashing password using crypto.js](./lib/cli/hashingMaster.js)

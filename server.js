@@ -33,7 +33,7 @@ async function run() {
   console.log("Connecting to database ...");
   await connect(process.env.DB_URL);
   app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Server listening at http://localhost:${port}`);
   });
 }
 
