@@ -1,7 +1,4 @@
-import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { AuthStateContext } from "../utils/contextApi/contextAPI";
-import { MenuBar } from "../components/Menu/MenuBar";
 import {
   SectionContainer,
   DataHeader,
@@ -116,18 +113,11 @@ const samples = [
 ];
 
 function Event() {
-  const [user] = useContext(AuthStateContext);
   const history = useHistory();
   const { eventID } = useParams();
 
-  if (!user.auth_token) {
-    history.push("/");
-    return null;
-  }
-
   return (
     <>
-      <MenuBar title={`${eventID}`} />
       {samples.map((sample) => {
         return (
           <SectionContainer key={sample.title}>

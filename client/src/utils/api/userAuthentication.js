@@ -7,12 +7,13 @@ export async function login(id, password) {
   );
   const options = {
     method: "GET",
+    credentials: "include",
     headers: {
       authorization: `Basic ${credentialsBase64}`,
     },
   };
   try {
-    const response = await fetch(`/api/login`, options);
+    const response = await fetch(`/api/user/login`, options);
     if (!response.ok) {
       throw new Error(response.json().message);
     }

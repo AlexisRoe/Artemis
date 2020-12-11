@@ -17,9 +17,9 @@ export const Img = styled.img`
   transform: translate(-10vw, -15vh);
 `;
 
-export function LoginForm({ children }) {
+export function LoginForm({ children, onSubmit }) {
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       {children}
       <Img src={logo} alt="Artemis Logo" />
     </Form>
@@ -28,4 +28,5 @@ export function LoginForm({ children }) {
 
 LoginForm.propTypes = {
   children: PropTypes.node,
+  onSubmit: PropTypes.func,
 };

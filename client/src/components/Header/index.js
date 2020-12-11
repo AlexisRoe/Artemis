@@ -1,9 +1,9 @@
 import styled from "styled-components/macro";
 import { useState } from "react";
-import { useGlobalContext } from "../../utils/globalContext";
+import { useGlobalContext } from "../../utils/context";
 
 import logoSrc from "../../assets/logo/logo-artemis.png";
-import { isDate } from "../../utils/dates/Date";
+import { isDate } from "../../utils/helpers/date";
 import NotificationHeader from "./Notification";
 import MainMenu from "./MainMenu";
 
@@ -59,8 +59,8 @@ export default function Header() {
   const [loadingMenu, setLoadingMenu] = useState(false);
   const [toggleAnimationMenu, setToggleAnimationMenu] = useState(false);
   const {
-    titleHeader,
-    error,
+    headerTitle,
+    errorState,
     notificationMessage,
     showNotification,
     toggleLogin,
@@ -92,14 +92,14 @@ export default function Header() {
       <Article>
         <InformationContainer>
           <h2>{isDate()}</h2>
-          <h2>{titleHeader}</h2>
+          <h2>{headerTitle}</h2>
         </InformationContainer>
         <Button onClick={menuSwitch}>
           <img src={logoSrc} alt="open/close main menu" />
         </Button>
       </Article>
       {showNotification && (
-        <NotificationHeader error={error} message={notificationMessage} />
+        <NotificationHeader error={errorState} message={notificationMessage} />
       )}
       {loadingMenu && (
         <MainMenu

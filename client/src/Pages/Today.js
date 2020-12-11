@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-import { AuthStateContext } from "../utils/contextApi/contextAPI";
 import { useHistory } from "react-router-dom";
-import { MenuBar } from "../components/Menu/MenuBar";
 import {
   SectionContainer,
   DataHeader,
@@ -66,17 +64,10 @@ const samples = [
 ];
 
 function Today() {
-  const [user] = useContext(AuthStateContext);
   const history = useHistory();
-
-  if (!user.auth_token) {
-    history.push("/");
-    return null;
-  }
 
   return (
     <>
-      <MenuBar title="Daily Overview" />
       {samples.map((sample) => {
         return (
           <SectionContainer key={sample.title}>
