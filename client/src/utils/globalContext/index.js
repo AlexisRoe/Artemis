@@ -10,7 +10,7 @@ export const GlobalContextProvider = ({ children }) => {
   const [notificationMessage, setNotificationMessage] = useState(null);
   const [error, setError] = useState(false);
   const [user, setUser] = useState({ name: null });
-  const [titleHeader, setTitleHeader] = useState(null);
+  const [headerTitle, setHeaderTitle] = useState("Artemis");
   const [isAuthorizated, setIsAuthorizated] = useState(
     () => Cookies.get(COOKIE_NAME) || null
   );
@@ -26,24 +26,19 @@ export const GlobalContextProvider = ({ children }) => {
     }
   }
 
-  function toggleErrorStatus() {
-    setError(!error);
-  }
-
-  function changeNotificationMessage(message) {
+  function toggleNotification(message, isError) {
     setNotificationMessage(message);
-  }
-
-  function readNoficationMessage() {
-    return notificationMessage;
-  }
-
-  function toggleNotification() {
+    if (isError) setError(true);
     setShowNotification(!showNotification);
+    setTimeout(() => {
+      setShowNotification(!showNotification);
+      setNotificationMessage(null);
+      if (isError) setError(false);
+    }, 2000);
   }
 
   function changeHeaderTitle(title) {
-    setTitleHeader(title);
+    setHeaderTitle(title);
   }
 
   return (
@@ -53,11 +48,8 @@ export const GlobalContextProvider = ({ children }) => {
         notificationMessage,
         isAuthorizated,
         user,
-        titleHeader,
+        headerTitle,
         toggleLogin,
-        toggleErrorStatus,
-        readNoficationMessage,
-        changeNotificationMessage,
         toggleNotification,
         changeHeaderTitle)
       }
@@ -77,6 +69,5 @@ export const useLogin = (status, data) =>
 export const useError = useGlobalContext.toggleErrorStatus;
 export const useHeaderTitle = (title) =>
   useGlobalContext.changeHeaderTitle(title);
-export const useNotification = useGlobalContext.readNoficationMessage;
-export const useChangeNotification = useGlobalContext.changeNotificationMessage;
-export const useShowNotification = useGlobalContext.toggleNotification;
+export const useShowNotification = (message, isError) =>
+  useGlobalContext.toggleNotification(message, isError);
