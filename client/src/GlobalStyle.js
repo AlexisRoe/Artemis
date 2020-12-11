@@ -56,8 +56,6 @@ const GlobalStyle = createGlobalStyle`
 
     --color-state-default: rgb(208, 179, 86);
     --color-state-error: rgb(182, 99,79);
-
-    --color-watermark: rgba(159, 134, 95, 13);
     --color-highlight-bg: rgba(182,158, 79, 13);
 
     --animation-curve: cubic-bezier(0.6, 0.04, 0.98, 0.335);

@@ -27,15 +27,10 @@ const ProgressArea = styled.aside`
 `;
 
 export const ProgressNotification = ({ state }) => {
+  const { status, message } = state;
   return (
-    <ProgressArea state={state}>
-      <span>
-        {state === "error"
-          ? "Username/Password is wrong"
-          : state === "loading"
-          ? "loading ...."
-          : "Unknown Error: Please contact system administrator"}
-      </span>
+    <ProgressArea state={status}>
+      <span>{message}</span>
     </ProgressArea>
   );
 };

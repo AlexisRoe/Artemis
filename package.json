@@ -66,8 +66,11 @@
     "*.{js,css,md}": "prettier --write"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "crypto-js": "^4.0.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.3"
   }
 }
