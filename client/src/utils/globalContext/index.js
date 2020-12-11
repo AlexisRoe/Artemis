@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Cookies from "js-cookie";
 
 export const GlobalContext = React.createContext(null);
+const COOKIE_NAME = "auth_token";
 
 export const GlobalContextProvider = ({ children }) => {
   const [showNotification, setShowNotification] = useState(false);
@@ -11,14 +12,15 @@ export const GlobalContextProvider = ({ children }) => {
   const [user, setUser] = useState({ name: null });
   const [titleHeader, setTitleHeader] = useState(null);
   const [isAuthorizated, setIsAuthorizated] = useState(
-    () => Cookies.get("auth_token") || null
+    () => Cookies.get(COOKIE_NAME) || null
   );
 
   function toggleLogin(status, data) {
     if (status) {
-      setIsAuthorizated(Cookies.get("auth_token"));
+      setIsAuthorizated(Cookies.get(COOKIE_NAME));
       setUser(data);
     } else {
+      Cookies.remove(COOKIE_NAME);
       setIsAuthorizated(null);
       setUser(null);
     }
