@@ -1,11 +1,6 @@
 import React from "react";
 import GlobalStyle from "./GlobalStyle";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { GlobalContextProvider } from "./utils/context";
 import ProtectedRoute from "./utils/router/ProtectedRoute";
 import Header from "./components/Header";
@@ -22,18 +17,10 @@ function App() {
         <Header />
         <Main>
           <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <ProtectedRoute exact path="/">
-              <Today />
-            </ProtectedRoute>
-            <ProtectedRoute path="/event/:eventID">
-              <Event />
-            </ProtectedRoute>
-            <Route path="/*">
-              <Redirect to="/login" />
-            </Route>
+            <Route path="/login" component={Login} />
+            <ProtectedRoute exact path="/" component={Today} />
+            <ProtectedRoute path="/event/:eventID" component={Event} />
+            <ProtectedRoute path="/*" component={Login} />
           </Switch>
         </Main>
       </Router>

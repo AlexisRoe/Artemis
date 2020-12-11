@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import {
   LoginButton,
@@ -12,8 +12,16 @@ import { useGlobalContext } from "../utils/context";
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const { toggleLogin, toggleNotification } = useGlobalContext();
+  const {
+    toggleLogin,
+    toggleNotification,
+    changeHeaderTitle,
+  } = useGlobalContext();
   const history = useHistory();
+
+  useEffect(() => {
+    changeHeaderTitle("Login");
+  }, [changeHeaderTitle]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

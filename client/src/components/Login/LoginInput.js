@@ -29,6 +29,7 @@ export const LoginInput = ({ title, value, type, onChange, error = false }) => {
         id={`${title}`}
         onChange={onChange}
         state={error}
+        required={true}
       />
     </InputLabel>
   );

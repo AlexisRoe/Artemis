@@ -1,5 +1,3 @@
-import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
 import {
   SectionContainer,
   DataHeader,
@@ -64,8 +62,6 @@ const samples = [
 ];
 
 function Today() {
-  const history = useHistory();
-
   return (
     <>
       {samples.map((sample) => {
@@ -74,12 +70,12 @@ function Today() {
             <DataHeader>{sample.title}</DataHeader>
             <DataListContainer>
               {sample.list
-                ? sample.content.map((content) => {
-                    return <DataListItem key={content.title} {...content} />;
-                  })
-                : sample.content.map((content) => {
-                    return <EventListItem key={content.title} {...content} />;
-                  })}
+                ? sample.content.map((content) => (
+                    <DataListItem key={content.title} {...content} />
+                  ))
+                : sample.content.map((content) => (
+                    <EventListItem key={content.title} {...content} />
+                  ))}
             </DataListContainer>
           </SectionContainer>
         );
