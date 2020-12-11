@@ -75,8 +75,8 @@ export const useGlobalContext = () => useContext(GlobalContext);
 export const useLogin = (status, data) =>
   useGlobalContext.toggleLogin(status, data);
 export const useError = useGlobalContext.toggleErrorStatus;
+export const useHeaderTitle = (title) =>
+  useGlobalContext.changeHeaderTitle(title);
 export const useNotification = useGlobalContext.readNoficationMessage;
 export const useChangeNotification = useGlobalContext.changeNotificationMessage;
 export const useShowNotification = useGlobalContext.toggleNotification;
-export const useHeaderTitle = (title) =>
-  useGlobalContext.changeHeaderTitle(title);
