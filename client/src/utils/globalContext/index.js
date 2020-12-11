@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import Cookies from "js-cookie";
+import { COOKIE_NAME } from "../config/constants";
 
 export const GlobalContext = React.createContext(null);
-const COOKIE_NAME = "auth_token";
 
 export const GlobalContextProvider = ({ children }) => {
   const [showNotification, setShowNotification] = useState(false);
@@ -11,17 +11,17 @@ export const GlobalContextProvider = ({ children }) => {
   const [errorState, serErrorState] = useState(false);
   const [user, setUser] = useState(null);
   const [headerTitle, setHeaderTitle] = useState("Artemis");
-  const [isAuthorizated, setIsAuthorizated] = useState(
+  const [auth_token, setAuth_Token] = useState(
     () => Cookies.get(COOKIE_NAME) || null
   );
 
   function toggleLogin(status, data) {
     if (status) {
-      setIsAuthorizated(Cookies.get(COOKIE_NAME));
+      setAuth_Token(Cookies.get(COOKIE_NAME));
       setUser(data);
     } else {
       Cookies.remove(COOKIE_NAME);
-      setIsAuthorizated(null);
+      setAuth_Token(null);
       setUser(null);
     }
   }
@@ -47,7 +47,7 @@ export const GlobalContextProvider = ({ children }) => {
         (showNotification,
         notificationMessage,
         errorState,
-        isAuthorizated,
+        auth_token,
         user,
         headerTitle,
         toggleLogin,
