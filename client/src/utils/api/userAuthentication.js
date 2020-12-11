@@ -2,9 +2,7 @@ const CryptoJS = require("crypto-js");
 
 export async function login(id, password) {
   const hashedPassword = CryptoJS.MD5(password).toString(CryptoJS.enc.Base64);
-  const credentialsBase64 = window.btoa(
-    JSON.stringify({ id, password: hashedPassword })
-  );
+  const credentialsBase64 = window.btoa(`${id}:${hashedPassword}`);
   const options = {
     method: "GET",
     credentials: "include",
