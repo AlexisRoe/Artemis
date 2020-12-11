@@ -55,8 +55,14 @@ const GlobalStyle = createGlobalStyle`
     --color-font-disabled: #737373;
     --color-golden: #b69e4f;
     --color-alarm: #c32020;
-    --font-body-copy: #54534a;
     --color-golden-dark: #9f8641;
+
+    --color-state-default: rgb(208, 179, 86);
+    --color-state-error: rgb(182, 99,79);
+
+    --color-watermark: rgba(159, 134, 95, 13);
+
+    --font-body-copy: #54534a;
     --font-family-header: "Poppins", sans-serif;
     --font-family-body: "Open Sans", sans-serif;
 }

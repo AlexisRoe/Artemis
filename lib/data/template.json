@@ -1,0 +1,49 @@
+[
+  {
+    "title": "string",
+    "sign": "string",
+    "Customer-ID": 1,
+    "event-ID": 1,
+    "start": "2020-10-01T10:00:00",
+    "end": "2020-10-01T16:00:00",
+    "pax": 1,
+    "rooms": [
+      {
+        "location": "string",
+        "title": "string",
+        "start": "2020-10-01T10:00:00",
+        "end": "2020-10-01T10:00:00",
+        "default": true,
+        "role": "string",
+        "pax": 1,
+        "setup": "string icons",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 2,
+          "beamer": 1
+        },
+        "notes": [""]
+      }
+    ],
+    "event": [
+      {
+        "title": "string",
+        "location": "string",
+        "pax": 0,
+        "start": "2020-10-01T10:00:00",
+        "end": "2020-10-01T10:00:00",
+        "foods": ["string", "string", "string"],
+        "beverages": ["string", "string", "string"]
+      }
+    ]
+  },
+  {
+    "icons": {
+      "iconClassRoom": "iconClassRoom",
+      "iconUForm": "iconUForm",
+      "iconBoard": "iconBoard",
+      "iconBanquet": "iconBanquet",
+      "iconChairCircle": "iconChairCircle"
+    }
+  }
+]

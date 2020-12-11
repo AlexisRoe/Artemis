@@ -59,25 +59,30 @@ const Informations = styled.h2`
 `;
 
 export const MenuBar = ({ title }) => {
+  const location = useLocation();
   const date = isDate();
   const { pathname } = useLocation();
 
-  return (
-    <Header>
-      {pathname !== `/menu` ? (
-        <Link to={`/menu`}>
-          <LogoMenu src={logoSrc} isCursor={true} />
-        </Link>
-      ) : (
-        <LogoMenu src={logoSrc} isCursor={false} />
-      )}
+  if (location.pathname !== "/login") {
+    return (
+      <Header>
+        {pathname !== `/menu` ? (
+          <Link to={`/menu`}>
+            <LogoMenu src={logoSrc} isCursor={true} />
+          </Link>
+        ) : (
+          <LogoMenu src={logoSrc} isCursor={false} />
+        )}
 
-      <InformationContainer>
-        <Informations>{date}</Informations>
-        <Informations>{title}</Informations>
-      </InformationContainer>
-    </Header>
-  );
+        <InformationContainer>
+          <Informations>{date}</Informations>
+          <Informations>{title}</Informations>
+        </InformationContainer>
+      </Header>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 MenuBar.propTypes = {

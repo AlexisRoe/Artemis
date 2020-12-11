@@ -1,41 +1,52 @@
-import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
-import { hash } from "../utils/crypto/crypto";
-import { loginUser } from "../utils/login/loginValidation";
+// import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+// import { useHistory } from "react-router-dom";
+// import { hash } from "../utils/crypto/crypto";
+// import { loginUser } from "../utils/login/loginValidation";
 import {
   LoginButton,
   LoginInput,
   Logo,
   LoginForm,
   LoginContainer,
-  ProgressNotification,
+  // ProgressNotification,
 } from "../components/Login";
-import { AuthStateContext } from "../utils/contextApi/contextAPI";
+// import { AuthStateContext } from "../utils/contextApi/contextAPI";
+import { login } from "../utils/api/userAuthentication";
 
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("none");
-  const [user, dispatch] = useContext(AuthStateContext);
-  const history = useHistory();
+  // const [notification, setNotification] = useState({ status: "none" });
+  // const [user, dispatch] = useContext(AuthStateContext);
+  // const history = useHistory();
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (user.loading) {
-      setMessage("loading");
-    }
+    // if (user.loading) {
+    //   setNotification({
+    //     ...notification,
+    //     status: "loading",
+    //     message: "loading ...",
+    //   });
+    // }
     try {
-      const hashedPassword = hash(password);
-      const response = await loginUser(dispatch, { id, hashedPassword });
+      const response = await login(id, password);
+      // TODO: set user to globalContext
+      // user: {
+      //   personalnr: result.personalnr,
+      //   email: result.email,
+      //   name: result.name,
+      // }
+      // TODO: delete console.log
       console.log(response);
+      // history.push("/day");
     } catch (error) {
-      console.log(error);
-      setMessage(user.errorMessage);
-    } finally {
-      if (!user.loading) {
-        setMessage("none");
-      }
-      history.push("/day");
+      // TODO: set error.message in globalContext
+      // TODO: show notifification area
+      // TODO: change state of form
+      // TODO: delete console.log
+      console.log(error.message);
     }
   };
 
@@ -43,7 +54,7 @@ function Login() {
     <LoginContainer>
       <Logo />
       <LoginForm onSubmit={onSubmit}>
-        <ProgressNotification state={message} />
+        {/* <ProgressNotification state={notification} /> */}
         <LoginInput
           type="text"
           value={id}

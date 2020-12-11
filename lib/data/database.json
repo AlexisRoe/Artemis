@@ -1,0 +1,325 @@
+[
+  {
+    "title": "Telekom Board Meeting",
+    "sign": "Telekom Board 120",
+    "Customer-ID": 1000,
+    "event-ID": 54567,
+    "start": 1601546400,
+    "end": 1601568000,
+    "pax": 10,
+    "rooms": [
+      {
+        "location": "Boardroom",
+        "title": "Setup Boardroom",
+        "start": 1601546400,
+        "end": 1601568000,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 10,
+        "setup": "iconBoard",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 0,
+          "beamer": 0
+        },
+        "notes": ["Extra Stifte und Marker"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Getränke im Raum",
+        "location": "Boardroom",
+        "pax": 10,
+        "start": 1601546400,
+        "end": 1601568000,
+        "foods": ["Sandwiches", "HandObst", "Müsliriegel"],
+        "beverages": ["1 Flasche großes Wasser", "frische Säfte"]
+      },
+      {
+        "title": "Mittagspause",
+        "location": "Restaurant",
+        "pax": 10,
+        "start": 1601553600,
+        "end": 1601555400,
+        "foods": ["Auswahl aus dem Tagesmenu"],
+        "beverages": ["Mineralwasser unbegrenzt"]
+      }
+    ]
+  },
+  {
+    "title": "Firma Meier",
+    "sign": "Firma Meier",
+    "Customer-ID": 10200,
+    "event-ID": 78567,
+    "start": 1601539200,
+    "end": 1601573400,
+    "pax": 25,
+    "rooms": [
+      {
+        "location": "Luise",
+        "title": "Setup Luise",
+        "start": 1601539200,
+        "end": 1601573400,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 25,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 2,
+          "beamer": 1
+        },
+        "notes": ["Referententisch", "Moderatorenkoffer"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Getränke im Raum",
+        "location": "Luise",
+        "pax": 25,
+        "start": 1601539200,
+        "end": 1601573400,
+        "foods": [],
+        "beverages": ["1 Flasche großes Wasser", "frische Säfte"]
+      },
+      {
+        "title": "Kaffeepause 1",
+        "location": "Salon",
+        "pax": 25,
+        "start": 1601546400,
+        "end": 1601548200,
+        "foods": ["Kekse", "Joghurt", "frisches Obst"],
+        "beverages": ["Kaffee/ Tee", "Mineralwasser"]
+      },
+      {
+        "title": "Mittagspause",
+        "location": "Restaurant",
+        "pax": 25,
+        "start": 1601553600,
+        "end": 1601555400,
+        "foods": ["Auswahl aus dem Tagesmenu"],
+        "beverages": ["Mineralwasser unbegrenzt"]
+      },
+      {
+        "title": "Kaffeepause 2",
+        "location": "Salon",
+        "pax": 25,
+        "start": 1601564400,
+        "end": 1601566200,
+        "foods": ["1 Stück Kuchen pro Person"],
+        "beverages": ["Kaffee/ Tee", "Mineralwasser"]
+      }
+    ]
+  },
+  {
+    "title": "ZahnärzteKongress 2020",
+    "sign": "Let´s teeth 2020",
+    "Customer-ID": 10220,
+    "event-ID": 78557,
+    "start": 1601629200,
+    "end": 1601656200,
+    "pax": 120,
+    "rooms": [
+      {
+        "location": "Goldsaal",
+        "title": "Setup Goldsaal",
+        "start": 1601629200,
+        "end": 1601656200,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 120,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 2,
+          "pinnboard": 1,
+          "beamer": 1
+        },
+        "notes": ["Referententisch", "Moderatorenkoffer"]
+      },
+      {
+        "location": "Raum 10",
+        "title": "Setup Raum 10",
+        "start": 1601647200,
+        "end": 1601656200,
+        "default": false,
+        "role": "Gruppenraum 1",
+        "pax": 30,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 5,
+          "pinnboard": 2,
+          "beamer": 0
+        },
+        "notes": ["Moderatorenkoffer"]
+      },
+      {
+        "location": "Raum 20",
+        "title": "Setup Raum 20",
+        "start": 1601647200,
+        "end": 1601656200,
+        "default": false,
+        "role": "Gruppenraum 2",
+        "pax": 30,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 5,
+          "pinnboard": 2,
+          "beamer": 0
+        },
+        "notes": ["Moderatorenkoffer"]
+      },
+      {
+        "location": "Raum 30",
+        "title": "Setup Raum 30",
+        "start": 1601647200,
+        "end": 1601656200,
+        "default": false,
+        "role": "Gruppenraum 3",
+        "pax": 30,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 5,
+          "pinnboard": 2,
+          "beamer": 0
+        },
+        "notes": ["Moderatorenkoffer"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Getränkebufett",
+        "location": "Goldsaal",
+        "pax": 150,
+        "start": 1601629200,
+        "end": 1601656200,
+        "foods": [],
+        "beverages": ["1 Flasche großes Wasser"]
+      },
+      {
+        "title": "Kaffeepause 1",
+        "location": "Foyer",
+        "pax": 120,
+        "start": 1601632800,
+        "end": 1601634600,
+        "foods": ["Kekse", "Joghurt", "frisches Obst"],
+        "beverages": ["Kaffee/ Tee", "Mineralwasser"]
+      },
+      {
+        "title": "Mittagspause",
+        "location": "Foyer",
+        "pax": 120,
+        "start": 1601640000,
+        "end": 1601641800,
+        "foods": ["Fingerfood", "Tagessuppe", "belegte Brote"],
+        "beverages": ["Mineralwasser unbegrenzt", "Kaffee/Tee Station"]
+      },
+      {
+        "title": "Kaffeepause 2",
+        "location": "Foyer",
+        "pax": 120,
+        "start": 1601650800,
+        "end": 1601652600,
+        "foods": ["1 Stück Kuchen pro Person"],
+        "beverages": ["Kaffee/ Tee", "Mineralwasser"]
+      }
+    ]
+  },
+  {
+    "title": "Telekom 122",
+    "sign": "Team Zukunft",
+    "Customer-ID": 1000,
+    "event-ID": 785675,
+    "start": 1601713800,
+    "end": 1601728200,
+    "pax": 25,
+    "rooms": [
+      {
+        "location": "Martin",
+        "title": "Setup Martin",
+        "start": 1601713800,
+        "end": 1601728200,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 25,
+        "setup": "iconUForm",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 1,
+          "beamer": 1
+        },
+        "notes": ["Referententisch", "Moderatorenkoffer", "Seitenbuffett"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Getränke im Raum",
+        "location": "Martin",
+        "pax": 25,
+        "start": 1601713800,
+        "end": 1601728200,
+        "foods": ["belegte Brote"],
+        "beverages": ["1 Flasche großes Wasser", "frische Säfte"]
+      },
+      {
+        "title": "Mittagspause",
+        "location": "Restaurant",
+        "pax": 25,
+        "start": 1601728200,
+        "end": 1601731800,
+        "foods": ["Auswahl aus dem Tagesmenu"],
+        "beverages": ["Mineralwasser unbegrenzt"]
+      }
+    ]
+  },
+  {
+    "title": "Telekom 128",
+    "sign": "Personalteam #3",
+    "Customer-ID": 1000,
+    "event-ID": 7856753,
+    "start": 1601728200,
+    "end": 1601744400,
+    "pax": 10,
+    "rooms": [
+      {
+        "location": "Oliver",
+        "title": "Setup Oliver",
+        "start": 1601731800,
+        "end": 1601744400,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 10,
+        "setup": "iconChairCircle",
+        "equipment": {
+          "flipchart": 5,
+          "pinnboard": 5,
+          "beamer": 0
+        },
+        "notes": ["Referententisch", "5 Moderatorenkoffer", "Seitenbuffett"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Mittagspause",
+        "location": "Restaurant",
+        "pax": 10,
+        "start": 1601728200,
+        "end": 1601731800,
+        "foods": ["Auswahl aus dem Tagesmenu"],
+        "beverages": ["Mineralwasser unbegrenzt"]
+      },
+      {
+        "title": "Getränke im Raum",
+        "location": "Oliver",
+        "pax": 25,
+        "start": 1601731800,
+        "end": 1601744400,
+        "foods": ["1 Stück Kuchen pro Person", "Handobst", "Schaumküsse"],
+        "beverages": [
+          "1 Flasche großes Wasser",
+          "frische Säfte",
+          "Kaffee/Teestation"
+        ]
+      }
+    ]
+  }
+]
