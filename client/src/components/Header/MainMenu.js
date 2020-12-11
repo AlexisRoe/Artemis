@@ -1,8 +1,6 @@
-// for testing reasons
-/* eslint-disable no-script-url */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Nav = styled.nav`
   background-color: var(--color-bg-dark);
@@ -79,20 +77,22 @@ const Button = styled.button`
   font-size: 20px;
 `;
 
-export default function MainMenu({ show, onClick }) {
+export default function MainMenu({ show, onClick, onLogout }) {
   return (
     <Nav state={show}>
       <Ul>
-        <a href="javascript:;" onClick={() => onClick()}>
+        <Link to="/day" onClick={() => onClick()}>
           <li>Daily Overview</li>
-        </a>
+        </Link>
         <li>Profile</li>
         <li>Weekly Overview</li>
         <li>Room Overview</li>
         <li>Kalkulation</li>
         <li>Beverage Counting</li>
       </Ul>
-      <Button>Logout</Button>
+      <Link to="/login" onClick={() => onLogout()}>
+        <Button>Logout</Button>
+      </Link>
     </Nav>
   );
 }
@@ -100,4 +100,5 @@ export default function MainMenu({ show, onClick }) {
 MainMenu.propTypes = {
   show: PropTypes.bool,
   onClick: PropTypes.func,
+  onLogout: PropTypes.func,
 };

@@ -63,6 +63,7 @@ export default function Header() {
     error,
     notificationMessage,
     showNotification,
+    toggleLogin,
   } = useGlobalContext();
 
   function hideMainMenu() {
@@ -81,6 +82,11 @@ export default function Header() {
     }
   }
 
+  function handleLogout() {
+    hideMainMenu();
+    toggleLogin(false);
+  }
+
   return (
     <header>
       <Article>
@@ -96,7 +102,11 @@ export default function Header() {
         <NotificationHeader error={error} message={notificationMessage} />
       )}
       {loadingMenu && (
-        <MainMenu show={toggleAnimationMenu} onClick={hideMainMenu} />
+        <MainMenu
+          show={toggleAnimationMenu}
+          onClick={hideMainMenu}
+          onLogout={handleLogout}
+        />
       )}
     </header>
   );
