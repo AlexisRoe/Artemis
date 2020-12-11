@@ -9,9 +9,7 @@ import {
   Logo,
   LoginForm,
   LoginContainer,
-  // ProgressNotification,
 } from "../components/Login";
-// import { AuthStateContext } from "../utils/contextApi/contextAPI";
 import { login } from "../utils/api/userAuthentication";
 
 function Login() {
@@ -54,7 +52,6 @@ function Login() {
     <LoginContainer>
       <Logo />
       <LoginForm onSubmit={onSubmit}>
-        {/* <ProgressNotification state={notification} /> */}
         <LoginInput
           type="text"
           value={id}
