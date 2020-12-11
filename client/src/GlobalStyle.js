@@ -50,18 +50,19 @@ const GlobalStyle = createGlobalStyle`
     --color-bg-white: #fff;
     --color-bg-dark: #2d2c2a;
     --color-bg-sub: rgba(182, 158, 79, .24);
-    --color-font-white: #fff;
-    --color-font-sub: #8b8585;
-    --color-font-disabled: #737373;
     --color-golden: #b69e4f;
     --color-alarm: #c32020;
     --color-golden-dark: #9f8641;
 
     --color-state-default: rgb(208, 179, 86);
     --color-state-error: rgb(182, 99,79);
+    --color-highlight-bg: rgba(182,158, 79, 13);
 
-    --color-watermark: rgba(159, 134, 95, 13);
+    --animation-curve: cubic-bezier(0.6, 0.04, 0.98, 0.335);
 
+    --color-font-white: #fff;
+    --color-font-sub: #8b8585;
+    --color-font-disabled: #737373;
     --font-body-copy: #54534a;
     --font-family-header: "Poppins", sans-serif;
     --font-family-body: "Open Sans", sans-serif;
@@ -77,6 +78,19 @@ body {
     font-family: var(--font-family-body);
     font-weight: 500;
     color: var(--font-body-copy);
+    display: grid;
+    grid-template-rows: 150px 1fr;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    grid-row: 1/2;
+}
+
+main {
+    grid-row: 2/3;
 }
 
 h1, h2 {
