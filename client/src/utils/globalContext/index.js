@@ -19,6 +19,7 @@ export const GlobalContextProvider = ({ children }) => {
       setIsAuthorizated(Cookies.get("auth_token"));
       setUser(data);
     } else {
+      Cookies.remove("auth_token");
       setIsAuthorizated(null);
       setUser(null);
     }
