@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
-import PropTypes from "prop-types";
 import { useState } from "react";
+import { useGlobalContext } from "../../utils/globalContext";
 
 import logoSrc from "../../assets/logo/logo-artemis.png";
 import { isDate } from "../../utils/dates/Date";
@@ -55,26 +55,27 @@ const InformationContainer = styled.div`
   }
 `;
 
-export default function Header({
-  date = isDate(),
-  title = "Artemis",
-  error,
-  visibility,
-}) {
-  const [loading, setLoading] = useState(false);
-  const [view, setView] = useState(false);
+export default function Header() {
+  const [loadingMenu, setLoadingMenu] = useState(false);
+  const [toggleAnimationMenu, setToggleAnimationMenu] = useState(false);
+  const {
+    titleHeader,
+    error,
+    notificationMessage,
+    showNotification,
+  } = useGlobalContext();
 
   function hideMainMenu() {
-    setView(!view);
+    setToggleAnimationMenu(!toggleAnimationMenu);
     setTimeout(() => {
-      setLoading(!loading);
+      setLoadingMenu(!loadingMenu);
     }, 1000);
   }
 
   function menuSwitch() {
-    if (!loading) {
-      setView(!view);
-      setLoading(!loading);
+    if (!loadingMenu) {
+      setToggleAnimationMenu(!toggleAnimationMenu);
+      setLoadingMenu(!loadingMenu);
     } else {
       hideMainMenu();
     }
@@ -84,22 +85,19 @@ export default function Header({
     <header>
       <Article>
         <InformationContainer>
-          <h2>{date}</h2>
-          <h2>{title}</h2>
+          <h2>{isDate()}</h2>
+          <h2>{titleHeader}</h2>
         </InformationContainer>
         <Button onClick={menuSwitch}>
           <img src={logoSrc} alt="open/close main menu" />
         </Button>
       </Article>
-      <NotificationHeader error={error} visibility={visibility} />
-      {loading && <MainMenu show={view} onClick={hideMainMenu} />}
+      {showNotification && (
+        <NotificationHeader error={error} message={notificationMessage} />
+      )}
+      {loadingMenu && (
+        <MainMenu show={toggleAnimationMenu} onClick={hideMainMenu} />
+      )}
     </header>
   );
 }
-
-Header.propTypes = {
-  date: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  error: PropTypes.bool,
-  visibility: PropTypes.bool,
-};

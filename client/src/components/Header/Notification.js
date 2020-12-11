@@ -13,16 +13,14 @@ const Aside = styled.aside`
   span {
     grid-column: 2/3;
   }
-  visibility: ${(props) => (props.visibility ? "default" : "hidden")};
 `;
 
 export default function NotificationHeader({
   error = false,
   message = "loading ...",
-  visibility = false,
 }) {
   return (
-    <Aside state={error} visibility={visibility}>
+    <Aside state={error}>
       <span>{message}</span>
     </Aside>
   );
@@ -31,5 +29,4 @@ export default function NotificationHeader({
 NotificationHeader.propTypes = {
   error: PropTypes.bool,
   message: PropTypes.string,
-  visibility: PropTypes.bool,
 };

@@ -2,22 +2,19 @@ import React from "react";
 import GlobalStyle from "./GlobalStyle";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import routes from "./utils/router_config/router";
-import { AuthProvider } from "./utils/contextApi/contextAPI";
-import { MenuBar } from "./components/Menu/MenuBar";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <GlobalStyle />
-        <MenuBar title={`test`} />
-        <Switch>
-          {routes.map((route) => (
-            <Route key={route.path} {...route} />
-          ))}
-        </Switch>
-      </Router>
-    </AuthProvider>
+    <Router>
+      <GlobalStyle />
+      <Header />
+      <Switch>
+        {routes.map((route) => (
+          <Route key={route.path} {...route} />
+        ))}
+      </Switch>
+    </Router>
   );
 }
 
