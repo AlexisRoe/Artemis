@@ -3,11 +3,17 @@ import logo from "../../assets/logo/logo-bg.png";
 import PropTypes from "prop-types";
 
 export const Form = styled.form`
-  padding: 2.5rem;
+  width: 100%;
+  height: calc(100vh - 100px);
+  padding: 5rem;
+  padding-top: 20vh;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
   position: relative;
+  background-image: url(${logo});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: -25vw 30vh;
 `;
 
 export const Img = styled.img`
@@ -18,12 +24,7 @@ export const Img = styled.img`
 `;
 
 export function LoginForm({ children, onSubmit }) {
-  return (
-    <Form onSubmit={onSubmit}>
-      {children}
-      <Img src={logo} alt="Artemis Logo" />
-    </Form>
-  );
+  return <Form onSubmit={onSubmit}>{children}</Form>;
 }
 
 LoginForm.propTypes = {

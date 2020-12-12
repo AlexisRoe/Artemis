@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const Button = styled.button`
   width: 100%;
   height: 50px;
+  margin-top: 2rem;
   font-family: var(---font-family-header);
   text-transform: uppercase;
   font-weight: 600;
@@ -12,7 +13,6 @@ const Button = styled.button`
   background-color: ${(props) =>
     props.state ? "var(--color-state-error)" : "var(--color-golden)"};
   border: none;
-  margin-top: 2rem;
   cursor: pointer;
 `;
 

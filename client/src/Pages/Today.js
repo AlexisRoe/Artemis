@@ -10,6 +10,7 @@ import { useGlobalContext } from "../utils/context";
 import { mockTimestamp } from "../utils/helpers";
 import { getDailyData } from "../utils/api";
 import { useHistory } from "react-router-dom";
+import MissingData from "../components/helper/missingData";
 
 function Today() {
   const {
@@ -40,25 +41,25 @@ function Today() {
   return (
     <>
       {data &&
-        data.map((sample) => {
+        data.map((item) => {
           return (
-            <SectionContainer key={sample.title}>
-              <DataHeader>{sample.title}</DataHeader>
-              {!sample.content.length ? (
-                <div>nix zu rendern</div>
+            <SectionContainer key={item.title}>
+              <DataHeader>{item.title}</DataHeader>
+              {!item.content.length ? (
+                <MissingData />
               ) : (
                 <DataListContainer>
-                  {sample.list
-                    ? sample.content.map((content) => (
+                  {item.list
+                    ? item.content.map((content) => (
                         <DataListItem
-                          key={content.title}
+                          key={content.id}
                           {...content}
                           onClick={() => history.push(`/event/${content.id}`)}
                         />
                       ))
-                    : sample.content.map((content) => (
+                    : item.content.map((content) => (
                         <EventListItem
-                          key={content.title}
+                          key={content.id}
                           {...content}
                           onClick={() => history.push(`/event/${content.id}`)}
                         />

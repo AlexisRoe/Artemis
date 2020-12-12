@@ -47,11 +47,13 @@ const InformationContainer = styled.div`
   grid-column: 2/3;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: start;
+  justify-content: space-between;
 
   h2 {
     font-family: var(--font-family-body);
     text-transform: none;
+    margin: 0;
   }
 `;
 
