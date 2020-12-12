@@ -41,6 +41,14 @@ export const GlobalContextProvider = ({ children }) => {
     setShowNotification(!showNotification);
   }
 
+  function displayNotification() {
+    setShowNotification(true);
+  }
+
+  function hideNotification() {
+    setShowNotification(false);
+  }
+
   function changeHeaderTitle(title) {
     setHeaderTitle(title);
   }
@@ -58,6 +66,8 @@ export const GlobalContextProvider = ({ children }) => {
         toogleLoading,
         toggleNotification,
         changeHeaderTitle,
+        displayNotification,
+        hideNotification,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   SectionContainer,
   DataHeader,
@@ -113,7 +113,6 @@ const samples = [
 ];
 
 function Event() {
-  const history = useHistory();
   const { eventID } = useParams();
 
   return (

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 
 const ListItem = styled.li`
   width: 100%;
@@ -12,7 +13,7 @@ const ListItem = styled.li`
     "time   description"
     "time   room";
 
-  &:not(:only-child):nth-child(2n + 1) {
+  :not(:only-child):nth-child(2n + 1) {
     background-color: var(--color-bg-sub);
   }
 `;
@@ -38,9 +39,9 @@ const Room = styled.span`
   grid-area: room;
 `;
 
-export const DataListItem = ({ time, title, description, room }) => {
+export const DataListItem = ({ time, title, description, room, onClick }) => {
   return (
-    <ListItem>
+    <ListItem onClick={onClick}>
       <Time>{time}</Time>
       <Titel>{title}</Titel>
       <Description>{description}</Description>
@@ -54,4 +55,5 @@ DataListItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   room: PropTypes.string,
+  onClick: PropTypes.func,
 };

@@ -9,22 +9,25 @@ import { useEffect, useState } from "react";
 import { useGlobalContext } from "../utils/context";
 import { mockTimestamp } from "../utils/helpers";
 import { getDailyData } from "../utils/api";
+import { useHistory } from "react-router-dom";
 
 function Today() {
   const {
     changeHeaderTitle,
     toggleNotification,
-    toogleLoading,
+    hideNotification,
+    displayNotification,
   } = useGlobalContext();
   const [data, setData] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     async function getData(timestamp) {
       try {
-        toogleLoading();
+        displayNotification();
         const response = await getDailyData(timestamp);
         setData(response);
-        toogleLoading();
+        hideNotification();
       } catch (error) {
         console.error(error.message);
         toggleNotification("an error accured", true);
@@ -32,7 +35,7 @@ function Today() {
     }
     changeHeaderTitle("Daily Overview");
     getData(mockTimestamp());
-  }, [changeHeaderTitle, toggleNotification, toogleLoading]);
+  }, []);
 
   return (
     <>
@@ -47,10 +50,18 @@ function Today() {
                 <DataListContainer>
                   {sample.list
                     ? sample.content.map((content) => (
-                        <DataListItem key={content.title} {...content} />
+                        <DataListItem
+                          key={content.title}
+                          {...content}
+                          onClick={() => history.push(`/event/${content.id}`)}
+                        />
                       ))
                     : sample.content.map((content) => (
-                        <EventListItem key={content.title} {...content} />
+                        <EventListItem
+                          key={content.title}
+                          {...content}
+                          onClick={() => history.push(`/event/${content.id}`)}
+                        />
                       ))}
                 </DataListContainer>
               )}
