@@ -13,7 +13,11 @@ export async function login(id, password) {
   try {
     const response = await fetch(`/api/user/login`, options);
     if (!response.ok) {
-      throw new Error(response.json().message);
+      // TODO: error handling
+      // type 500 -> technical error
+      // type 404 -> user didnt exist
+      // type 401 -> wrong authentication
+      console.log(response.json().message);
     }
     return response.json();
   } catch (error) {
