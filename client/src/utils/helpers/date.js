@@ -1,5 +1,5 @@
 // Unix Timestamps
-export const isUnixTime = () => Math.floor(Date.now() / 1000);
+export const isUnixTime = (date = Date.now()) => Math.floor(date / 1000);
 
 // date-format: DD.MM.YYYY
 export const isDate = (today = new Date()) =>
@@ -19,15 +19,6 @@ export const convertTimefromUnixTime = (unixTimestamp) =>
   isTime(new Date(unixTimestamp * 1000));
 
 export const mockTimestamp = () => {
-  const date = new Date();
-  const mockupDate = new Date(
-    2020,
-    10,
-    2,
-    date.getHours(),
-    date.getMinutes(),
-    0,
-    0
-  );
+  const mockupDate = new Date(2020, 9, 2, 8, 0, 0, 0);
   return isUnixTime(mockupDate);
 };
