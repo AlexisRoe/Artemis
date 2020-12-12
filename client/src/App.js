@@ -8,6 +8,7 @@ import { Main } from "./components/helper/Main";
 import Today from "./Pages/Today";
 import Event from "./Pages/Event";
 import Login from "./Pages/Login";
+import ErrorHandler from "./Pages/ErrorPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <ProtectedRoute exact path="/" component={Today} />
             <ProtectedRoute exact path="/day/:timestamp" component={Today} />
             <ProtectedRoute exact path="/event/:eventID" component={Event} />
+            <ProtectedRoute exact path="/404" component={ErrorHandler} />
             <ProtectedRoute path="/*" component={Today} />
           </Switch>
         </Main>
