@@ -1,13 +1,13 @@
 import { Redirect, Route } from "react-router-dom";
-import Cookies from "js-cookie";
 import { COOKIE_NAME } from "../config/constants";
+import Cookies from "js-cookie";
 
-export default function ProtectedRoute(props, children) {
+export default function ProtectedRoute(props) {
   const isAuthorizated = Cookies.get(COOKIE_NAME) || null;
 
-  return isAuthorizated ? (
-    <Route {...props}>{children}</Route>
-  ) : (
-    <Redirect to="/login" />
-  );
+  if (isAuthorizated) {
+    return <Route {...props} />;
+  } else {
+    return <Redirect to="/login" />;
+  }
 }

@@ -1,57 +1,45 @@
-// import React, { useState, useContext } from "react";
-import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
-// import { hash } from "../utils/crypto/crypto";
-// import { loginUser } from "../utils/login/loginValidation";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import {
   LoginButton,
   LoginInput,
-  Logo,
   LoginForm,
   LoginContainer,
 } from "../components/Login";
 import { login } from "../utils/api/userAuthentication";
+import { useGlobalContext } from "../utils/context";
 
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  // const [notification, setNotification] = useState({ status: "none" });
-  // const [user, dispatch] = useContext(AuthStateContext);
-  // const history = useHistory();
+  const {
+    toggleLogin,
+    toggleNotification,
+    changeHeaderTitle,
+  } = useGlobalContext();
+  const history = useHistory();
 
-  const onSubmit = async (event) => {
+  useEffect(() => {
+    changeHeaderTitle("Login");
+  }, [changeHeaderTitle]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // if (user.loading) {
-    //   setNotification({
-    //     ...notification,
-    //     status: "loading",
-    //     message: "loading ...",
-    //   });
-    // }
+    toggleNotification("loading", false);
     try {
       const response = await login(id, password);
-      // TODO: set user to globalContext
-      // user: {
-      //   personalnr: result.personalnr,
-      //   email: result.email,
-      //   name: result.name,
-      // }
-      // TODO: delete console.log
-      console.log(response);
-      // history.push("/day");
+      toggleLogin(true, response);
+      setPassword("");
+      setId("");
+      history.push("/");
     } catch (error) {
-      // TODO: set error.message in globalContext
-      // TODO: show notifification area
-      // TODO: change state of form
-      // TODO: delete console.log
-      console.log(error.message);
+      toggleNotification("an error accured", true);
     }
   };
 
   return (
     <LoginContainer>
-      <Logo />
-      <LoginForm onSubmit={onSubmit}>
+      <LoginForm onSubmit={handleSubmit}>
         <LoginInput
           type="text"
           value={id}

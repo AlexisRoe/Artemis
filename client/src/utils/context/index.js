@@ -7,8 +7,8 @@ export const GlobalContext = React.createContext(null);
 
 export const GlobalContextProvider = ({ children }) => {
   const [showNotification, setShowNotification] = useState(false);
-  const [notificationMessage, setNotificationMessage] = useState(null);
-  const [errorState, serErrorState] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState("loading ...");
+  const [errorState, setErrorState] = useState(false);
   const [user, setUser] = useState(null);
   const [headerTitle, setHeaderTitle] = useState("Artemis");
   const [auth_token, setAuth_Token] = useState(
@@ -28,13 +28,17 @@ export const GlobalContextProvider = ({ children }) => {
 
   function toggleNotification(message, isError) {
     setNotificationMessage(message);
-    if (isError) serErrorState(true);
+    if (isError) setErrorState(isError);
     setShowNotification(!showNotification);
     setTimeout(() => {
-      setShowNotification(!showNotification);
+      setShowNotification(false);
       setNotificationMessage(null);
-      if (isError) serErrorState(false);
+      if (isError) setErrorState(false);
     }, 2000);
+  }
+
+  function toogleLoading() {
+    setShowNotification(!showNotification);
   }
 
   function changeHeaderTitle(title) {
@@ -42,21 +46,22 @@ export const GlobalContextProvider = ({ children }) => {
   }
 
   return (
-    <GlobalContext
-      value={
-        (showNotification,
+    <GlobalContext.Provider
+      value={{
+        showNotification,
         notificationMessage,
         errorState,
         auth_token,
         user,
         headerTitle,
         toggleLogin,
+        toogleLoading,
         toggleNotification,
-        changeHeaderTitle)
-      }
+        changeHeaderTitle,
+      }}
     >
       {children}
-    </GlobalContext>
+    </GlobalContext.Provider>
   );
 };
 
