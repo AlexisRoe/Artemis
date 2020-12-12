@@ -33,6 +33,7 @@ function Login() {
       setId("");
       history.push("/");
     } catch (error) {
+      console.error(error.message);
       toggleNotification("an error accured", true);
     }
   };

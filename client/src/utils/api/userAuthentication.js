@@ -1,3 +1,4 @@
+import { errorHandlerLogin } from "./errorHandler";
 const CryptoJS = require("crypto-js");
 
 export async function login(id, password) {
@@ -13,11 +14,8 @@ export async function login(id, password) {
   try {
     const response = await fetch(`/api/user/login`, options);
     if (!response.ok) {
-      // TODO: error handling
-      // type 500 -> technical error
-      // type 404 -> user didnt exist
-      // type 401 -> wrong authentication
-      console.log(response.json().message);
+      errorHandlerLogin(response.json());
+      return null;
     }
     return response.json();
   } catch (error) {
