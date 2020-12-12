@@ -12,7 +12,7 @@ const ListItem = styled.li`
     "time   description"
     "time   room";
 
-  &:nth-child(2n + 1) {
+  &:not(:only-child):nth-child(2n + 1) {
     background-color: var(--color-bg-sub);
   }
 `;
