@@ -1,8 +1,8 @@
+import { hash } from "../helpers/";
 import { errorHandlerLogin } from "./errorHandler";
-const CryptoJS = require("crypto-js");
 
 export async function login(id, password) {
-  const hashedPassword = CryptoJS.MD5(password).toString(CryptoJS.enc.Base64);
+  const hashedPassword = hash(password);
   const credentialsBase64 = window.btoa(`${id}:${hashedPassword}`);
   const options = {
     method: "GET",

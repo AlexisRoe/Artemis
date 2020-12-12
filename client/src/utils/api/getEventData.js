@@ -1,6 +1,6 @@
 import { errorHandlerData } from "./errorHandler";
 
-export async function eventData(id) {
+export async function getEventData(id) {
   try {
     const response = await fetch(`/api/event/${id}`);
     if (!response.ok) {

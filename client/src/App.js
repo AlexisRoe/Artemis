@@ -19,8 +19,9 @@ function App() {
           <Switch>
             <Route path="/login" component={Login} />
             <ProtectedRoute exact path="/" component={Today} />
-            <ProtectedRoute path="/event/:eventID" component={Event} />
-            <ProtectedRoute path="/*" component={Login} />
+            <ProtectedRoute exact path="/day/:timestamp" component={Today} />
+            <ProtectedRoute exact path="/event/:eventID" component={Event} />
+            <ProtectedRoute path="/*" component={Today} />
           </Switch>
         </Main>
       </Router>
