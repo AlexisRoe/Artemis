@@ -1,5 +1,5 @@
 import styled from "styled-components/macro";
-import logo from "../../assets/logo/logo-bg.png";
+import logo from "../../assets/logo/logo-bg.svg";
 import PropTypes from "prop-types";
 
 export const Form = styled.form`

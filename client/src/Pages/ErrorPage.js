@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import logo from "../assets/logo/logo-bg.png";
-import { useParams } from "react-router-dom";
+import logo from "../assets/logo/logo-bg.svg";
+import { useHistory, useLocation } from "react-router-dom";
+import { STANDARD_404 } from "../utils/config/constants";
 
 const Article = styled.article`
   padding: 25vh 25%;
@@ -31,14 +32,14 @@ const Article = styled.article`
 `;
 
 export default function ErrorHandler() {
-  const {
-    message = `Error: Try again or contact the system administrator`,
-  } = useParams();
+  const history = useHistory();
+  const message =
+    new URLSearchParams(useLocation().search).get("message") || STANDARD_404;
 
   return (
     <Article>
       <h2>{message}</h2>
-      <button>Go Back</button>
+      <button onClick={() => history.goBack()}>Go Back</button>
     </Article>
   );
 }

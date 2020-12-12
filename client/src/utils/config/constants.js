@@ -5,3 +5,5 @@ export const LOGOUT = "LOGOUT";
 export const LOGIN_ERROR = "LOGIN_ERROR";
 
 export const COOKIE_NAME = "auth_token";
+export const STANDARD_404 =
+  "Error: Try again or contact the system administrator";
