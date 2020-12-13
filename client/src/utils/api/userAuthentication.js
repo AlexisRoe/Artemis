@@ -1,5 +1,4 @@
 import { hash } from "../helpers/";
-import { errorHandlerLogin } from "./errorHandler";
 
 export async function login(id, password) {
   const hashedPassword = hash(password);
@@ -14,7 +13,7 @@ export async function login(id, password) {
   try {
     const response = await fetch(`/api/user/login`, options);
     if (!response.ok) {
-      errorHandlerLogin(response.json());
+      console.error(response.json().message);
       return null;
     }
     return response.json();

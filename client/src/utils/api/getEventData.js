@@ -1,11 +1,9 @@
-import { errorHandlerData } from "./errorHandler";
-
 export async function getEventData(id) {
   try {
     const response = await fetch(`/api/event/${id}`);
-    if (!response.ok) {
-      errorHandlerData(response.json());
-      return null;
+    if (response.ok) {
+      const data = response.json();
+      return { code: 200, content: data };
     }
     return response.json();
   } catch (error) {

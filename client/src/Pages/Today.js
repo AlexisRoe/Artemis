@@ -38,7 +38,7 @@ function Today() {
       try {
         displayNotification();
         const response = await getDailyData(timestamp);
-        setData(response);
+        setData(response.content);
         hideNotification();
       } catch (error) {
         console.error(error.message);
