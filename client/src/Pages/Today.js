@@ -9,10 +9,21 @@ import { useEffect, useState } from "react";
 import { useGlobalContext } from "../utils/context";
 import { mockTimestamp } from "../utils/helpers";
 import { getDailyData } from "../utils/api";
-import { useHistory } from "react-router-dom";
 import MissingData from "../components/helper/missingData";
+import { useHistory } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+// import { convertTimefromUnixTime } from "../utils/helpers/date";
+// import { TITLE_DAY } from "../utils/config/constants";
 
 function Today() {
+  // const { timestamp } = useParams() || mockTimestamp();
+  // const { data } = useFetch (getDailyData, timestamp);
+  // const time = convertTimefromUnixTime(timestamp);
+  // const { changeHeaderTitle } = useGlobalContext();
+  // useEffect(() => {
+  //   changeHeaderTitle({ title: TITLE_DAY, time });
+  // }, [changeHeaderTitle]);
+
   const {
     changeHeaderTitle,
     toggleNotification,
