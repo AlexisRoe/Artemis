@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyle from "./GlobalStyle";
 import {
   BrowserRouter as Router,
@@ -14,8 +14,11 @@ import Today from "./Pages/Today";
 import Event from "./Pages/Event";
 import Login from "./Pages/Login";
 import ErrorHandler from "./Pages/ErrorPage";
+import { mockTimestamp } from "./utils/helpers";
 
 function App() {
+  const dateToday = mockTimestamp();
+
   return (
     <GlobalContextProvider>
       <Router>
@@ -24,6 +27,9 @@ function App() {
         <Main>
           <Switch>
             <Route path="/login" component={Login} />
+            <Route path="/test/">
+              <Today dateToday={dateToday} />
+            </Route>
             <ProtectedRoute exact path="/" component={Today} />
             <ProtectedRoute exact path="/day/:timestamp" component={Today} />
             <ProtectedRoute exact path="/event/:eventID" component={Event} />

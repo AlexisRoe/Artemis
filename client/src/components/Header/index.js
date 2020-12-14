@@ -1,9 +1,7 @@
 import styled from "styled-components/macro";
 import { useState } from "react";
 import { useGlobalContext } from "../../utils/context";
-
 import logoSrc from "../../assets/logo/logo-artemis.png";
-import { isDate } from "../../utils/helpers/date";
 import NotificationHeader from "./Notification";
 import MainMenu from "./MainMenu";
 
@@ -61,11 +59,11 @@ export default function Header() {
   const [loadingMenu, setLoadingMenu] = useState(false);
   const [toggleAnimationMenu, setToggleAnimationMenu] = useState(false);
   const {
-    headerTitle,
     errorState,
     notificationMessage,
     showNotification,
     toggleLogin,
+    header,
   } = useGlobalContext();
 
   function hideMainMenu() {
@@ -93,8 +91,8 @@ export default function Header() {
     <header>
       <Article>
         <InformationContainer>
-          <h2>{isDate()}</h2>
-          <h2>{headerTitle}</h2>
+          <h2>{header?.date}</h2>
+          <h2>{header?.title}</h2>
         </InformationContainer>
         <Button onClick={menuSwitch}>
           <img src={logoSrc} alt="open/close main menu" />

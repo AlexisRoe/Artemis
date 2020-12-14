@@ -12,10 +12,10 @@ import {
 export default function useAuth() {
   const history = useHistory();
   const [formState, setFormState] = useState(false);
-  const [user, setUser] = useState({ id: null, password: null });
+  const [credentials, setCredentials] = useState({ id: null, password: null });
 
   const changeUserCredentials = (key) => (value) => {
-    setUser({ ...user, [key]: value });
+    setCredentials({ ...credentials, [key]: value });
   };
   const handleID = changeUserCredentials("id");
   const handlePassword = changeUserCredentials("password");
@@ -33,8 +33,10 @@ export default function useAuth() {
   const signIn = async () => {
     try {
       displayNotification();
-      const hashedPassword = hash(user.password);
-      const credentialsBase64 = window.btoa(`${user.id}:${hashedPassword}`);
+      const hashedPassword = hash(credentials.password);
+      const credentialsBase64 = window.btoa(
+        `${credentials.id}:${hashedPassword}`
+      );
       const options = {
         method: "GET",
         credentials: "include",
@@ -56,5 +58,5 @@ export default function useAuth() {
     }
   };
 
-  return { user, formState, signIn, signOut, handleID, handlePassword };
+  return { credentials, formState, signIn, signOut, handleID, handlePassword };
 }

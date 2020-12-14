@@ -1,51 +1,44 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import { ANIMATION_SLIDE_IN, ANIMATION_SLIDE_OUT } from "../config/constants";
 
 export const GlobalContext = React.createContext(null);
 
+const defaultHeader = {
+  title: "Artemis",
+  date: new Intl.DateTimeFormat("de-DE", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).format(new Date()),
+};
+
+const defaultNotification = {
+  visibility: false,
+  isError: false,
+  animation: ANIMATION_SLIDE_IN,
+  message: "loading ...",
+};
+
 export const GlobalContextProvider = ({ children }) => {
-  const [showNotification, setShowNotification] = useState(false);
-  const [headerTitle, setHeaderTitle] = useState("Artemis");
-  const [header, setHeader] = useState({
-    title: "Artemis",
-    date: new Intl.DateTimeFormat("de-DE", {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-    }).format(new Date()),
-  });
-  const [notification, setNotification] = useState({
-    visibility: false,
-    isError: false,
-    animation: ANIMATION_SLIDE_IN,
-    message: "loading ...",
-  });
+  const [header, setHeader] = useState(defaultHeader);
+  const [notification, setNotification] = useState(defaultNotification);
 
-  function changeHeaderTitle(title) {
-    setHeaderTitle(title);
-  }
-
-  function displayNotification() {
-    setShowNotification(true);
-  }
-
-  function hideNotification() {
-    setShowNotification(false);
-  }
+  const changeHeader = (key) => (value) => {
+    console.log({ key, value });
+    setHeader({ ...header, [key]: value });
+  };
+  const setTitle = useCallback(() => changeHeader("title"), []);
+  const setDate = useCallback(() => changeHeader("date"), []);
 
   return (
     <GlobalContext.Provider
       value={{
-        showNotification,
-        notification,
         header,
-        headerTitle,
-        setHeader,
+        setTitle,
+        setDate,
+        notification,
         setNotification,
-        changeHeaderTitle,
-        displayNotification,
-        hideNotification,
       }}
     >
       {children}
@@ -59,17 +52,11 @@ GlobalContextProvider.propTypes = {
 
 export const useGlobalContext = () => useContext(GlobalContext);
 
-const changeHeader = (key) => (value) => {
-  const { setHeader } = useGlobalContext.setHeader;
-  setHeader({ [key]: value });
-};
-
-export const setTitle = changeHeader("title");
-export const setDate = changeHeader("date");
+// TODO: Build Notification system
+const notification = useGlobalContext.notification;
+const setNotification = () => useGlobalContext.setNotification;
 
 export function handleErrorNotification(message) {
-  const notification = useGlobalContext.notification;
-  const setNotification = useGlobalContext.setNotification;
   setNotification({
     ...notification,
     isError: true,

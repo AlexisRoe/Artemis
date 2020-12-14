@@ -1,5 +1,5 @@
 import { login } from "./userAuthentication";
-import { getDailyData } from "./getDailyOverview";
+import { getDailyData, daily, event } from "./getDailyOverview";
 import { getEventData } from "./getEventData";
 
-export { login, getDailyData, getEventData };
+export { login, getDailyData, getEventData, daily, event };

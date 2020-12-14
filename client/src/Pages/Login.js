@@ -7,11 +7,7 @@ import { useGlobalContext } from "../utils/context";
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const {
-    toggleLogin,
-    toggleNotification,
-    changeHeaderTitle,
-  } = useGlobalContext();
+  const { changeHeaderTitle } = useGlobalContext();
   const history = useHistory();
 
   useEffect(() => {
@@ -20,16 +16,13 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    toggleNotification("loading", false);
     try {
-      const response = await login(id, password);
-      toggleLogin(true, response);
+      await login(id, password);
       setPassword("");
       setId("");
       history.push("/");
     } catch (error) {
       console.error(error.message);
-      toggleNotification("an error accured", true);
     }
   };
 
