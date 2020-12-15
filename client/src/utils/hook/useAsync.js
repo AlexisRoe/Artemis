@@ -1,57 +1,48 @@
+import Cookies from "js-cookie";
+import { COOKIE_NAME } from "../config/constants";
 import { useState, useCallback } from "react";
-import { handleErrorNotification } from "../context/";
-import { STANDARD_500, STANDARD_404 } from "../config/constants";
 import { useHistory } from "react-router-dom";
-import useAuth from "./useAuth";
 
-export default function useFetch(action, params) {
+export default function useAsync(action, params) {
   const [data, setData] = useState(null);
+  const [metaData, setMetaData] = useState(null);
+  const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("loading ...");
   const history = useHistory();
-  const { signOut } = useAuth();
 
   const doFetch = useCallback(async () => {
     const errorHandler = (response) => {
-      switch (response.code) {
-        case 401:
-          signOut();
-          handleErrorNotification(response.message);
-          break;
-        case 400:
-          handleErrorNotification(response.message);
-          history.push(`/404?code=400&message=${STANDARD_500}`);
-          break;
-        case 404:
-          handleErrorNotification(response.message);
-          history.push(`/404?code=404&message=${STANDARD_404}`);
-          break;
-        case 500:
-          handleErrorNotification(response.message);
-          history.push(`/404?code=500&message=${STANDARD_500}`);
-          break;
-        default:
-          console.error(response.message);
-      }
+      setIsError(true);
+      !response.message
+        ? setMessage(response.message)
+        : setMessage("unknown Error");
+      console.error(response.message);
     };
 
     try {
+      setLoading(true);
       const response = await action(params);
       switch (response.code) {
         case 200:
           setData(response.content);
+          setMetaData({ title: response.title, date: response.date });
+          setLoading(false);
           break;
         case 401:
+          Cookies.delete(COOKIE_NAME);
+          history.push(`/login`);
+          break;
         case 400:
         case 404:
         case 500:
         default:
-          console.error(response.message);
-          errorHandler(response.message);
+          errorHandler(response);
       }
     } catch (error) {
-      console.error(error.message);
-      handleErrorNotification(error.message);
+      errorHandler({ message: error.message });
     }
   }, [action, params, history]);
 
-  return { data, doFetch };
+  return { data, loading, isError, message, metaData, doFetch };
 }

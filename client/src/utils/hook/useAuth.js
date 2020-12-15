@@ -1,8 +1,12 @@
+// UNTESTED PROTOTYP
+// TODO: testing
+// TODO: INTEGRATING WITH SERVERSIDE REFRESH JWT TOKEN
+// 15.12.2020
 import Cookies from "js-cookie";
+import { COOKIE_NAME } from "../config/constants";
 import { hash } from "../helpers/";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { COOKIE_NAME } from "../config/constants";
 import {
   hideNotification,
   displayNotification,

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
 
 const ListItem = styled.li`
   width: 100%;

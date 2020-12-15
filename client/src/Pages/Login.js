@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { LoginButton, LoginInput, LoginForm } from "../components/Login";
 import { login } from "../utils/api/userAuthentication";
-import { useGlobalContext } from "../utils/context";
 
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const { changeHeaderTitle } = useGlobalContext();
   const history = useHistory();
-
-  useEffect(() => {
-    changeHeaderTitle("Login");
-  }, [changeHeaderTitle]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

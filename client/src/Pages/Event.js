@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import {
   SectionContainer,
   DataHeader,
@@ -7,26 +7,50 @@ import {
   DataSheetItem,
   DataListItem,
 } from "../components/datasheets/";
+import useAsync from "../utils/hook/useAsync";
+import { event } from "../utils/api";
+import { Main } from "../components/helper/Main";
+import ErrorHandler from "./ErrorPage";
+import Header from "../components/Header";
 import MissingData from "../components/helper/missingData";
-import { getEventData } from "../utils/api";
-import { useGlobalContext } from "../utils/context";
-import useFetch from "../utils/hook/useAsync";
+
+const defaultHeader = {
+  title: "Event Overview",
+  date: new Intl.DateTimeFormat("de-DE", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).format(new Date()),
+  loading: false,
+  isError: false,
+  message: null,
+};
 
 function Event() {
   const { eventID } = useParams();
-  const { data } = useFetch(getEventData, eventID);
-  const { changeHeaderTitle } = useGlobalContext();
+  const history = useHistory();
+  const { data, doFetch, loading, isError, message, metaData } = useAsync(
+    event,
+    eventID
+  );
 
   useEffect(() => {
-    if (data) {
-      changeHeaderTitle({ title: data.title });
-    }
-  }, [changeHeaderTitle, data]);
+    doFetch();
+    defaultHeader.title = metaData?.title;
+  }, [doFetch, metaData?.title]);
 
   return (
     <>
-      {data &&
-        data.map((item) => {
+      <Header
+        settings={defaultHeader}
+        showNotification={loading}
+        isError={isError}
+        message={message}
+      />
+      <Main>
+        {isError && <ErrorHandler />}
+        {data?.map((item) => {
+          const ListItem = item.list ? DataListItem : DataSheetItem;
           return (
             <SectionContainer key={item.title}>
               <DataHeader>{item.title}</DataHeader>
@@ -34,22 +58,19 @@ function Event() {
                 <MissingData />
               ) : (
                 <DataListContainer>
-                  {item.list
-                    ? item.content.map((content) => {
-                        return (
-                          <DataListItem key={content.title} {...content} />
-                        );
-                      })
-                    : item.content.map((content) => {
-                        return (
-                          <DataSheetItem key={content.title} {...content} />
-                        );
-                      })}
+                  {item.content.map((content) => (
+                    <ListItem
+                      key={content.title}
+                      {...content}
+                      onClick={() => history.push(`/event/${content.id}`)}
+                    />
+                  ))}
                 </DataListContainer>
               )}
             </SectionContainer>
           );
         })}
+      </Main>
     </>
   );
 }
