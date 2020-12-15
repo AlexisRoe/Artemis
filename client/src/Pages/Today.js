@@ -9,11 +9,11 @@ import { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import MissingData from "../components/helper/missingData";
 import { daily } from "../utils/api";
-import { convertTimefromUnixTime, mockTimestamp } from "../utils/helpers/date";
+import { mockTimestamp } from "../utils/helpers/date";
 import useAsync from "../utils/hook/useAsync";
 import Header from "../components/Header";
 import { Main } from "../components/helper/Main";
-import ErrorHandler from "./ErrorPage";
+import ErrorHandler from "./Error";
 
 const dateToday = mockTimestamp();
 const defaultHeader = {
@@ -30,7 +30,7 @@ const defaultHeader = {
 
 function Today() {
   const { timestamp } = useParams();
-  const params = timestamp ? convertTimefromUnixTime(timestamp) : dateToday;
+  const params = timestamp ? timestamp : dateToday;
 
   const { data, doFetch, loading, isError, message } = useAsync(daily, params);
   const history = useHistory();

@@ -10,7 +10,7 @@ import {
 import useAsync from "../utils/hook/useAsync";
 import { event } from "../utils/api";
 import { Main } from "../components/helper/Main";
-import ErrorHandler from "./ErrorPage";
+import ErrorHandler from "./Error";
 import Header from "../components/Header";
 import MissingData from "../components/helper/missingData";
 

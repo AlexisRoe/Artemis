@@ -13,11 +13,14 @@ export default function useAsync(action, params) {
 
   const doFetch = useCallback(async () => {
     const errorHandler = (response) => {
+      console.error(response.message);
       setIsError(true);
       !response.message
         ? setMessage(response.message)
         : setMessage("unknown Error");
-      console.error(response.message);
+      setTimeout(() => {
+        setLoading(false);
+      }, 6000);
     };
 
     try {
