@@ -1,5 +1,4 @@
 import NotificationHeader from "./Notification";
-import HeaderBar from "./Header";
 import MainMenu from "./MainMenu";
 import Header from "./Header";
 
@@ -12,14 +11,13 @@ const Container = styled.div`
 export default {
   title: "Components/Header",
   component: NotificationHeader,
-  HeaderBar,
   MainMenu,
 };
 
 export const Notification = (args) => <NotificationHeader {...args} />;
 Notification.args = { error: false, message: "User/Passwort is wrong" };
 
-export const DefaultHeader = (args) => <HeaderBar {...args} />;
+export const DefaultHeader = (args) => <Header {...args} />;
 DefaultHeader.args = { date: "01.04.2020", title: "Daily Overview" };
 
 export const Menu = () => (
