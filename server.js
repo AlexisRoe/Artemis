@@ -10,7 +10,6 @@ const overview = require("./lib/routes/overviewDay");
 const login = require("./lib/routes/login");
 
 const app = express();
-const port = process.env.PORT || 6000;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -32,9 +31,7 @@ app.get("*", (request, response) => {
 async function run() {
   console.log("Connecting to database ...");
   await connect(process.env.DB_URL);
-  app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
-  });
+  app.listen(process.env.PORT || 6000);
 }
 
 run();
