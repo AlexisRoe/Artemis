@@ -13,6 +13,26 @@ const Aside = styled.aside`
   span {
     grid-column: 2/3;
   }
+  animation: 10s ${(props) => (props.state ? "fadeInOut" : "none")} ease-in-out;
+  animation-fill-mode: forward;
+  opacity: ${(props) => (props.state ? "0" : "1")};
+
+  @keyframes fadeInOut {
+    0% {
+      opacity: 1;
+      transform: translateY(-100%);
+    }
+    10% {
+      transform: translateY(0);
+    }
+    90% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 1;
+    }
+  }
 `;
 
 export default function NotificationHeader({

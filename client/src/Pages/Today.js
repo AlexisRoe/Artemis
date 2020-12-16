@@ -5,54 +5,52 @@ import {
   DataListItem,
   EventListItem,
 } from "../components/datasheets/";
-import { useEffect, useState } from "react";
-import { useGlobalContext } from "../utils/context";
-import { mockTimestamp } from "../utils/helpers";
-import { getDailyData } from "../utils/api";
+import { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import MissingData from "../components/helper/missingData";
-import { useHistory } from "react-router-dom";
-// import { useParams } from "react-router-dom";
-// import { convertTimefromUnixTime } from "../utils/helpers/date";
-// import { TITLE_DAY } from "../utils/config/constants";
+import { daily } from "../utils/api";
+import { mockTimestamp } from "../utils/helpers/date";
+import useAsync from "../utils/hook/useAsync";
+import Header from "../components/Header";
+import { Main } from "../components/helper/Main";
+import ErrorHandler from "./Error";
+
+const dateToday = mockTimestamp();
+const defaultHeader = {
+  title: "Daily Overview",
+  date: new Intl.DateTimeFormat("de-DE", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).format(new Date()),
+  loading: false,
+  isError: false,
+  message: null,
+};
 
 function Today() {
-  // const { timestamp } = useParams() || mockTimestamp();
-  // const { data } = useFetch (getDailyData, timestamp);
-  // const time = convertTimefromUnixTime(timestamp);
-  // const { changeHeaderTitle } = useGlobalContext();
-  // useEffect(() => {
-  //   changeHeaderTitle({ title: TITLE_DAY, time });
-  // }, [changeHeaderTitle]);
+  const { timestamp } = useParams();
+  const params = timestamp ? timestamp : dateToday;
 
-  const {
-    changeHeaderTitle,
-    toggleNotification,
-    hideNotification,
-    displayNotification,
-  } = useGlobalContext();
-  const [data, setData] = useState(null);
+  const { data, doFetch, loading, isError, message } = useAsync(daily, params);
   const history = useHistory();
 
   useEffect(() => {
-    async function getData(timestamp) {
-      try {
-        displayNotification();
-        const response = await getDailyData(timestamp);
-        setData(response.content);
-        hideNotification();
-      } catch (error) {
-        console.error(error.message);
-        toggleNotification("an error accured", true);
-      }
-    }
-    changeHeaderTitle("Daily Overview");
-    getData(mockTimestamp());
-  }, []);
+    doFetch();
+  }, [doFetch]);
 
   return (
     <>
-      {data &&
-        data.map((item) => {
+      <Header
+        settings={defaultHeader}
+        showNotification={loading}
+        isError={isError}
+        message={message}
+      />
+      <Main>
+        {isError && <ErrorHandler />}
+        {data?.map((item) => {
+          const ListItem = item.list ? DataListItem : EventListItem;
           return (
             <SectionContainer key={item.title}>
               <DataHeader>{item.title}</DataHeader>
@@ -60,26 +58,19 @@ function Today() {
                 <MissingData />
               ) : (
                 <DataListContainer>
-                  {item.list
-                    ? item.content.map((content) => (
-                        <DataListItem
-                          key={content.id}
-                          {...content}
-                          onClick={() => history.push(`/event/${content.id}`)}
-                        />
-                      ))
-                    : item.content.map((content) => (
-                        <EventListItem
-                          key={content.id}
-                          {...content}
-                          onClick={() => history.push(`/event/${content.id}`)}
-                        />
-                      ))}
+                  {item.content.map((content) => (
+                    <ListItem
+                      key={content.title}
+                      {...content}
+                      onClick={() => history.push(`/event/${content.id}`)}
+                    />
+                  ))}
                 </DataListContainer>
               )}
             </SectionContainer>
           );
         })}
+      </Main>
     </>
   );
 }

@@ -1,11 +1,12 @@
 import styled from "styled-components/macro";
+import Cookies from "js-cookie";
+import PropTypes from "prop-types";
 import { useState } from "react";
-import { useGlobalContext } from "../../utils/context";
-
-import logoSrc from "../../assets/logo/logo-artemis.png";
-import { isDate } from "../../utils/helpers/date";
+import { useHistory } from "react-router-dom";
 import NotificationHeader from "./Notification";
 import MainMenu from "./MainMenu";
+import logoSrc from "../../assets/logo/logo-artemis.png";
+import { COOKIE_NAME } from "../../utils/config/constants";
 
 const Article = styled.article`
   z-index: 30;
@@ -57,16 +58,15 @@ const InformationContainer = styled.div`
   }
 `;
 
-export default function Header() {
+export default function Header({
+  settings,
+  showNotification,
+  isError,
+  message,
+}) {
   const [loadingMenu, setLoadingMenu] = useState(false);
   const [toggleAnimationMenu, setToggleAnimationMenu] = useState(false);
-  const {
-    headerTitle,
-    errorState,
-    notificationMessage,
-    showNotification,
-    toggleLogin,
-  } = useGlobalContext();
+  const history = useHistory();
 
   function hideMainMenu() {
     setToggleAnimationMenu(!toggleAnimationMenu);
@@ -86,22 +86,23 @@ export default function Header() {
 
   function handleLogout() {
     hideMainMenu();
-    toggleLogin(false);
+    Cookies.delete(COOKIE_NAME);
+    history.push(`/login`);
   }
 
   return (
     <header>
       <Article>
         <InformationContainer>
-          <h2>{isDate()}</h2>
-          <h2>{headerTitle}</h2>
+          <h2>{settings?.date}</h2>
+          <h2>{settings?.title}</h2>
         </InformationContainer>
         <Button onClick={menuSwitch}>
           <img src={logoSrc} alt="open/close main menu" />
         </Button>
       </Article>
       {showNotification && (
-        <NotificationHeader error={errorState} message={notificationMessage} />
+        <NotificationHeader error={isError} message={message} />
       )}
       {loadingMenu && (
         <MainMenu
@@ -113,3 +114,10 @@ export default function Header() {
     </header>
   );
 }
+
+Header.propTypes = {
+  settings: PropTypes.object,
+  showNotification: PropTypes.bool,
+  isError: PropTypes.bool,
+  message: PropTypes.string,
+};

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import logo from "../assets/logo/logo-bg.svg";
-import { useHistory, useLocation } from "react-router-dom";
-import { STANDARD_404 } from "../utils/config/constants";
+import { useHistory } from "react-router-dom";
+import { STANDARD_500 } from "../utils/config/constants";
 
 const Article = styled.article`
   padding: 25vh 25%;
@@ -33,13 +33,11 @@ const Article = styled.article`
 
 export default function ErrorHandler() {
   const history = useHistory();
-  const message =
-    new URLSearchParams(useLocation().search).get("message") || STANDARD_404;
 
   return (
     <Article>
-      <h2>{message}</h2>
-      <button onClick={() => history.goBack()}>Go Back</button>
+      <h2>{STANDARD_500}</h2>
+      <button onClick={() => history.push("/")}>Go Home</button>
     </Article>
   );
 }
