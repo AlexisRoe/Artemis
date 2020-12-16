@@ -2,11 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-document.querySelector(".loader").classList.add("loader--hide");
+setTimeout(() => {
+  document
+    .querySelector(".loader")
+    .parentNode.removeChild(document.querySelector(".loader"));
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+  ReactDOM.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+}, 1500);
