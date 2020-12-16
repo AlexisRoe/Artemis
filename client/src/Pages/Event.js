@@ -1,4 +1,5 @@
-import { useParams, useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import {
   SectionContainer,
   DataHeader,
@@ -6,134 +7,70 @@ import {
   DataSheetItem,
   DataListItem,
 } from "../components/datasheets/";
+import useAsync from "../utils/hook/useAsync";
+import { event } from "../utils/api";
+import { Main } from "../components/helper/Main";
+import ErrorHandler from "./Error";
+import Header from "../components/Header";
+import MissingData from "../components/helper/missingData";
 
-// Mockup for testing
-
-const samples = [
-  {
-    title: "Shedule",
-    list: true,
-    content: [
-      {
-        time: "10:00 - 16:00",
-        title: "Meetingroom",
-        room: "Raum 123",
-      },
-      {
-        time: "11:00 - 11:30",
-        title: "Kaffeepause 1",
-        room: "Lounge",
-      },
-      {
-        time: "13:00 - 14:00",
-        title: "Mittagessen",
-        room: "Restaurant",
-      },
-      {
-        time: "15:00 - 16:00",
-        title: "Kaffeepause 2",
-        room: "Lounge",
-      },
-    ],
-  },
-  {
-    title: "Setup",
-    content: [
-      {
-        time: "10:00 - 16:00",
-        title: "Meetingroom",
-        room: "Raum 123",
-        notes: ["Tafel 20 Personen", "Referententisch", "Seitenbufett"],
-      },
-    ],
-  },
-  {
-    title: "Haustechnik",
-    content: [
-      {
-        time: "10:00 - 16:00",
-        title: "Meetingroom",
-        room: "Raum 123",
-        notes: ["3 Flipcharts", "1 Pinnwand", "1 Beamer"],
-      },
-    ],
-  },
-  {
-    title: "Housekeeping",
-    content: [
-      {
-        time: "10:00 - 16:00",
-        title: "Meetingroom",
-        room: "Raum 123",
-      },
-    ],
-  },
-  {
-    title: "Sign on Board",
-    content: [
-      {
-        time: "10:00 - 16:00",
-        title: `Telekom „Future Treff“`,
-      },
-    ],
-  },
-  {
-    title: "Food & Beverages",
-    content: [
-      {
-        time: "10:00 - 16:00",
-        title: "Meetingroom",
-        room: "Raum 123",
-        notes: ["1 gr. Flasche Wasser + 2 kl. Flaschen Saft"],
-      },
-      {
-        time: "11:00 - 11:30",
-        title: "Kaffeepause",
-        room: "Lounge",
-        notes: ["Kaffee/Tee", "Orangensaft", "Belegte Brezeln"],
-      },
-      {
-        time: "13:00 - 14:00",
-        title: "Mittagessen",
-        room: "Restaurant",
-        notes: [
-          "1 Glas Wein/ Bier pro Person",
-          "1 Flasche Wasser / Person",
-          "Tagesmenu",
-        ],
-      },
-      {
-        time: "15:00 - 16:00",
-        title: "Mittagessen",
-        room: "Restaurant",
-        notes: ["Kaffee/ Tee", "1 stück Kuchen pro Person"],
-      },
-    ],
-  },
-];
+const defaultHeader = {
+  title: "Event Overview",
+  date: new Intl.DateTimeFormat("de-DE", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).format(new Date()),
+  loading: false,
+  isError: false,
+  message: null,
+};
 
 function Event() {
-  const history = useHistory();
   const { eventID } = useParams();
+  const history = useHistory();
+  const { data, doFetch, loading, isError, message, metaData } = useAsync(
+    event,
+    eventID
+  );
+
+  useEffect(() => {
+    doFetch();
+    defaultHeader.title = metaData?.title;
+  }, [doFetch, metaData?.title]);
 
   return (
     <>
-      {samples.map((sample) => {
-        return (
-          <SectionContainer key={sample.title}>
-            <DataHeader>{sample.title}</DataHeader>
-            <DataListContainer>
-              {sample.list
-                ? sample.content.map((content) => {
-                    return <DataListItem key={content.title} {...content} />;
-                  })
-                : sample.content.map((content) => {
-                    return <DataSheetItem key={content.title} {...content} />;
-                  })}
-            </DataListContainer>
-          </SectionContainer>
-        );
-      })}
+      <Header
+        settings={defaultHeader}
+        showNotification={loading}
+        isError={isError}
+        message={message}
+      />
+      <Main>
+        {isError && <ErrorHandler />}
+        {data?.map((item) => {
+          const ListItem = item.list ? DataListItem : DataSheetItem;
+          return (
+            <SectionContainer key={item.title}>
+              <DataHeader>{item.title}</DataHeader>
+              {!item.content.length ? (
+                <MissingData />
+              ) : (
+                <DataListContainer>
+                  {item.content.map((content) => (
+                    <ListItem
+                      key={content.title}
+                      {...content}
+                      onClick={() => history.push(`/event/${content.id}`)}
+                    />
+                  ))}
+                </DataListContainer>
+              )}
+            </SectionContainer>
+          );
+        })}
+      </Main>
     </>
   );
 }

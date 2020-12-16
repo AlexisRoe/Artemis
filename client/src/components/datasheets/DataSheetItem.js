@@ -7,10 +7,12 @@ const ItemContainer = styled.li`
   display: grid;
   column-gap: 0.5rem;
   grid-template-columns: 2fr 3fr;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: repeat(5, auto);
   grid-template-areas:
     "time   title"
     "time   room"
+    "time  pax"
+    "time  setup"
     "notes  notes";
 
   &:not(:only-child):nth-child(2n + 1) {
@@ -32,7 +34,13 @@ const Title = styled.h4`
 
 const Room = styled.span`
   grid-area: room;
+`;
+const Setup = styled.span`
+  grid-area: setup;
   margin-bottom: 1rem;
+`;
+const Pax = styled.span`
+  grid-area: pax;
 `;
 
 const NotesContainer = styled.ul`
@@ -40,12 +48,14 @@ const NotesContainer = styled.ul`
   list-style: none;
 `;
 
-export const DataSheetItem = ({ time, title, room, notes }) => {
+export const DataSheetItem = ({ time, title, room, notes, pax, setup }) => {
   return (
     <ItemContainer>
       <Time>{time}</Time>
       <Title>{title}</Title>
       {room && <Room>{room}</Room>}
+      {setup && <Setup>{setup}</Setup>}
+      {pax && <Pax>{pax} pax</Pax>}
       <NotesContainer>
         {notes &&
           notes.map((note) => {
@@ -61,4 +71,6 @@ DataSheetItem.propTypes = {
   title: PropTypes.string.isRequired,
   room: PropTypes.string,
   notes: PropTypes.arrayOf(PropTypes.string),
+  setup: PropTypes.string,
+  pax: PropTypes.number,
 };

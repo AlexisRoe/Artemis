@@ -38,14 +38,6 @@ const GlobalStyle = createGlobalStyle`
     src: url(${OpenSans700});
   }
 
-*, 
-*::before, 
-*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 :root {
     --color-bg-white: #fff;
     --color-bg-dark: #2d2c2a;

@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Nav = styled.nav`
   background-color: var(--color-bg-dark);
@@ -60,7 +60,7 @@ const Ul = styled.ul`
     cursor: default;
   }
 
-  a > li {
+  .link {
     color: var(--color-font-white) !important;
     cursor: pointer;
   }
@@ -78,12 +78,21 @@ const Button = styled.button`
 `;
 
 export default function MainMenu({ show, onClick, onLogout }) {
+  const history = useHistory();
+
+  function handleLink(target) {
+    onClick();
+    setTimeout(() => {
+      history.push(target);
+    }, 1000);
+  }
+
   return (
     <Nav state={show}>
       <Ul>
-        <Link to="/day" onClick={() => onClick()}>
-          <li>Daily Overview</li>
-        </Link>
+        <li onClick={() => handleLink("/day")} className="link">
+          Daily Overview
+        </li>
         <li>Profile</li>
         <li>Weekly Overview</li>
         <li>Room Overview</li>

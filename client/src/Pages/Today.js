@@ -5,81 +5,72 @@ import {
   DataListItem,
   EventListItem,
 } from "../components/datasheets/";
+import { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import MissingData from "../components/helper/missingData";
+import { daily } from "../utils/api";
+import { mockTimestamp } from "../utils/helpers/date";
+import useAsync from "../utils/hook/useAsync";
+import Header from "../components/Header";
+import { Main } from "../components/helper/Main";
+import ErrorHandler from "./Error";
 
-// Mockup for testing
-
-const samples = [
-  {
-    title: "Next Up",
-    list: true,
-    content: [
-      {
-        time: "10:00",
-        title: "Kaffeepause",
-        description: "Telekom Team 1",
-        room: "Lounge",
-      },
-      {
-        time: "10:15",
-        title: "Snacks",
-        description: "Telekom Team 2",
-        room: "Raum 123",
-      },
-      {
-        time: "10:30",
-        title: "Kaffeepause",
-        description: "Telekom Team 3",
-        room: "Lounge",
-      },
-    ],
-  },
-  {
-    title: "Events today",
-    list: false,
-    content: [
-      {
-        time: "10:00 - 16:00",
-        title: "Telekom Team 1",
-        room: "120",
-        setup: 0,
-        pax: 120,
-        pinboard: 2,
-        flipchart: 1,
-        eventID: "126",
-      },
-      {
-        time: "10:00 - 16:00",
-        title: "Telekom Team 2",
-        room: "120",
-        setup: 3,
-        pax: 12,
-        pinboard: 1,
-        flipchart: 2,
-        eventID: "123",
-      },
-    ],
-  },
-];
+const dateToday = mockTimestamp();
+const defaultHeader = {
+  title: "Daily Overview",
+  date: new Intl.DateTimeFormat("de-DE", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).format(new Date()),
+  loading: false,
+  isError: false,
+  message: null,
+};
 
 function Today() {
+  const { timestamp } = useParams();
+  const params = timestamp ? timestamp : dateToday;
+
+  const { data, doFetch, loading, isError, message } = useAsync(daily, params);
+  const history = useHistory();
+
+  useEffect(() => {
+    doFetch();
+  }, [doFetch]);
+
   return (
     <>
-      {samples.map((sample) => {
-        return (
-          <SectionContainer key={sample.title}>
-            <DataHeader>{sample.title}</DataHeader>
-            <DataListContainer>
-              {sample.list
-                ? sample.content.map((content) => (
-                    <DataListItem key={content.title} {...content} />
-                  ))
-                : sample.content.map((content) => (
-                    <EventListItem key={content.title} {...content} />
+      <Header
+        settings={defaultHeader}
+        showNotification={loading}
+        isError={isError}
+        message={message}
+      />
+      <Main>
+        {isError && <ErrorHandler />}
+        {data?.map((item) => {
+          const ListItem = item.list ? DataListItem : EventListItem;
+          return (
+            <SectionContainer key={item.title}>
+              <DataHeader>{item.title}</DataHeader>
+              {!item.content.length ? (
+                <MissingData />
+              ) : (
+                <DataListContainer>
+                  {item.content.map((content) => (
+                    <ListItem
+                      key={content.title}
+                      {...content}
+                      onClick={() => history.push(`/event/${content.id}`)}
+                    />
                   ))}
-            </DataListContainer>
-          </SectionContainer>
-        );
-      })}
+                </DataListContainer>
+              )}
+            </SectionContainer>
+          );
+        })}
+      </Main>
     </>
   );
 }

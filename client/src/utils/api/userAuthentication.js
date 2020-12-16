@@ -1,7 +1,7 @@
-const CryptoJS = require("crypto-js");
+import { hash } from "../helpers/";
 
 export async function login(id, password) {
-  const hashedPassword = CryptoJS.MD5(password).toString(CryptoJS.enc.Base64);
+  const hashedPassword = hash(password);
   const credentialsBase64 = window.btoa(`${id}:${hashedPassword}`);
   const options = {
     method: "GET",
@@ -13,7 +13,8 @@ export async function login(id, password) {
   try {
     const response = await fetch(`/api/user/login`, options);
     if (!response.ok) {
-      throw new Error(response.json().message);
+      console.error(response.json().message);
+      return null;
     }
     return response.json();
   } catch (error) {
