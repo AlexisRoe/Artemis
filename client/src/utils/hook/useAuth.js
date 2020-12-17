@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 export default function useAuth() {
   const history = useHistory();
   const [formState, setFormState] = useState(false);
-  const [credentials, setCredentials] = useState({ id: null, password: null });
+  const [credentials, setCredentials] = useState({ id: "", password: "" });
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("loading ...");
@@ -16,21 +16,25 @@ export default function useAuth() {
   };
   const handleOnChangeID = changeUserCredentials("id");
   const handleOnChangePassword = changeUserCredentials("password");
+  const resetCredentials = () => {
+    handleOnChangeID("");
+    handleOnChangePassword("");
+  };
 
-  const errorHandler = (response) => {
-    console.error(response.message);
+  const errorHandler = (data) => {
+    console.error(data.message);
     setIsError(true);
-    switch (response.code) {
+    switch (data.code) {
       case 401:
-        setMessage(response.desc);
+        setMessage(data.desc);
         setFormState(true);
         break;
       case 404:
-        setMessage(response.message);
+        setMessage(data.message);
         setFormState(true);
         break;
       default:
-        setMessage(response.message);
+        setMessage(data.message);
         setFormState(false);
     }
     setTimeout(() => {
@@ -38,7 +42,7 @@ export default function useAuth() {
       setIsError(false);
       setLoading(false);
       setMessage("loading ...");
-      setCredentials({ ...credentials, id: null, password: null });
+      resetCredentials();
     }, 6000);
   };
 
@@ -64,14 +68,13 @@ export default function useAuth() {
     try {
       setLoading(true);
       const response = await fetch(`/api/user/login`, createHeader());
-      switch (response.code) {
+      const data = await response.json();
+      switch (data.code) {
         case 200:
-          setFormState(false);
-          setLoading(false);
           history.push("/");
           break;
         default:
-          errorHandler(response);
+          errorHandler(data);
       }
     } catch (error) {
       errorHandler({ message: error.message });
