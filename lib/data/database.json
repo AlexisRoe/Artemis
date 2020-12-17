@@ -321,5 +321,559 @@
         ]
       }
     ]
+  },
+  {
+    "title": "Melissa Meier",
+    "sign": "Melissa kriegt die Kurve",
+    "Customer-ID": 1123,
+    "event-ID": 545367,
+    "start": 1601803800,
+    "end": 1601816400,
+    "pax": 60,
+    "rooms": [
+      {
+        "location": "Goldsaal",
+        "title": "Setup Goldsaal",
+        "start": 1601803800,
+        "end": 1601816400,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 60,
+        "setup": "iconBanquet",
+        "equipment": {
+          "flipchart": 0,
+          "pinnboard": 0,
+          "beamer": 0
+        },
+        "notes": [
+          "Dekoration: rote Liese, Blumengestecke, weiße Tischwäsche, 8 pro Tisch"
+        ]
+      }
+    ],
+    "event": [
+      {
+        "title": "Brunchbufett",
+        "location": "Goldsaal",
+        "pax": 60,
+        "start": 1601803800,
+        "end": 1601816400,
+        "foods": [
+          "großer Brunch",
+          "frische Waffeln",
+          "Lachsriegel",
+          "Kartoffelpfanne",
+          "Frühstücksauswahl"
+        ],
+        "beverages": [
+          "Kaffee/Tee",
+          "Saftstation mit 3 Säften",
+          "heiße Schokolade",
+          "Sekt",
+          "Hauswein Rot/Weiß",
+          "Bier nach Wahl"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Unilever",
+    "sign": "Impfen leicht gemacht",
+    "Customer-ID": 112344,
+    "event-ID": 5453637,
+    "start": 1601920800,
+    "end": 1601841600,
+    "pax": 25,
+    "rooms": [
+      {
+        "location": "Martin",
+        "title": "Setup Martin",
+        "start": 1601807400,
+        "end": 1601841600,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 25,
+        "setup": "iconUForm",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 6,
+          "beamer": 2
+        },
+        "notes": [
+          "Gäste richten den Raum selber ein",
+          "Bühne 3x4",
+          "Pinnwände weiß bespannen"
+        ]
+      }
+    ],
+    "event": [
+      {
+        "title": "Vorbereitung/ Setup",
+        "location": "Martin",
+        "pax": 5,
+        "start": 1601805600,
+        "end": 1601812800,
+        "foods": [],
+        "beverages": []
+      },
+      {
+        "title": "Getränke im Raum",
+        "location": "Martin",
+        "pax": 100,
+        "start": 1601805600,
+        "end": 1601812800,
+        "foods": [],
+        "beverages": ["Wasser", "Säfte", "Softdrinks"]
+      },
+      {
+        "title": "Kaffeestation",
+        "location": "Salon/Säule",
+        "pax": 100,
+        "start": 1601812800,
+        "end": 1601834400,
+        "foods": [
+          "Sandwiches",
+          "Schokobrunnen",
+          "frisches Obst",
+          "Laugengebäck",
+          "Tagessuppe"
+        ],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      },
+      {
+        "title": "Abbau",
+        "location": "Martin",
+        "pax": 5,
+        "start": 1601834400,
+        "end": 1601841600,
+        "foods": [],
+        "beverages": ["Sekt", "Bier"]
+      },
+      {
+        "title": "Abendessen",
+        "location": "Restaurant",
+        "pax": 5,
+        "start": 1601841600,
+        "end": 1601848800,
+        "foods": ["A-la-Carte auf Rechnung"],
+        "beverages": ["A-la-Carte auf Rechnung"]
+      }
+    ]
+  },
+  {
+    "title": "Werkstatt Meier",
+    "sign": "Reperaturen leicht gemacht",
+    "Customer-ID": 81773,
+    "event-ID": 422437,
+    "start": 1601886600,
+    "end": 1601917200,
+    "pax": 12,
+    "rooms": [
+      {
+        "location": "Luise",
+        "title": "Setup Luise",
+        "start": 1601886600,
+        "end": 1601917200,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 12,
+        "setup": "iconUForm",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 2,
+          "beamer": 1
+        },
+        "notes": ["Extra Stifte und Marker"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Getränke im Raum",
+        "location": "Luise",
+        "pax": 12,
+        "start": 1601886600,
+        "end": 1601917200,
+        "foods": [],
+        "beverages": ["Tagungsgetränke"]
+      },
+      {
+        "title": "Kaffeepause",
+        "location": "Salon",
+        "pax": 12,
+        "start": 1601892000,
+        "end": 1601893800,
+        "foods": ["Handobst", "belegte Brote", "Joghurt (kein Erdbeer)"],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      },
+      {
+        "title": "Mittagspause",
+        "location": "Restaurant",
+        "pax": 12,
+        "start": 1601899200,
+        "end": 1601901000,
+        "foods": ["Auswahl aus dem Tagesmenu"],
+        "beverages": ["Mineralwasser unbegrenzt"]
+      },
+      {
+        "title": "Kaffeepause",
+        "location": "Salon",
+        "pax": 12,
+        "start": 1601910000,
+        "end": 1601911800,
+        "foods": ["Kuchen"],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      }
+    ]
+  },
+  {
+    "title": "Agentur Pop",
+    "sign": "Dinner at 8",
+    "Customer-ID": 281773,
+    "event-ID": 4222437,
+    "start": 1601920800,
+    "end": 1601942340,
+    "pax": 100,
+    "rooms": [
+      {
+        "location": "Goldsaal",
+        "title": "Setup Goldsaal",
+        "start": 1601920800,
+        "end": 1601942400,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 100,
+        "setup": "iconBanquet",
+        "equipment": {
+          "flipchart": 0,
+          "pinnboard": 0,
+          "beamer": 0
+        },
+        "notes": ["weiße Deko", "Seitentische", "Bühne 4x6"]
+      },
+      {
+        "location": "Fritz",
+        "title": "Umkleide/ Abstellraum",
+        "start": 1601920800,
+        "end": 1601942400,
+        "default": false,
+        "role": "Umkleide",
+        "pax": 10,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 0,
+          "pinnboard": 0,
+          "beamer": 0
+        },
+        "notes": ["Seitentische", "Garderobenständer", "Aschenbecher"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Dinner",
+        "location": "Goldsaal",
+        "pax": 100,
+        "start": 1601920800,
+        "end": 1601942400,
+        "foods": ["Büfett Goldgans", "Rinderfilet"],
+        "beverages": [
+          "Hausweine Rot/Weiß",
+          "Bier",
+          "Sekt",
+          "Softs",
+          "Spitituosen",
+          "Getränke bis 1200€"
+        ]
+      },
+      {
+        "title": "Umkleide",
+        "location": "Goldsaal",
+        "pax": 100,
+        "start": 1601928000,
+        "end": 1601935200,
+        "foods": [],
+        "beverages": ["Wasser", "Softs"]
+      }
+    ]
+  },
+  {
+    "title": "Liese GmbH",
+    "sign": "Liese GmbH",
+    "Customer-ID": 4481773,
+    "event-ID": 498437,
+    "start": 1601973000,
+    "end": 1602001800,
+    "pax": 12,
+    "rooms": [
+      {
+        "location": "Luise",
+        "title": "Setup Luise",
+        "start": 1601973000,
+        "end": 1602001800,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 12,
+        "setup": "iconUForm",
+        "equipment": {
+          "flipchart": 2,
+          "pinnboard": 3,
+          "beamer": 1
+        },
+        "notes": []
+      }
+    ],
+    "event": [
+      {
+        "title": "Getränke im Raum",
+        "location": "Luise",
+        "pax": 12,
+        "start": 1601973000,
+        "end": 1602001800,
+        "foods": [],
+        "beverages": ["Tagungsgetränke"]
+      },
+      {
+        "title": "Kaffeepause",
+        "location": "Salon",
+        "pax": 12,
+        "start": 1601978400,
+        "end": 1601980200,
+        "foods": ["Handobst", "belegte Brote", "Schokobrunnen"],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      },
+      {
+        "title": "Mittagspause",
+        "location": "Restaurant",
+        "pax": 12,
+        "start": 1601985600,
+        "end": 1601987400,
+        "foods": ["Auswahl aus dem Tagesmenu", "Fischallergie 1x"],
+        "beverages": ["Mineralwasser unbegrenzt"]
+      },
+      {
+        "title": "Kaffeepause",
+        "location": "Salon",
+        "pax": 12,
+        "start": 1601996400,
+        "end": 1601998200,
+        "foods": ["1 Stück Kuchen pro Person"],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      }
+    ]
+  },
+  {
+    "title": "Meier GmbH",
+    "sign": "Meier GmbH",
+    "Customer-ID": 5681773,
+    "event-ID": 49866437,
+    "start": 1601978400,
+    "end": 1601998200,
+    "pax": 20,
+    "rooms": [
+      {
+        "location": "Werner",
+        "title": "Setup Werner",
+        "start": 1601978400,
+        "end": 1601998200,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 20,
+        "setup": "iconUForm",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 1,
+          "beamer": 1
+        },
+        "notes": ["extra Flipchart Papier"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Getränke im Raum",
+        "location": "Werner",
+        "pax": 20,
+        "start": 1601978400,
+        "end": 1601998200,
+        "foods": [],
+        "beverages": ["Tagungsgetränke"]
+      },
+      {
+        "title": "Kaffeepause",
+        "location": "Salon",
+        "pax": 20,
+        "start": 1601978400,
+        "end": 1601980200,
+        "foods": ["Handobst", "belegte Brote", "Joghurt"],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      },
+      {
+        "title": "Mittagspause",
+        "location": "Restaurant",
+        "pax": 20,
+        "start": 1601989200,
+        "end": 1601991000,
+        "foods": ["Auswahl aus dem Tagesmenu", "keine Nüsse"],
+        "beverages": ["Mineralwasser unbegrenzt"]
+      },
+      {
+        "title": "Kaffeepause",
+        "location": "Salon",
+        "pax": 20,
+        "start": 1601996400,
+        "end": 1601998200,
+        "foods": ["1 Stück Kuchen pro Person"],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      }
+    ]
+  },
+  {
+    "title": "Schachverein Lupe",
+    "sign": "Schachturnier 2020",
+    "Customer-ID": 561773,
+    "event-ID": 49869937,
+    "start": 1602057600,
+    "end": 1602100800,
+    "pax": 75,
+    "rooms": [
+      {
+        "location": "Goldsaal",
+        "title": "Setup Goldsaal",
+        "start": 1602057600,
+        "end": 1602100800,
+        "default": true,
+        "role": "Hauptraum",
+        "pax": 75,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 10,
+          "pinnboard": 10,
+          "beamer": 2
+        },
+        "notes": [
+          "extra Flipchart Papier",
+          "extra Stifte",
+          "3 Moderatorenkoffen",
+          "Bühne 8x4 40cm"
+        ]
+      },
+      {
+        "location": "Kiez",
+        "title": "Setup Kiez",
+        "start": 1602057600,
+        "end": 1602100800,
+        "default": false,
+        "role": "Umkleide/Lager",
+        "pax": 10,
+        "setup": "iconChairCircle",
+        "equipment": {
+          "flipchart": 0,
+          "pinnboard": 0,
+          "beamer": 0
+        },
+        "notes": ["Kleiderständer", "extra Mülleimer", "3 seitentische"]
+      },
+      {
+        "location": "Martin",
+        "title": "Setup Martin",
+        "start": 1602064800,
+        "end": 1602079200,
+        "default": false,
+        "role": "Arena",
+        "pax": 20,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 1,
+          "beamer": 0
+        },
+        "notes": ["nicht eindecken"]
+      },
+      {
+        "location": "Oliver",
+        "title": "Setup Oliver",
+        "start": 1602064800,
+        "end": 1602079200,
+        "default": false,
+        "role": "Arena",
+        "pax": 20,
+        "setup": "iconClassRoom",
+        "equipment": {
+          "flipchart": 1,
+          "pinnboard": 1,
+          "beamer": 0
+        },
+        "notes": ["nicht eindecken"]
+      },
+      {
+        "location": "Martin",
+        "title": "Setup Martin",
+        "start": 1602072000,
+        "end": 1602100800,
+        "default": false,
+        "role": "Besprechungsraum",
+        "pax": 12,
+        "setup": "iconUForm",
+        "equipment": {
+          "flipchart": 0,
+          "pinnboard": 0,
+          "beamer": 0
+        },
+        "notes": ["jede Stunde auffrischen"]
+      }
+    ],
+    "event": [
+      {
+        "title": "Getränke im Raum",
+        "location": "Goldsaal",
+        "pax": 75,
+        "start": 1602057600,
+        "end": 1602100800,
+        "foods": ["Sandwiches", "Handobst"],
+        "beverages": ["Tagungsgetränke"]
+      },
+      {
+        "title": "Kaffeepause",
+        "location": "Salon",
+        "pax": 75,
+        "start": 1602064800,
+        "end": 1602066600,
+        "foods": ["Handobst", "belegte Brote", "Joghurt"],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      },
+      {
+        "title": "Mittagspause",
+        "location": "Restaurant",
+        "pax": 75,
+        "start": 1602075600,
+        "end": 1602077400,
+        "foods": ["Auswahl aus dem Tagesmenu"],
+        "beverages": ["Mineralwasser unbegrenzt"]
+      },
+      {
+        "title": "Kaffeepause",
+        "location": "Salon",
+        "pax": 75,
+        "start": 1602082800,
+        "end": 1602084600,
+        "foods": ["1 Stück Kuchen pro Person"],
+        "beverages": ["Kaffee/Tee", "Wasser"]
+      },
+      {
+        "title": "Getränke im Raum",
+        "location": "Martin",
+        "pax": 12,
+        "start": 1602072000,
+        "end": 1602100800,
+        "foods": ["Müsliriegel", "Gummibärchen"],
+        "beverages": ["Kaffeebar", "Tagungsgetränke"]
+      },
+      {
+        "title": "Getränke im Raum",
+        "location": "Oliver",
+        "pax": 20,
+        "start": 1602064800,
+        "end": 1602079200,
+        "foods": [],
+        "beverages": ["Kaffeebar", "Tagungsgetränke"]
+      }
+    ]
   }
 ]
