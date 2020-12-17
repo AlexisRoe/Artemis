@@ -1,6 +1,15 @@
 export const mockTimestamp = () => {
-  const mockupDate = new Date(2020, 9, 2, 8, 0, 0, 0);
-  return toUnixTime(mockupDate);
+  const today = new Date();
+  const mockedDate = new Date(
+    2020,
+    9,
+    today.getDay() + 1,
+    today.getHours(),
+    today.getMinutes(),
+    0,
+    0
+  );
+  return toUnixTime(mockedDate);
 };
 
 export const toDataStringFromUnix = (unixTimestamp) =>
