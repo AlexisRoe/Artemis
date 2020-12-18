@@ -16,8 +16,8 @@ export default function useAsync(action, params) {
       console.error(response.message);
       setIsError(true);
       !response.message
-        ? setMessage(response.message)
-        : setMessage("unknown Error");
+        ? setMessage("unknown Error")
+        : setMessage(response.message);
       setTimeout(() => {
         setLoading(false);
       }, 6000);
@@ -44,7 +44,7 @@ export default function useAsync(action, params) {
     } catch (error) {
       errorHandler({ message: error.message });
     }
-  }, [action, params, user.auth_token, signOut]);
+  }, [user.auth_token, action, params, signOut]);
 
   return { data, loading, isError, message, metaData, doFetch };
 }

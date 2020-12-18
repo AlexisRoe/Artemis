@@ -30,6 +30,7 @@ const defaultHeader = {
 
 function Today() {
   const { timestamp } = useParams();
+
   const params = timestamp ? timestamp : dateToday;
 
   const { data, doFetch, loading, isError, message } = useAsync(daily, params);
