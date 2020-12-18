@@ -55,7 +55,6 @@ export const UserData = ({ children }) => {
 
 UserData.propTypes = {
   children: PropTypes.node.isRequired,
-  data: PropTypes.object,
 };
 
 export const useUserContext = () => useContext(Context);
