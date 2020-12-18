@@ -1,5 +1,4 @@
 // TODO: INTEGRATING WITH SERVERSIDE REFRESH JWT TOKEN
-import { hash } from "../helpers/";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
