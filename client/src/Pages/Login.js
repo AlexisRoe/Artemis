@@ -23,8 +23,8 @@ function Login() {
     message,
     formState,
     credentials,
-    handleOnChangeID,
-    handleOnChangePassword,
+    handleID,
+    handlePassword,
   } = useAuth();
 
   const handleSubmit = async (event) => {
@@ -47,14 +47,14 @@ function Login() {
             value={credentials.id}
             title="Mitarbeiter-ID"
             error={formState}
-            onChange={(event) => handleOnChangeID(event.target.value)}
+            onChange={(event) => handleID(event.target.value)}
           />
           <LoginInput
             type="password"
             value={credentials.password}
             title="Password"
             error={formState}
-            onChange={(event) => handleOnChangePassword(event.target.value)}
+            onChange={(event) => handlePassword(event.target.value)}
           />
           <LoginButton type="submit" error={formState}>
             Login

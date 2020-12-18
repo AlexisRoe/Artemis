@@ -14,11 +14,11 @@ export default function useAuth() {
   const changeUserCredentials = (key) => (value) => {
     setCredentials({ ...credentials, [key]: value });
   };
-  const handleOnChangeID = changeUserCredentials("id");
-  const handleOnChangePassword = changeUserCredentials("password");
+  const handleID = changeUserCredentials("id");
+  const handlePassword = changeUserCredentials("password");
   const resetCredentials = () => {
-    handleOnChangeID("");
-    handleOnChangePassword("");
+    handleID("");
+    handlePassword("");
   };
 
   const errorHandler = (data) => {
@@ -88,7 +88,7 @@ export default function useAuth() {
     formState,
     signIn,
     credentials,
-    handleOnChangeID,
-    handleOnChangePassword,
+    handleID,
+    handlePassword,
   };
 }
