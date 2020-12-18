@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import { COOKIE_NAME } from "../config/constants";
 import { useState, useCallback } from "react";
 import { useHistory } from "react-router-dom";
+import { useUserContext } from "../context/Context";
 
 export default function useAsync(action, params) {
   const [data, setData] = useState(null);
@@ -9,6 +10,7 @@ export default function useAsync(action, params) {
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("loading ...");
+  const { user } = useUserContext();
   const history = useHistory();
 
   const doFetch = useCallback(async () => {
@@ -25,7 +27,7 @@ export default function useAsync(action, params) {
 
     try {
       setLoading(true);
-      const response = await action(params);
+      const response = await action(params, user.auth_token);
       switch (response.code) {
         case 200:
           setData(response.content);
@@ -45,7 +47,7 @@ export default function useAsync(action, params) {
     } catch (error) {
       errorHandler({ message: error.message });
     }
-  }, [action, params, history]);
+  }, [action, params, history, user.auth_token]);
 
   return { data, loading, isError, message, metaData, doFetch };
 }
