@@ -1,9 +1,10 @@
-// TODO: INTEGRATING WITH SERVERSIDE REFRESH JWT TOKEN
 import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useUserContext } from "../context/Context";
 
 export default function useAuth() {
   const history = useHistory();
+  const { logoutUser, loginUser } = useUserContext();
   const [formState, setFormState] = useState(false);
   const [credentials, setCredentials] = useState({ id: "", password: "" });
   const [isError, setIsError] = useState(false);
@@ -69,6 +70,7 @@ export default function useAuth() {
       const data = await response.json();
       switch (data.code) {
         case 200:
+          loginUser(data.user);
           history.push("/");
           break;
         default:
@@ -77,7 +79,7 @@ export default function useAuth() {
     } catch (error) {
       errorHandler({ message: error.message });
     }
-  }, [errorHandler, history, credentials.id, credentials.password]);
+  }, [errorHandler, history, credentials.id, credentials.password, loginUser]);
 
   const signOut = useCallback(async () => {
     try {
@@ -85,12 +87,13 @@ export default function useAuth() {
         method: "DELETE",
       });
       if (response.ok) {
+        logoutUser();
         history.push("/login");
       }
     } catch (error) {
       console.error(error.message);
     }
-  }, [history]);
+  }, [history, logoutUser]);
 
   return {
     loading,

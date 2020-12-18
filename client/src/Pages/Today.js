@@ -58,9 +58,9 @@ function Today() {
                 <MissingData />
               ) : (
                 <DataListContainer>
-                  {item.content.map((content) => (
+                  {item.content.map((content, index) => (
                     <ListItem
-                      key={content.title}
+                      key={index}
                       {...content}
                       onClick={() => history.push(`/event/${content.id}`)}
                     />
