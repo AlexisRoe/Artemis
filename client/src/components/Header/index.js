@@ -1,12 +1,10 @@
 import styled from "styled-components/macro";
-import Cookies from "js-cookie";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import NotificationHeader from "./Notification";
 import MainMenu from "./MainMenu";
 import logoSrc from "../../assets/logo/logo-artemis.png";
-import { COOKIE_NAME } from "../../utils/config/constants";
+import useAuth from "../../utils/hook/useAuth";
 
 const Article = styled.article`
   z-index: 30;
@@ -66,7 +64,7 @@ export default function Header({
 }) {
   const [loadingMenu, setLoadingMenu] = useState(false);
   const [toggleAnimationMenu, setToggleAnimationMenu] = useState(false);
-  const history = useHistory();
+  const { signOut } = useAuth();
 
   function hideMainMenu() {
     setToggleAnimationMenu(!toggleAnimationMenu);
@@ -86,8 +84,9 @@ export default function Header({
 
   function handleLogout() {
     hideMainMenu();
-    Cookies.delete(COOKIE_NAME);
-    history.push(`/login`);
+    setTimeout(() => {
+      signOut();
+    }, 1100);
   }
 
   return (

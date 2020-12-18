@@ -82,13 +82,11 @@ export default function useAuth() {
 
   const signOut = useCallback(async () => {
     try {
-      const response = await fetch("/api/user/logout", {
+      await fetch("/api/user/logout", {
         method: "DELETE",
       });
-      if (response.ok) {
-        logoutUser();
-        history.push("/login");
-      }
+      logoutUser();
+      history.push("/login");
     } catch (error) {
       console.error(error.message);
     }

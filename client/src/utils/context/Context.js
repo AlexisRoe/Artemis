@@ -19,9 +19,7 @@ const defaultUser = {
 export const UserData = ({ children }) => {
   const [user, setUser] = useState(defaultUser);
 
-  const logoutUser = useCallback(() => {
-    setUser({ ...user, ...defaultUser });
-  }, [user]);
+  const logoutUser = () => setUser(defaultUser);
 
   const loginUser = useCallback(
     (newUser) => {

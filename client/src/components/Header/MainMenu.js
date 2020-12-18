@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Nav = styled.nav`
   background-color: var(--color-bg-dark);
@@ -99,9 +99,7 @@ export default function MainMenu({ show, onClick, onLogout }) {
         <li>Kalkulation</li>
         <li>Beverage Counting</li>
       </Ul>
-      <Link to="/login" onClick={() => onLogout()}>
-        <Button>Logout</Button>
-      </Link>
+      <Button onClick={onLogout}>Logout</Button>
     </Nav>
   );
 }
