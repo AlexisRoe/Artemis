@@ -1,41 +1,67 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import Header from "../components/Header";
+import { Main } from "../components/helper/Main";
 import { LoginButton, LoginInput, LoginForm } from "../components/Login";
-import { login } from "../utils/api/userAuthentication";
+import useAuth from "../utils/hook/useAuth";
+
+const defaultHeader = {
+  title: "Login",
+  date: new Intl.DateTimeFormat("de-DE", {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  }).format(new Date()),
+  loading: false,
+  isError: false,
+  message: null,
+};
 
 function Login() {
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-  const history = useHistory();
+  const {
+    signIn,
+    loading,
+    isError,
+    message,
+    formState,
+    credentials,
+    handleID,
+    handlePassword,
+  } = useAuth();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      await login(id, password);
-      setPassword("");
-      setId("");
-      history.push("/");
-    } catch (error) {
-      console.error(error.message);
-    }
+    signIn();
   };
 
   return (
-    <LoginForm onSubmit={handleSubmit}>
-      <LoginInput
-        type="text"
-        value={id}
-        title="Mitarbeiter-ID"
-        onChange={(event) => setId(event.target.value)}
+    <>
+      <Header
+        settings={defaultHeader}
+        showNotification={loading}
+        isError={isError}
+        message={message}
       />
-      <LoginInput
-        type="password"
-        value={password}
-        title="Password"
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <LoginButton type="submit">Login</LoginButton>
-    </LoginForm>
+      <Main>
+        <LoginForm onSubmit={handleSubmit}>
+          <LoginInput
+            type="text"
+            value={credentials.id}
+            title="Mitarbeiter-ID"
+            error={formState}
+            onChange={(event) => handleID(event.target.value)}
+          />
+          <LoginInput
+            type="password"
+            value={credentials.password}
+            title="Password"
+            error={formState}
+            onChange={(event) => handlePassword(event.target.value)}
+          />
+          <LoginButton type="submit" error={formState}>
+            Login
+          </LoginButton>
+        </LoginForm>
+      </Main>
+    </>
   );
 }
 

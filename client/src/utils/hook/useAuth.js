@@ -1,66 +1,94 @@
-// UNTESTED PROTOTYP
-// TODO: testing
 // TODO: INTEGRATING WITH SERVERSIDE REFRESH JWT TOKEN
-// 15.12.2020
-import Cookies from "js-cookie";
-import { COOKIE_NAME } from "../config/constants";
 import { hash } from "../helpers/";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import {
-  hideNotification,
-  displayNotification,
-  handleErrorNotification,
-} from "../context";
 
 export default function useAuth() {
   const history = useHistory();
   const [formState, setFormState] = useState(false);
-  const [credentials, setCredentials] = useState({ id: null, password: null });
+  const [credentials, setCredentials] = useState({ id: "", password: "" });
+  const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("loading ...");
 
   const changeUserCredentials = (key) => (value) => {
     setCredentials({ ...credentials, [key]: value });
   };
   const handleID = changeUserCredentials("id");
   const handlePassword = changeUserCredentials("password");
-
-  const handleFormState = (message) => {
-    handleErrorNotification(message);
-    setFormState(!formState);
+  const resetCredentials = () => {
+    handleID("");
+    handlePassword("");
   };
 
-  const signOut = () => {
-    Cookies.delete(COOKIE_NAME);
-    history.push(`/login`);
+  const errorHandler = (data) => {
+    console.error(data.message);
+    setIsError(true);
+    switch (data.code) {
+      case 401:
+        setMessage(data.desc);
+        setFormState(true);
+        break;
+      case 404:
+        setMessage(data.message);
+        setFormState(true);
+        break;
+      default:
+        setMessage(data.message);
+        setFormState(false);
+    }
+    setTimeout(() => {
+      setLoading(false);
+      setIsError(false);
+      setLoading(false);
+      setMessage("loading ...");
+      resetCredentials();
+    }, 6000);
+  };
+
+  const createHeader = () => {
+    const hashedPassword = hash(credentials.password);
+    // TODO: Change to include id, passwort in the body
+    // TODO: Exit hashing passwords
+    const credentialsBase64 = window.btoa(
+      `${credentials.id}:${hashedPassword}`
+    );
+    // TODO: remove credentials, to avoid javascript access to cookie
+    const options = {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        authorization: `Basic ${credentialsBase64}`,
+      },
+    };
+    return options;
   };
 
   const signIn = async () => {
     try {
-      displayNotification();
-      const hashedPassword = hash(credentials.password);
-      const credentialsBase64 = window.btoa(
-        `${credentials.id}:${hashedPassword}`
-      );
-      const options = {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          authorization: `Basic ${credentialsBase64}`,
-        },
-      };
-      const response = await fetch(`/api/user/login`, options);
-      switch (response.code) {
+      setLoading(true);
+      const response = await fetch(`/api/user/login`, createHeader());
+      const data = await response.json();
+      switch (data.code) {
         case 200:
-          hideNotification();
           history.push("/");
           break;
         default:
-          handleFormState(response.message);
+          errorHandler(data);
       }
     } catch (error) {
-      handleFormState(error.message);
+      errorHandler({ message: error.message });
     }
   };
 
-  return { credentials, formState, signIn, signOut, handleID, handlePassword };
+  return {
+    loading,
+    message,
+    isError,
+    formState,
+    signIn,
+    credentials,
+    handleID,
+    handlePassword,
+  };
 }
