@@ -8,6 +8,7 @@ const { connect } = require("./lib/api/database");
 const event = require("./lib/routes/eventID");
 const overview = require("./lib/routes/overviewDay");
 const login = require("./lib/routes/login");
+const logout = require("./lib/routes/logout");
 
 const app = express();
 
@@ -15,7 +16,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/api/event", event);
 app.use("/api/date", overview);
-app.use("/api/user", login);
+app.use("/api/user/login", login);
+app.use("/api/user/logout", logout);
 
 // Heroku Deployment
 app.use(express.static(path.join(__dirname, "client/build")));
