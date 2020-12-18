@@ -46,28 +46,23 @@ export default function useAuth() {
     }, 6000);
   };
 
-  const createHeader = () => {
-    const hashedPassword = hash(credentials.password);
-    // TODO: Change to include id, passwort in the body
-    // TODO: Exit hashing passwords
-    const credentialsBase64 = window.btoa(
-      `${credentials.id}:${hashedPassword}`
-    );
-    // TODO: remove credentials, to avoid javascript access to cookie
-    const options = {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        authorization: `Basic ${credentialsBase64}`,
-      },
-    };
-    return options;
+  // TODO: remove credentials, to avoid javascript access to cookie
+  const options = {
+    method: "POST",
+    credentials: "include",
+    body: JSON.stringify({
+      id: credentials.id,
+      password: credentials.password,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
 
   const signIn = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/user/login`, createHeader());
+      const response = await fetch(`/api/user/login`, options);
       const data = await response.json();
       switch (data.code) {
         case 200:
