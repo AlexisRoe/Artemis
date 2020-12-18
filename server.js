@@ -9,6 +9,7 @@ const event = require("./lib/routes/eventID");
 const overview = require("./lib/routes/overviewDay");
 const login = require("./lib/routes/login");
 const logout = require("./lib/routes/logout");
+const refresh = require("./lib/routes/refresh");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use("/api/event", event);
 app.use("/api/date", overview);
 app.use("/api/user/login", login);
 app.use("/api/user/logout", logout);
+app.use("/api/user/refresh", refresh);
 
 // Heroku Deployment
 app.use(express.static(path.join(__dirname, "client/build")));
