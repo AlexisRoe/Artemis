@@ -55,7 +55,6 @@ export default function useAuth() {
   const signIn = useCallback(async () => {
     const options = {
       method: "POST",
-      credentials: "include",
       body: JSON.stringify({
         id: credentials.id,
         password: credentials.password,

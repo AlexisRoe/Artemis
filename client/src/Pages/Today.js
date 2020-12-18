@@ -14,6 +14,7 @@ import useAsync from "../utils/hook/useAsync";
 import Header from "../components/Header";
 import { Main } from "../components/helper/Main";
 import ErrorHandler from "./Error";
+import Cookies from "js-cookie";
 
 const dateToday = mockTimestamp();
 const defaultHeader = {
@@ -38,6 +39,8 @@ function Today() {
   useEffect(() => {
     doFetch();
   }, [doFetch]);
+
+  console.log(Cookies.get("auth_token"));
 
   return (
     <>
