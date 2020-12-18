@@ -1,6 +1,6 @@
 const fetchData = (route) => async (id, token) => {
   try {
-    const response = await fetch(`/api/${route}/${id}`, {
+    const response = await fetch(`/api/documents/${route}/${id}`, {
       method: "GET",
       headers: {
         authorization: token,
