@@ -11,8 +11,6 @@ Function Sheets 2.0 - Dashboard like tool to use for hotels/ event staff.
 Artemis is a dashboard like approach for replacing classic "Function Sheets". A function sheet is just a sheet of paper, which describes an event at a hotel for one day. It holdes information about the amount of people expected, the booked rooms, the setup, the ordered food & beverages and more. It is usually a big mess to spread the newest information to the colleagues. Why not using a tool, everyone have now. Your Phone.
 
 ---
-<img src="./documentation/Alexis_Roehrling_Artemis.gif" alt="" width="150" >
----
 
 Artemis is my **capstone project** for the Webdeveloper Bootcamp at Neue Fische Cologne in late 2020. The capstone project is meant to learn and recaping concepts, which you are interested the most. You can log in and see some live data. But of course all data are mocked.
 
@@ -23,6 +21,14 @@ What topics I covered with that project?
 - building middleware
 - Authentication with json web token and middleware
 - building API´s
+
+---
+<img src="./documentation/artemis_login.png" alt="" width="150" >
+<img src="./documentation/artemis_nextUp.png" alt="" width="150" >
+<img src="./documentation/artemis_daily_overview.png" alt="" width="150" >
+<img src="./documentation/artemis_event.png" alt="" width="150" >
+<img src="./documentation/artemis_menu.png" alt="" width="150" >
+---
 
 ## How to use
 
