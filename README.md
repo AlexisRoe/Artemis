@@ -6,7 +6,7 @@ Function Sheets 2.0 - Dashboard like tool to use for hotels/ event staff.
 
 **You can find the project here**: [Deployment on Heroku](https://dashboard-artemis.herokuapp.com/)
 
-<img src="./documentation/Alexis_Roehrling_Artemis.gif" alt="" width="150" align="left" >
+<img src="./documentation/Alexis_Roehrling_Artemis.gif" alt="" width="250" align="left" >
 
 Artemis is a dashboard like approach for replacing classic "Function Sheets". A function sheet is just a sheet of paper, which describes an event at a hotel for one day. It holdes information about the amount of people expected, the booked rooms, the setup, the ordered food & beverages and more. It is usually a big mess to spread the newest information to the colleagues. Why not using a tool, everyone have now. Your Phone.
 
@@ -23,11 +23,7 @@ What topics I covered with that project?
 - building API´s
 
 ---
-<img src="./documentation/artemis_login.png" alt="" width="150" >
-<img src="./documentation/artemis_nextUp.png" alt="" width="150" >
-<img src="./documentation/artemis_daily_overview.png" alt="" width="150" >
-<img src="./documentation/artemis_event.png" alt="" width="150" >
-<img src="./documentation/artemis_menu.png" alt="" width="150" >
+<img src="./documentation/artemis_login.png" alt="" width="150" align="left"> <img src="./documentation/artemis_nextUp.png" alt="" width="150"  align="left"> <img src="./documentation/artemis_daily_overview.png" alt="" width="150" align="left" > <img src="./documentation/artemis_event.png" alt="" width="150"  align="left"> <img src="./documentation/artemis_menu.png" alt="" width="150"  align="left">
 ---
 
 ## How to use
