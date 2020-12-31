@@ -167,5 +167,4 @@ For this project, I used a Atlas Cluster of MongoDB. I created two collections, 
     }
   }
 ]
-
 ```
