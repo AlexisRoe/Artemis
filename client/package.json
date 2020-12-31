@@ -14,8 +14,6 @@
     "@testing-library/react": "^11.2.1",
     "@testing-library/user-event": "^12.2.2",
     "babel-loader": "^8.1.0",
-    "crypto-js": "^4.0.0",
-    "js-cookie": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-is": "^17.0.1",

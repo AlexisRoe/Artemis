@@ -1,7 +1,6 @@
-import Cookies from "js-cookie";
-import { COOKIE_NAME } from "../config/constants";
 import { useState, useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import { useUserContext } from "../context/Context";
+import useAuth from "./useAuth";
 
 export default function useAsync(action, params) {
   const [data, setData] = useState(null);
@@ -9,15 +8,16 @@ export default function useAsync(action, params) {
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("loading ...");
-  const history = useHistory();
+  const { user } = useUserContext();
+  const { signOut } = useAuth();
 
   const doFetch = useCallback(async () => {
     const errorHandler = (response) => {
       console.error(response.message);
       setIsError(true);
       !response.message
-        ? setMessage(response.message)
-        : setMessage("unknown Error");
+        ? setMessage("unknown Error")
+        : setMessage(response.message);
       setTimeout(() => {
         setLoading(false);
       }, 6000);
@@ -25,7 +25,7 @@ export default function useAsync(action, params) {
 
     try {
       setLoading(true);
-      const response = await action(params);
+      const response = await action(params, user.auth_token);
       switch (response.code) {
         case 200:
           setData(response.content);
@@ -33,8 +33,7 @@ export default function useAsync(action, params) {
           setLoading(false);
           break;
         case 401:
-          Cookies.delete(COOKIE_NAME);
-          history.push(`/login`);
+          signOut();
           break;
         case 400:
         case 404:
@@ -45,7 +44,7 @@ export default function useAsync(action, params) {
     } catch (error) {
       errorHandler({ message: error.message });
     }
-  }, [action, params, history]);
+  }, [user.auth_token, action, params, signOut]);
 
   return { data, loading, isError, message, metaData, doFetch };
 }
