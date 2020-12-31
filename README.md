@@ -6,10 +6,12 @@ Function Sheets 2.0 - Dashboard like tool to use for hotels/ event staff.
 
 **You can find the project here**: [Deployment on Heroku](https://dashboard-artemis.herokuapp.com/)
 
+<img src="./documentation/Alexis_Roehrling_Artemis.gif" alt="" width="150" align="left" >
+
 Artemis is a dashboard like approach for replacing classic "Function Sheets". A function sheet is just a sheet of paper, which describes an event at a hotel for one day. It holdes information about the amount of people expected, the booked rooms, the setup, the ordered food & beverages and more. It is usually a big mess to spread the newest information to the colleagues. Why not using a tool, everyone have now. Your Phone.
 
 ---
-![gif](./documentation/Alexis_Roehrling_Artemis.gif)
+<img src="./documentation/Alexis_Roehrling_Artemis.gif" alt="" width="150" >
 ---
 
 Artemis is my **capstone project** for the Webdeveloper Bootcamp at Neue Fische Cologne in late 2020. The capstone project is meant to learn and recaping concepts, which you are interested the most. You can log in and see some live data. But of course all data are mocked.
@@ -53,7 +55,7 @@ The design is meant to look luxurious, simple and concentrated on the informatio
 For this project you need a MongoDB instance. For more information go to the database section
 
 1. Create the two databases and fill it with data<br />
-   [the mocked database as a json file](./lib/documentation/database.json)
+   [the mocked database as a json file](./lib/documentation/template/database.json)
 
 2. Createa a **.env** file with the following credentials
 
@@ -103,7 +105,7 @@ npm run storybook
 
 ## Database
 
-For this project, I used a Atlas Cluster of MongoDB. I created two collections, which you can find here. The collection events with the data I used can be found in the [./lib/data/database.json](./lib/documentation/database.json) file.
+For this project, I used a Atlas Cluster of MongoDB. I created two collections, which you can find here. The collection events with the data I used can be found in the [./lib/documentation/template/database.json](./lib/documentation/template/database.json) file.
 
 1. users
 
