@@ -1,4 +1,4 @@
-<img src="./client/src/assets/logo/logo-artemis.jpg" alt="Logo of the project" align="left" width="150" height="150" >
+<img src="./client/src/assets/logo/logo-artemis.jpg" alt="Logo of the project" align="left" width="130" height="130" >
 
 # Artemis &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/AlexisRoe/Artemis/blob/master/LICENSE)
 
@@ -23,9 +23,8 @@ What topics I covered with that project?
 - building API´s
 
 ---
-<img src="./documentation/artemis_login.png" alt="" width="150" align="left"> <img src="./documentation/artemis_nextUp.png" alt="" width="150"  align="left"> <img src="./documentation/artemis_daily_overview.png" alt="" width="150" align="left" > <img src="./documentation/artemis_event.png" alt="" width="150"  align="left"> <img src="./documentation/artemis_menu.png" alt="" width="150"  align="left">
 
-<br/>
+<img src="./documentation/artemis_login.png" alt="" width="150" align="left"> <img src="./documentation/artemis_nextUp.png" alt="" width="150"  align="left"> <img src="./documentation/artemis_daily_overview.png" alt="" width="150" align="left" > <img src="./documentation/artemis_event.png" alt="" width="150"  align="left"> <img src="./documentation/artemis_menu.png" alt="" width="150">
 
 ---
 
