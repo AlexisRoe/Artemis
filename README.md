@@ -25,8 +25,8 @@ What topics I covered with that project?
 ### 1. Login
 
 use the following credentials: <br />
-**User**: John Doe <br />
-**Password**: Donnerstag
+**User**: Martin McFly <br />
+**Password**: DeLorian
 
 ### 2. Daily Overview
 
