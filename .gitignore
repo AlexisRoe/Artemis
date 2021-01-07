@@ -108,3 +108,4 @@ dist
 
 client/build
 client/storybook-static
+cert/
