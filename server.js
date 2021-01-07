@@ -3,6 +3,9 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
+const https = require("https");
+const fs = require("fs");
+
 const { connect } = require("./lib/api/database");
 
 const documents = require("./lib/routes/documents");
@@ -29,7 +32,18 @@ app.get("*", (request, response) => {
 async function run() {
   console.log("Connecting to database ...");
   await connect(process.env.DB_URL);
-  app.listen(process.env.PORT || 6000);
+  // app.listen(process.env.PORT || 6000);
+  https
+    .createServer(
+      {
+        key: fs.readFileSync("./cert/server.key"),
+        cert: fs.readFileSync("./cert/server.cert"),
+      },
+      app
+    )
+    .listen(process.env.PORT || 6000, () => {
+      console.log("Listening...");
+    });
 }
 
 run();
