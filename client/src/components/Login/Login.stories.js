@@ -17,7 +17,6 @@ InputField.args = {
 
 export const Button = (args) => <LoginButton {...args} />;
 Button.args = {
-  title: "Mitarbeiter-ID",
   error: true,
 };
 
