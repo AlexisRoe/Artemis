@@ -6,7 +6,7 @@ import MainMenu from "./MainMenu";
 import logoSrc from "../../assets/logo/logo-artemis.png";
 import useAuth from "../../utils/hook/useAuth";
 
-const Article = styled.article`
+export const Article = styled.article`
   z-index: 30;
   min-width: 375px;
   min-height: 100px;
@@ -23,7 +23,7 @@ const Article = styled.article`
   }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   border: 0.5rem solid var(--color-bg-dark);
   outline: none;
   z-index: 10;
@@ -42,7 +42,7 @@ const Button = styled.button`
   }
 `;
 
-const InformationContainer = styled.div`
+export const InformationContainer = styled.div`
   grid-column: 2/3;
   display: flex;
   flex-direction: column;

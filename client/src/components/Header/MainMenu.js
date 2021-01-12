@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   background-color: var(--color-bg-dark);
   padding: 50px 0px;
   padding-left: 20vw;
@@ -44,8 +44,9 @@ const Nav = styled.nav`
   }
 `;
 
-const Ul = styled.ul`
+export const Ul = styled.ul`
   list-style-type: none;
+  padding-left: 0;
   a,
   a:hover,
   a:focus,
@@ -66,7 +67,7 @@ const Ul = styled.ul`
   }
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   margin-top: 2rem;
   cursor: pointer;
   background: none;
