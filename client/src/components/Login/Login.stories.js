@@ -16,6 +16,7 @@ InputField.args = {
 };
 
 export const Button = (args) => <LoginButton {...args} />;
+
 Button.args = {
   error: true,
 };
